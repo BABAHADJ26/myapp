@@ -1,16 +1,16 @@
-# Builds the Windows installer (Qalami-Setup.exe) and publishes it on the Releases page.
-name: Build Windows installer
+# Builds the Windows installer (Qalami-Setup.exe) and the Android app (Qalami.apk), and publishes both on the Releases page.
+name: Build Windows and Android apps
 on:
   push:
     branches: [main]
-    paths: ['app/**', 'installer/**', '.github/workflows/build.yml']
+    paths: ['app/**', 'installer/**', 'android/**', '.github/workflows/build.yml']
   workflow_dispatch:
 permissions:
   contents: write
 env:
   ELECTRON_VERSION: 33.2.1
 jobs:
-  build:
+  windows:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,10 +29,35 @@ jobs:
           cp app/icon.ico installer/installer.nsi build/
       - name: Build the installer
         run: cd build && makensis -V2 installer.nsi
+      - uses: actions/upload-artifact@v4
+        with: { name: windows, path: build/Qalami-Setup.exe }
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.9' }
+      - name: Build the APK
+        run: |
+          mkdir -p android/app/src/main/assets
+          cp -r app/www android/app/src/main/assets/www
+          gradle -p android assembleDebug
+          cp android/app/build/outputs/apk/debug/app-debug.apk Qalami.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: android, path: Qalami.apk }
+
+  release:
+    needs: [windows, android]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
       - name: Publish on the Releases page
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           tag="v1.0.${{ github.run_number }}"
-          gh release create "$tag" build/Qalami-Setup.exe --repo "$GITHUB_REPOSITORY" --title "قلمي — نسخة ${tag}" \
-            --notes "برنامج قلمي لويندوز: مواد السنة الأولى الست بكل الأصوات، ويعمل بلا إنترنت. حمّل Qalami-Setup.exe ثم انقر عليه نقرًا مزدوجًا."
+          gh release create "$tag" windows/Qalami-Setup.exe android/Qalami.apk --repo "$GITHUB_REPOSITORY" --title "قلمي — نسخة ${tag}" \
+            --notes "قلمي: مواد السنة الأولى الست بكل الأصوات، ويعمل بلا إنترنت. لحاسوب ويندوز: Qalami-Setup.exe — للهاتف أو اللوحة (أندرويد): Qalami.apk"

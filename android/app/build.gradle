@@ -1,0 +1,9 @@
+plugins { id 'com.android.application' }
+android {
+  namespace 'dz.qalami'
+  compileSdk 34
+  defaultConfig { applicationId 'dz.qalami'; minSdk 24; targetSdk 34; versionCode 1; versionName '1.0' }
+  // the recordings are already compressed; storing them as-is keeps the APK build fast
+  androidResources { noCompress 'json' }
+}
+dependencies { implementation 'androidx.webkit:webkit:1.11.0' }
