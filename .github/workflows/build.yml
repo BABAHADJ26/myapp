@@ -1,0 +1,38 @@
+# Builds the Windows installer (Qalami-Setup.exe) and publishes it on the Releases page.
+name: Build Windows installer
+on:
+  push:
+    branches: [main]
+    paths: ['app/**', 'installer/**', '.github/workflows/build.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+env:
+  ELECTRON_VERSION: 33.2.1
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install NSIS
+        run: sudo apt-get update && sudo apt-get install -y nsis
+      - name: Assemble the program folder
+        run: |
+          mkdir -p build/Qalami
+          curl -sSL -o electron.zip "https://github.com/electron/electron/releases/download/v${ELECTRON_VERSION}/electron-v${ELECTRON_VERSION}-win32-x64.zip"
+          unzip -q electron.zip -d build/Qalami
+          mv build/Qalami/electron.exe build/Qalami/qalami.exe
+          rm -f build/Qalami/resources/default_app.asar
+          find build/Qalami/locales -name '*.pak' ! -name 'ar.pak' ! -name 'en-US.pak' ! -name 'fr.pak' -delete
+          mkdir -p build/Qalami/resources/app
+          cp -r app/* build/Qalami/resources/app/
+          cp app/icon.ico installer/installer.nsi build/
+      - name: Build the installer
+        run: cd build && makensis -V2 installer.nsi
+      - name: Publish on the Releases page
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="v1.0.${{ github.run_number }}"
+          gh release create "$tag" build/Qalami-Setup.exe --repo "$GITHUB_REPOSITORY" --title "قلمي — نسخة ${tag}" \
+            --notes "برنامج قلمي لويندوز: مواد السنة الأولى الست بكل الأصوات، ويعمل بلا إنترنت. حمّل Qalami-Setup.exe ثم انقر عليه نقرًا مزدوجًا."
