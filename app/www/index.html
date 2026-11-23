@@ -465,8 +465,183 @@ button{font-family:inherit; color:var(--ink)}
 @media (prefers-reduced-motion: reduce){
   *{animation:none!important; transition:none!important}
 }
+
+/* Smart Kids World: meadow world behind every screen, wooden signs, island home, guides, celebration */
+.wbg{position:fixed;inset:0;z-index:-1;pointer-events:none}.wbg svg{width:100%;height:100%}
+html,body{background:#8FD3FF}body{background-image:none}
+.top-bar h2{background:linear-gradient(#D9954F,#B9783A 55%,#8A5424);border:3px solid #6B3D17;border-radius:14px;color:#FFF4DC;text-shadow:0 2px 0 #6B3D17;padding:2px 16px 4px;flex:0 1 auto;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.world-home{display:flex;flex-direction:column;gap:12px;align-items:center;background:none;border:0;box-shadow:none;padding-inline:0}
+.wh-bar{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.wh-me{display:flex;align-items:center;gap:8px;background:linear-gradient(#3FA2FF,#1F6FD1);color:#fff;border:4px solid #fff;border-radius:999px;padding:3px 16px 3px 4px;box-shadow:0 5px 0 rgba(0,0,0,.2);font-weight:800;cursor:pointer}
+.wh-me .av{width:44px;height:44px;border-radius:50%;background:#FFE3B8;border:3px solid #fff;display:grid;place-items:center;overflow:hidden}
+.wh-me small{display:flex;align-items:center;gap:3px;font-size:.95rem}
+.wh-tools{display:flex;gap:8px}
+.wround{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:4px solid #fff;box-shadow:0 5px 0 rgba(0,0,0,.22),inset 0 -6px 0 rgba(0,0,0,.15);background:linear-gradient(#5BB8FF,#1F6FD1);font-size:1.5rem;cursor:pointer}
+.wround.gold{background:linear-gradient(#FFE07A,#F2A900)}
+.wsign{position:relative;padding:6px 26px 8px;background:linear-gradient(#D9954F,#B9783A 55%,#8A5424);border:4px solid #6B3D17;border-radius:18px;color:#FFF4DC;font-weight:800;font-size:clamp(1.3rem,4.6vw,2rem);line-height:1.15;text-align:center;text-shadow:0 3px 0 #6B3D17;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.wsign small{display:block;font-size:.5em;color:#FFE07A}
+.wh-main{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.7fr);gap:8px;align-items:end;width:100%}
+.wh-hero{display:flex;flex-direction:column;align-items:center;gap:4px}
+.wh-hero svg{width:min(100%,250px);height:auto}
+.wbubble{background:#fff;border-radius:20px;padding:8px 14px;font-weight:700;box-shadow:0 5px 0 rgba(0,0,0,.15);position:relative;text-align:center;font-size:1.05rem}
+.wbubble:after{content:"";position:absolute;bottom:-11px;right:46%;border:11px solid transparent;border-top-color:#fff;border-bottom:0}
+.wisles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 12px}
+.wisle{display:flex;flex-direction:column;align-items:center;position:relative;transition:transform .15s;cursor:pointer;background:none;border:0;padding:0;box-shadow:none}
+.wisle svg{width:100%;height:auto;filter:drop-shadow(0 10px 6px rgba(0,60,0,.25))}
+.wisle:hover{transform:translateY(-4px)}.wisle:active{transform:translateY(3px)}
+.wisle .lbl{position:absolute;bottom:12%;color:#FFF4DC;font-weight:800;font-size:clamp(.78rem,2.2vw,1.05rem);line-height:1.1;text-shadow:0 2px 0 #4A2A0E;text-align:center;width:82%}
+.wisle .badge{position:absolute;top:3%;left:4%;background:#fff;border-radius:999px;padding:0 8px;font-weight:800;font-size:.78rem;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.wisle .prog{position:absolute;top:3%;right:4%;background:#FFC83D;border-radius:999px;padding:0 8px;font-weight:800;font-size:.78rem;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.wfloat{animation:wfloat 4s ease-in-out infinite}.wisle:nth-child(2n) .wfloat{animation-delay:-1.3s}.wisle:nth-child(3n) .wfloat{animation-delay:-2.6s}
+@keyframes wfloat{50%{transform:translateY(-7px)}}
+.wplay{display:flex;align-items:center;gap:10px;background:radial-gradient(circle at 40% 30%,#9BF09B,#21A33A 70%);color:#fff;border:5px solid #fff;border-radius:999px;padding:8px 26px 8px 12px;font-weight:800;font-size:1.3rem;text-shadow:0 2px 0 rgba(0,0,0,.25);box-shadow:0 7px 0 rgba(0,0,0,.25);animation:wpulse 1.8s ease-in-out infinite;cursor:pointer}
+.wplay i{width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;font-style:normal;color:#21A33A;font-size:1.4rem}
+@keyframes wpulse{50%{transform:scale(1.05)}}
+.wyears{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.wyears span{background:rgba(255,255,255,.85);border-radius:999px;padding:2px 12px;font-weight:700;font-size:.85rem}
+.wyears span.on{background:#FFC83D}
+.wnote{color:#fff;font-size:.8rem;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,.5);margin:0}
+.guide{display:flex;align-items:flex-end;gap:10px}
+.guide svg.gch{width:90px;height:auto;flex:none}
+.guide .wbubble{flex:1;text-align:start}.guide .wbubble:after{right:auto;left:-10px;bottom:18px;border:10px solid transparent;border-right-color:#fff;border-left:0}
+.wdlg{position:fixed;inset:0;background:rgba(10,30,60,.55);display:grid;place-items:center;z-index:30;padding:16px}
+.wdlg[hidden]{display:none}
+.wdlg>div{background:#fff;border-radius:24px;padding:18px;max-width:420px;width:100%;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;box-shadow:0 10px 0 rgba(0,0,0,.25)}
+.wdlg input{font:inherit;font-size:1.3rem;padding:8px 12px;border:3px solid #C7DCE8;border-radius:14px;width:100%;text-align:center}
+.wdlg .opts{display:flex;gap:10px}
+.wconf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:25}
+.wconf i{position:absolute;top:-20px;width:10px;height:16px;border-radius:3px;animation:wfall linear forwards}
+@keyframes wfall{to{transform:translateY(110vh) rotate(720deg)}}
+.wpraise{max-width:min(86vw,560px);text-align:center;line-height:1.25;position:fixed;left:50%;top:30%;transform:translate(-50%,-50%);background:linear-gradient(#FFE07A,#F2A900);color:#5A3300;border:5px solid #fff;border-radius:24px;padding:10px 26px;font-weight:800;font-size:clamp(1.6rem,6vw,2.4rem);box-shadow:0 8px 0 rgba(0,0,0,.25);z-index:26;pointer-events:none;animation:wpop 1.3s ease forwards}
+@keyframes wpop{0%{transform:translate(-50%,-50%) scale(.3);opacity:0}20%{transform:translate(-50%,-50%) scale(1.12);opacity:1}80%{opacity:1}100%{transform:translate(-50%,-70%) scale(1);opacity:0}}
+.mascot.whappy,.gch.whappy{animation:whappy .9s ease}
+@keyframes whappy{25%{transform:translateY(-26px) rotate(-10deg)}50%{transform:none}70%{transform:translateY(-10px) rotate(8deg)}}
+.mascot.wthink,.gch.wthink{animation:wthink 1.2s ease}
+@keyframes wthink{30%,70%{transform:rotate(-9deg)}}
+.chip.whint{animation:whint 1s ease-in-out infinite}
+@keyframes whint{50%{transform:scale(1.07);box-shadow:0 0 0 8px rgba(255,200,61,.85),0 4px 0 var(--ink)}}
+@media(max-width:700px){.wh-bar{flex-wrap:wrap}.wh-bar .wsign{order:-1;width:100%;font-size:1.4rem}.wpraise{font-size:1.4rem;padding:8px 18px}.wh-main{grid-template-columns:1fr}.wh-hero svg{width:140px}.wisles{grid-template-columns:repeat(2,minmax(0,1fr))}.guide svg.gch{width:64px}.wround{width:46px;height:46px}.wh-me .av{width:36px;height:36px}}
+@media(prefers-reduced-motion:reduce){.wfloat,.wplay,.wconf i,.wpraise{animation:none!important}}
 </style>
 
+<div class="wbg" aria-hidden="true"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="w-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5DB8FF"/><stop offset=".6" stop-color="#BFE8FF"/></linearGradient>
+    <linearGradient id="w-hill1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FDB6A"/><stop offset="1" stop-color="#4FAE3E"/></linearGradient>
+    <linearGradient id="w-hill2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6CCB52"/><stop offset="1" stop-color="#2F8F33"/></linearGradient>
+    <g id="w-tree"><rect x="-9" y="20" width="18" height="60" rx="6" fill="#8A5424"/><circle cx="0" cy="0" r="46" fill="#3FA83F"/><circle cx="-30" cy="18" r="34" fill="#4CB84A"/><circle cx="30" cy="16" r="34" fill="#36993A"/><circle cx="-10" cy="-18" r="24" fill="#6BD15E" opacity=".7"/></g>
+    <g id="w-cloud" fill="#fff"><circle cx="0" cy="0" r="34"/><circle cx="40" cy="-14" r="44"/><circle cx="86" cy="2" r="32"/><rect x="0" y="0" width="86" height="32"/></g>
+    <g id="w-flower"><circle cx="0" cy="-9" r="6" fill="#FF7BB0"/><circle cx="9" cy="0" r="6" fill="#FF7BB0"/><circle cx="0" cy="9" r="6" fill="#FF7BB0"/><circle cx="-9" cy="0" r="6" fill="#FF7BB0"/><circle r="5" fill="#FFC83D"/></g>
+  </defs>
+  <rect width="1600" height="900" fill="url(#w-sky)"/>
+  <circle cx="1450" cy="120" r="70" fill="#FFE07A" opacity=".9"/>
+  <use href="#w-cloud" x="160" y="110"/><use href="#w-cloud" x="760" y="80" opacity=".9"/><use href="#w-cloud" x="1180" y="190" opacity=".8"/>
+  <g transform="translate(1180 330)">
+    <rect x="0" y="80" width="260" height="170" fill="#F4E9FF" stroke="#9C87C9" stroke-width="4"/>
+    <rect x="-30" y="40" width="70" height="210" fill="#EFE2FF" stroke="#9C87C9" stroke-width="4"/><path d="M-40 42l45-90 45 90z" fill="#8E5CE6"/>
+    <rect x="220" y="40" width="70" height="210" fill="#EFE2FF" stroke="#9C87C9" stroke-width="4"/><path d="M210 42l45-90 45 90z" fill="#8E5CE6"/>
+    <rect x="95" y="10" width="70" height="240" fill="#F7EEFF" stroke="#9C87C9" stroke-width="4"/><path d="M85 12l45-100 45 100z" fill="#A574F2"/>
+    <path d="M105 250v-60a25 25 0 0 1 50 0v60z" fill="#8A5424"/>
+    <rect x="-8" y="110" width="18" height="26" rx="9" fill="#5DB8FF"/><rect x="242" y="110" width="18" height="26" rx="9" fill="#5DB8FF"/><rect x="121" y="70" width="18" height="26" rx="9" fill="#5DB8FF"/>
+  </g>
+  <path d="M0 560q300-130 640-40t620-40q220-20 340 20V900H0z" fill="url(#w-hill1)"/>
+  <path d="M0 680q260-90 560-20t580-10q300-60 460 0V900H0z" fill="url(#w-hill2)"/>
+  <use href="#w-tree" x="90" y="560"/><use href="#w-tree" x="300" y="600"/><use href="#w-tree" x="1520" y="590"/><use href="#w-tree" x="1040" y="620"/>
+  <use href="#w-flower" x="120" y="780"/><use href="#w-flower" x="420" y="820"/><use href="#w-flower" x="760" y="800"/><use href="#w-flower" x="1100" y="830"/><use href="#w-flower" x="1400" y="790"/><use href="#w-flower" x="600" y="860"/><use href="#w-flower" x="1250" y="870"/>
+</svg></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="w-star" viewBox="0 0 54 54"><path d="M27 3l7.5 15.5 17 2.4-12.3 12 2.9 17L27 41.8l-15.1 8.1 2.9-17L2.5 20.9l17-2.4z" fill="#FFC83D" stroke="#C98400" stroke-width="3" stroke-linejoin="round"/><path d="M18 20l9-2" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/></symbol>
+  <symbol id="w-apple" viewBox="0 0 48 48"><path d="M24 14c-10-6-20 2-18 14 2 12 10 18 18 15 8 3 16-3 18-15 2-12-8-20-18-14z" fill="#E8453C" stroke="#9E1E17" stroke-width="2.5"/><path d="M24 14q0-8 6-11" fill="none" stroke="#6B3D17" stroke-width="3" stroke-linecap="round"/><path d="M27 9q8-4 12 1q-7 4-12-1z" fill="#3DBE4F"/><ellipse cx="15" cy="24" rx="3.5" ry="6" fill="#fff" opacity=".55"/></symbol>
+  <symbol id="w-appleB" viewBox="0 0 48 48"><path d="M24 14c-10-6-20 2-18 14 2 12 10 18 18 15 8 3 16-3 18-15 2-12-8-20-18-14z" fill="#2E8BEA" stroke="#14549E" stroke-width="2.5"/><path d="M24 14q0-8 6-11" fill="none" stroke="#6B3D17" stroke-width="3" stroke-linecap="round"/><path d="M27 9q8-4 12 1q-7 4-12-1z" fill="#3DBE4F"/><ellipse cx="15" cy="24" rx="3.5" ry="6" fill="#fff" opacity=".55"/></symbol>
+  <symbol id="w-pencil" viewBox="0 0 160 220">
+    <ellipse cx="80" cy="212" rx="48" ry="7" fill="rgba(0,0,0,.18)"/>
+    <path d="M58 168l-6 30h-20q-8 0-6 8h34l6-38zM102 168l6 30h20q8 0 6 8h-34l-6-38z" fill="#E8453C" stroke="#2B1A0E" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M40 40q0-18 18-18h44q18 0 18 18v100q0 10-6 18l-34 34-34-34q-6-8-6-18z" fill="#FFD447" stroke="#2B1A0E" stroke-width="4"/>
+    <path d="M44 128h72l-36 38z" fill="#F7D9A8"/><path d="M70 156l10 12 10-12z" fill="#2B1A0E"/>
+    <path d="M42 40q0-20 18-20h40q18 0 18 20v10H42z" fill="#FF8DB5" stroke="#2B1A0E" stroke-width="4"/>
+    <rect x="40" y="46" width="80" height="16" rx="6" fill="#9DB7D6" stroke="#2B1A0E" stroke-width="4"/>
+    <path d="M56 70v54M104 70v54" stroke="#F2B500" stroke-width="4" opacity=".7"/>
+    <ellipse cx="64" cy="92" rx="11" ry="13" fill="#fff" stroke="#2B1A0E" stroke-width="3"/><ellipse cx="96" cy="92" rx="11" ry="13" fill="#fff" stroke="#2B1A0E" stroke-width="3"/>
+    <circle cx="66" cy="94" r="6" fill="#1B4E9B"/><circle cx="98" cy="94" r="6" fill="#1B4E9B"/><circle cx="68" cy="91" r="2.4" fill="#fff"/><circle cx="100" cy="91" r="2.4" fill="#fff"/>
+    <path d="M64 112q16 18 32 0z" fill="#B3262E" stroke="#2B1A0E" stroke-width="3" stroke-linejoin="round"/><path d="M72 118q8 4 16 0" stroke="#FF8DB5" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="52" cy="108" r="6" fill="#FF8DB5" opacity=".7"/><circle cx="108" cy="108" r="6" fill="#FF8DB5" opacity=".7"/>
+    <path d="M40 104q-18 6-22 26" fill="none" stroke="#2B1A0E" stroke-width="5" stroke-linecap="round"/><circle cx="18" cy="132" r="11" fill="#fff" stroke="#2B1A0E" stroke-width="3.5"/>
+    <path d="M120 100q20-8 26-28" fill="none" stroke="#2B1A0E" stroke-width="5" stroke-linecap="round"/><circle cx="146" cy="70" r="11" fill="#fff" stroke="#2B1A0E" stroke-width="3.5"/>
+  </symbol>
+  <symbol id="w-lion" viewBox="0 0 200 220">
+    <ellipse cx="100" cy="212" rx="60" ry="7" fill="rgba(0,0,0,.18)"/>
+    <path d="M44 120q-26 50-16 86h144q10-36-16-86z" fill="#E8453C" stroke="#8E1E1A" stroke-width="3"/>
+    <path d="M66 126q-6 40 2 80h64q8-40 2-80z" fill="#FFC24A" stroke="#2B1A0E" stroke-width="3.5"/>
+    <ellipse cx="100" cy="176" rx="22" ry="20" fill="#FFE3A3"/>
+    <g fill="#C8661E" stroke="#2B1A0E" stroke-width="3"><circle cx="100" cy="30" r="22"/><circle cx="62" cy="40" r="22"/><circle cx="138" cy="40" r="22"/><circle cx="40" cy="70" r="22"/><circle cx="160" cy="70" r="22"/><circle cx="38" cy="104" r="20"/><circle cx="162" cy="104" r="20"/><circle cx="58" cy="128" r="20"/><circle cx="142" cy="128" r="20"/><circle cx="100" cy="138" r="22"/></g>
+    <circle cx="100" cy="84" r="56" fill="#FFC24A" stroke="#2B1A0E" stroke-width="4"/>
+    <circle cx="58" cy="42" r="13" fill="#FFC24A" stroke="#2B1A0E" stroke-width="3.5"/><circle cx="142" cy="42" r="13" fill="#FFC24A" stroke="#2B1A0E" stroke-width="3.5"/>
+    <path d="M72 18l8 18 20-22 20 22 8-18 6 28H66z" fill="#FFD447" stroke="#B37C00" stroke-width="3" stroke-linejoin="round"/><circle cx="100" cy="30" r="5" fill="#E8453C"/>
+    <ellipse cx="80" cy="80" rx="12" ry="14" fill="#fff" stroke="#2B1A0E" stroke-width="3"/><ellipse cx="120" cy="80" rx="12" ry="14" fill="#fff" stroke="#2B1A0E" stroke-width="3"/>
+    <circle cx="82" cy="82" r="7" fill="#1B4E9B"/><circle cx="122" cy="82" r="7" fill="#1B4E9B"/><circle cx="84" cy="79" r="2.6" fill="#fff"/><circle cx="124" cy="79" r="2.6" fill="#fff"/>
+    <ellipse cx="100" cy="108" rx="24" ry="17" fill="#FFF1D2"/>
+    <path d="M92 98h16l-8 8z" fill="#8A3B16" stroke="#2B1A0E" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M86 112q14 16 28 0z" fill="#B3262E" stroke="#2B1A0E" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="66" cy="102" r="7" fill="#FF8DB5" opacity=".6"/><circle cx="134" cy="102" r="7" fill="#FF8DB5" opacity=".6"/>
+  </symbol>
+  <symbol id="w-rabbit" viewBox="0 0 180 230">
+    <ellipse cx="90" cy="222" rx="52" ry="7" fill="rgba(0,0,0,.18)"/>
+    <g stroke="#2B1A0E" stroke-width="4"><path d="M62 70q-22-60-4-66q18 0 20 66z" fill="#E3E6EE"/><path d="M118 70q22-60 4-66q-18 0-20 66z" fill="#E3E6EE"/></g>
+    <path d="M64 62q-14-44-4-52q10 0 12 50zM116 62q14-44 4-52q-10 0-12 50z" fill="#FFB3CC"/>
+    <path d="M54 140q-8 70 36 78q44-8 36-78z" fill="#E3E6EE" stroke="#2B1A0E" stroke-width="4"/>
+    <ellipse cx="90" cy="186" rx="22" ry="22" fill="#fff"/>
+    <circle cx="90" cy="104" r="50" fill="#E3E6EE" stroke="#2B1A0E" stroke-width="4"/>
+    <path d="M74 146l16 8 16-8v14l-16-8-16 8z" fill="#E8453C" stroke="#2B1A0E" stroke-width="3" stroke-linejoin="round"/>
+    <ellipse cx="72" cy="98" rx="11" ry="13" fill="#fff" stroke="#2B1A0E" stroke-width="3"/><ellipse cx="108" cy="98" rx="11" ry="13" fill="#fff" stroke="#2B1A0E" stroke-width="3"/>
+    <circle cx="74" cy="100" r="6.5" fill="#1B4E9B"/><circle cx="110" cy="100" r="6.5" fill="#1B4E9B"/><circle cx="76" cy="97" r="2.4" fill="#fff"/><circle cx="112" cy="97" r="2.4" fill="#fff"/>
+    <ellipse cx="90" cy="118" rx="7" ry="5" fill="#FF6B9E"/>
+    <path d="M78 126q12 12 24 0" fill="none" stroke="#2B1A0E" stroke-width="3.5" stroke-linecap="round"/><path d="M86 130h8v8h-8z" fill="#fff" stroke="#2B1A0E" stroke-width="2"/>
+    <circle cx="60" cy="118" r="7" fill="#FF8DB5" opacity=".6"/><circle cx="120" cy="118" r="7" fill="#FF8DB5" opacity=".6"/>
+  </symbol>
+  <symbol id="w-owl" viewBox="0 0 180 220">
+    <ellipse cx="90" cy="212" rx="50" ry="7" fill="rgba(0,0,0,.18)"/>
+    <ellipse cx="90" cy="130" rx="64" ry="78" fill="#9A6234" stroke="#2B1A0E" stroke-width="4"/>
+    <ellipse cx="90" cy="154" rx="40" ry="48" fill="#F3D6A8"/>
+    <path d="M64 140q8 6 16 0M96 140q8 6 16 0M74 160q8 6 16 0M90 176q8 6 16 0M68 182q8 6 16 0" fill="none" stroke="#C99A5E" stroke-width="3" stroke-linecap="round"/>
+    <path d="M28 84l-4-36 30 22zM152 84l4-36-30 22z" fill="#9A6234" stroke="#2B1A0E" stroke-width="3.5" stroke-linejoin="round"/>
+    <circle cx="66" cy="96" r="24" fill="#fff" stroke="#2B1A0E" stroke-width="5"/><circle cx="114" cy="96" r="24" fill="#fff" stroke="#2B1A0E" stroke-width="5"/><path d="M88 94h4" stroke="#2B1A0E" stroke-width="5"/>
+    <circle cx="68" cy="98" r="10" fill="#1B4E9B"/><circle cx="112" cy="98" r="10" fill="#1B4E9B"/><circle cx="71" cy="94" r="3.5" fill="#fff"/><circle cx="115" cy="94" r="3.5" fill="#fff"/>
+    <path d="M82 116h16l-8 14z" fill="#FFB020" stroke="#2B1A0E" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M40 46l50-22 50 22-50 20z" fill="#2B2B3A" stroke="#111" stroke-width="3" stroke-linejoin="round"/><path d="M62 52v16q28 12 56 0V52" fill="#2B2B3A"/><path d="M140 46v26" stroke="#FFC83D" stroke-width="4"/><circle cx="140" cy="76" r="6" fill="#FFC83D"/>
+  </symbol>
+  <symbol id="w-panda" viewBox="0 0 180 210">
+    <ellipse cx="90" cy="202" rx="52" ry="7" fill="rgba(0,0,0,.18)"/>
+    <path d="M44 130q-10 66 46 70q56-4 46-70z" fill="#2B2B33" stroke="#111" stroke-width="4"/><ellipse cx="90" cy="168" rx="28" ry="26" fill="#fff"/>
+    <circle cx="44" cy="44" r="20" fill="#2B2B33"/><circle cx="136" cy="44" r="20" fill="#2B2B33"/>
+    <circle cx="90" cy="92" r="56" fill="#fff" stroke="#2B1A0E" stroke-width="4"/>
+    <ellipse cx="68" cy="90" rx="16" ry="20" fill="#2B2B33" transform="rotate(-20 68 90)"/><ellipse cx="112" cy="90" rx="16" ry="20" fill="#2B2B33" transform="rotate(20 112 90)"/>
+    <circle cx="70" cy="90" r="8" fill="#fff"/><circle cx="110" cy="90" r="8" fill="#fff"/><circle cx="71" cy="91" r="4.5" fill="#1B4E9B"/><circle cx="109" cy="91" r="4.5" fill="#1B4E9B"/>
+    <ellipse cx="90" cy="112" rx="8" ry="6" fill="#2B2B33"/><path d="M78 122q12 14 24 0z" fill="#B3262E" stroke="#2B1A0E" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="56" cy="114" r="7" fill="#FF8DB5" opacity=".6"/><circle cx="124" cy="114" r="7" fill="#FF8DB5" opacity=".6"/>
+  </symbol>
+  <symbol id="w-island" viewBox="0 0 220 200">
+    <path d="M18 112q-6 46 40 70 52 26 104 0 46-24 40-70z" fill="#A86A33" stroke="#6B3D17" stroke-width="4"/>
+    <path d="M40 140q30 16 60 6M110 160q30 6 56-14M70 172q20 6 34 2" stroke="#7A4A1E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <ellipse cx="110" cy="112" rx="96" ry="34" fill="#5DC24A" stroke="#2F7F2A" stroke-width="4"/>
+    <ellipse cx="96" cy="104" rx="64" ry="16" fill="#86DA6A"/>
+    <path d="M32 120q6 14 0 22M188 118q-4 16 2 24" stroke="#2F7F2A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M36 150h148l-10 30H46z" fill="#B9783A" stroke="#6B3D17" stroke-width="4" stroke-linejoin="round"/>
+  </symbol>
+<symbol id="w-butterfly" viewBox="0 0 200 200">
+    <ellipse cx="100" cy="192" rx="44" ry="6" fill="rgba(0,0,0,.18)"/>
+    <path d="M96 96C70 40 14 34 18 78c4 36 44 44 78 30z" fill="#B57CFF" stroke="#2B1A0E" stroke-width="4"/><path d="M104 96c26-56 82-62 78-18-4 36-44 44-78 30z" fill="#B57CFF" stroke="#2B1A0E" stroke-width="4"/>
+    <path d="M96 112c-30 0-62 14-52 46 10 26 44 12 56-22zM104 112c30 0 62 14 52 46-10 26-44 12-56-22z" fill="#4FC3F7" stroke="#2B1A0E" stroke-width="4"/>
+    <circle cx="48" cy="70" r="10" fill="#FFC83D"/><circle cx="152" cy="70" r="10" fill="#FFC83D"/><circle cx="64" cy="146" r="8" fill="#FF8DB5"/><circle cx="136" cy="146" r="8" fill="#FF8DB5"/>
+    <path d="M90 50q-10-26-24-32M110 50q10-26 24-32" fill="none" stroke="#2B1A0E" stroke-width="4" stroke-linecap="round"/><circle cx="66" cy="18" r="8" fill="#FF9F1C" stroke="#2B1A0E" stroke-width="3"/><circle cx="134" cy="18" r="8" fill="#FF9F1C" stroke="#2B1A0E" stroke-width="3"/>
+    <ellipse cx="100" cy="128" rx="13" ry="40" fill="#FFB347" stroke="#2B1A0E" stroke-width="4"/>
+    <circle cx="100" cy="76" r="28" fill="#FFC24A" stroke="#2B1A0E" stroke-width="4"/>
+    <ellipse cx="90" cy="74" rx="7" ry="9" fill="#fff" stroke="#2B1A0E" stroke-width="2.5"/><ellipse cx="110" cy="74" rx="7" ry="9" fill="#fff" stroke="#2B1A0E" stroke-width="2.5"/>
+    <circle cx="91" cy="76" r="4" fill="#1B4E9B"/><circle cx="111" cy="76" r="4" fill="#1B4E9B"/>
+    <path d="M92 88q8 8 16 0" fill="none" stroke="#2B1A0E" stroke-width="3" stroke-linecap="round"/><circle cx="82" cy="86" r="4" fill="#FF8DB5" opacity=".7"/><circle cx="118" cy="86" r="4" fill="#FF8DB5" opacity=".7"/>
+    <path d="M86 52l14-10 14 10" fill="#FF5BA7" stroke="#2B1A0E" stroke-width="2.5" stroke-linejoin="round"/>
+  </symbol></defs></svg>
+<div class="wconf" id="wconf" aria-hidden="true"></div>
+<div class="wdlg" id="wdlg" hidden><div id="wdlgBox"></div></div>
 <div class="app" dir="rtl" lang="ar">
   <header class="top">
     <button type="button" class="brand" id="homeBtn" aria-label="الرئيسية"><span class="mascot" data-mascot></span>قلمي</button>
@@ -481,21 +656,22 @@ button{font-family:inherit; color:var(--ink)}
 
   <main>
     <!-- 12: home: choose a year -->
-    <section class="screen" data-step="12">
-      <div class="home-hero">
-        <span class="mascot" data-mascot></span>
-        <div>
-          <h1>مرحبًا بك في قلمي!</h1>
-          <p class="hint">دروس وألعاب وتمارين بالصوت، وفق منهاج وزارة التربية الوطنية للتعليم الابتدائي.</p>
+    <section class="screen world-home" data-step="12">
+      <div class="wh-bar">
+        <button type="button" class="wh-me" id="whMe" aria-label="اسم الطفل"><span class="av"><svg viewBox="0 0 160 220" width="40" height="40"><use href="#w-pencil"/></svg></span><span><span id="whName">بطلنا</span><small><svg width="18" height="18"><use href="#w-star"/></svg><span id="whStars">0</span></small></span></button>
+        <div class="wsign">عالم الأذكياء الصغار<small>قلمي · السنة الأولى ابتدائي</small></div>
+        <div class="wh-tools"><button type="button" class="wround gold" id="toQuiz" aria-label="الفروض والاختبارات">🏆</button><button type="button" class="wround" id="toParents" aria-label="فضاء الأولياء">⚙️</button></div>
+      </div>
+      <div class="wh-main">
+        <div class="wh-hero">
+          <div class="wbubble" id="whHello">مرحبًا يا صديقي! أنا لومي. اختر جزيرة، وهيا نتعلّم ونلعب!</div>
+          <svg viewBox="0 0 200 220" class="gch" id="whLion"><use href="#w-lion"/></svg>
         </div>
+        <div class="wisles" id="wisles"></div>
       </div>
-      <h3>اختر سنتك الدراسية</h3>
-      <div class="years" id="years"></div>
-      <div class="quick">
-        <button type="button" class="chip" id="toParents"><span class="pic" aria-hidden="true">👨‍👩‍👧</span>فضاء الأولياء</button>
-        <button type="button" class="chip" id="toQuiz"><span class="pic" aria-hidden="true">📝</span>الفروض والاختبارات</button>
-      </div>
-      <p class="proto">نموذج أولي: الصور رموز مؤقتة، والصوت مولَّد بالذكاء الاصطناعي.</p>
+      <button type="button" class="wplay" id="whPlay"><i>▶</i><span>مهمّة اليوم</span></button>
+      <div class="wyears" id="wyears"></div>
+      <p class="wnote">وفق منهاج وزارة التربية الوطنية وكتب السنة الأولى. الشخصيات رسوم مؤقتة.</p>
     </section>
 
     <!-- 13: a year: its subjects -->
@@ -506,7 +682,8 @@ button{font-family:inherit; color:var(--ink)}
 
     <!-- 16: a subject: its units -->
     <section class="screen" data-step="16" hidden>
-      <div class="top-bar"><button type="button" class="btn" data-go="13">المواد</button><h2 id="subjectTitle"></h2></div>
+      <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2 id="subjectTitle"></h2></div>
+      <div class="guide"><svg viewBox="0 0 160 220" class="gch"><use href="#w-pencil"/></svg><p class="wbubble">أنا بيكو! هنا الحروف والقراءة والإملاء، كما في كتابك.</p></div>
       <div class="units" id="units"></div>
     </section>
 
@@ -625,26 +802,31 @@ button{font-family:inherit; color:var(--ink)}
 
     <!-- 43: mathematics, year 1: lessons by الوضعية الانطلاقية -->
     <section class="screen" data-step="43" hidden>
-      <div class="top-bar"><button type="button" class="btn" data-go="13">المواد</button><h2>الرياضيات · كتابي</h2></div>
+      <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2>الرياضيات · كتابي</h2></div>
+      <div class="guide"><svg viewBox="0 0 180 230" class="gch"><use href="#w-rabbit"/></svg><p class="wbubble">أهلًا يا بطل! أنا بوني. هيا نعدّ ونحسب معًا!</p></div>
       <p class="hint">مرتّبة كما في «كتابي في الرياضيات» للسنة الأولى: 5 وضعيات انطلاقية، ودروس الأعداد والحساب والهندسة والقياس وتنظيم المعطيات. أسئلة كل درس تتغيّر في كل مرّة.</p>
       <div class="units" id="mathList"></div>
     </section>
 
     <!-- 46, 47: Islamic and civic education, year 1 (pages of the combined Arabic book) -->
     <section class="screen" data-step="46" hidden>
-      <div class="top-bar"><button type="button" class="btn" data-go="13">المواد</button><h2>التربية الإسلامية · كتابي</h2></div>
+      <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2>التربية الإسلامية · كتابي</h2></div>
+      <div class="guide"><svg viewBox="0 0 200 220" class="gch"><use href="#w-lion"/></svg><p class="wbubble">أنا لومي! هنا دروس «أحبّ ديني».</p></div>
       <p class="hint">دروس «أحبّ ديني» من «كتابي في اللغة العربية والتربية الإسلامية والتربية المدنية». في كل درس: ألاحظ وأفهم وأحفظ، ثمّ صحيح أم خطأ، ولعبة الذاكرة، وسؤال، وترتيب. وفي السور: أستمع وأحفظ ثمّ أرتّب الآيات.</p>
       <div class="units" id="islList"></div>
+      <button type="button" class="chip unit" data-go="47"><span class="pic" aria-hidden="true">🇩🇿</span><div><b>التربية المدنية: أحبّ وطني</b><small>8 دروس من كتابي</small></div></button>
     </section>
     <section class="screen" data-step="47" hidden>
-      <div class="top-bar"><button type="button" class="btn" data-go="13">المواد</button><h2>التربية المدنية · كتابي</h2></div>
+      <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2>التربية المدنية · كتابي</h2></div>
+      <div class="guide"><svg viewBox="0 0 200 220" class="gch"><use href="#w-lion"/></svg><p class="wbubble">أنا لومي! هنا دروس «أحبّ وطني».</p></div>
       <p class="hint">دروس «أحبّ وطني» من «كتابي»: التحيّة، بطاقتي المدرسية، احترام الكبير، العطف على الصغار، علم وطني، العملة الوطنية، وثائق هويّتي، النشيد الوطني.</p>
       <div class="units" id="civList"></div>
     </section>
 
     <!-- 48: art education, year 1 (official programme) -->
     <section class="screen" data-step="48" hidden>
-      <div class="top-bar"><button type="button" class="btn" data-go="13">المواد</button><h2>التربية الفنية</h2></div>
+      <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2>التربية الفنية</h2></div>
+      <div class="guide"><svg viewBox="0 0 200 200" class="gch"><use href="#w-butterfly"/></svg><p class="wbubble">أنا لولو! هيا نرسم ونلوّن ونغنّي!</p></div>
       <p class="hint">مبنية على المنهاج الرسمي للسنة الأولى: التربية التشكيلية (الخطّ، الأشكال، الألوان ومزجها، والرسم الحرّ) والتربية الموسيقية (الأصوات، الحادّ والغليظ، القويّ والضعيف، الطويل والقصير، الإيقاع، الآلات). الأسئلة تتغيّر في كل مرّة.</p>
       <div class="units" id="artList"></div>
     </section>
@@ -670,7 +852,8 @@ button{font-family:inherit; color:var(--ink)}
 
     <!-- 45: science and technology, year 1 -->
     <section class="screen" data-step="45" hidden>
-      <div class="top-bar"><button type="button" class="btn" data-go="13">المواد</button><h2>التربية العلمية · كتابي</h2></div>
+      <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2>التربية العلمية · كتابي</h2></div>
+      <div class="guide"><svg viewBox="0 0 180 220" class="gch"><use href="#w-owl"/></svg><p class="wbubble">أنا أولي! هيا نكتشف العالم من حولنا.</p></div>
       <p class="hint">مرتّبة كما في «كتابي في التربية العلمية والتكنولوجية» للسنة الأولى: 6 مجالات مفاهيمية. في كل وحدة 3 أنشطة بالصور ولعبة الذاكرة، والأسئلة تتغيّر في كل مرّة.</p>
       <div class="units" id="sciList"></div>
     </section>
@@ -2985,13 +3168,13 @@ loadClips('common');
     playing = src;
     src.start();
   }
-  function say(text, queued, done) {
+  let say = function (text, queued, done) {
     if (!text) return;
     if (window.__said) window.__said.push(text);
     if (!queued) stopVoice();
     queue.push({ text, done });
     playNext();
-  }
+  };
   function tone(freqs, dur) {
     try {
       const actx = ctx();
@@ -3988,14 +4171,14 @@ loadClips('common');
   }
   function qaRound() {
     const st = S.ex[24], it = L.qa[st.round];
-    st.lock = false;
+    st.lock = false; st.wr = 0;
     $('#qaCount').textContent = (st.round + 1) + ' / ' + L.qa.length;
     $('#qaText').textContent = it.q;
     fb('#qaFb', '');
     const box = $('#qaOpts'); box.innerHTML = '';
     shuffle([...it.a]).forEach(([w, p, ok]) => {
       const b = document.createElement('button');
-      b.type = 'button'; b.className = 'chip';
+      b.type = 'button'; b.className = 'chip'; b.dataset.ok = ok ? '1' : '0';
       b.innerHTML = `<span class="pic" aria-hidden="true">${p}</span><span class="word">${w}</span>`;
       b.onclick = () => {
         if (st.lock) return;
@@ -4005,7 +4188,7 @@ loadClips('common');
           setTimeout(() => { st.round++; st.round < L.qa.length ? qaRound() : finish(24, '#qaFb'); }, 1500);
         } else {
           b.classList.remove('is-no'); void b.offsetWidth; b.classList.add('is-no'); bad();
-          st.m++; fb('#qaFb', 'ليس هذا. ارجع إلى النص', 'no'); say('حاول مرة أخرى', true);
+          st.m++; fb('#qaFb', 'ليس هذا. ارجع إلى النص', 'no'); say('حاول مرة أخرى', true); if (++st.wr === 2) { [...box.children].forEach(x => { if (x.dataset.ok === '1') x.classList.add('whint'); }); }
         }
       };
       box.appendChild(b);
@@ -4616,7 +4799,7 @@ loadClips('common');
   }
   function mqRound(step) {
     const st = S.ex[step], a = L.acts[MATH_STEPS.indexOf(step)], q = GEN[a.g](a.p), sc = screens.find(x => +x.dataset.step === step);
-    st.q = q; st.lock = false; st.picked = [];
+    st.q = q; st.lock = false; st.picked = []; st.wr = 0;
     if (window.__said) window.__q = q;
     sc.querySelector('.mq-count').textContent = (st.round + 1) + ' / ' + ROUNDS;
     sc.querySelector('.mq-text').textContent = plain(q.say[0]).replace(/[ً-ْ]/g, '');
@@ -4625,7 +4808,7 @@ loadClips('common');
     const box = sc.querySelector('.mq-opts'); box.innerHTML = ''; box.className = 'mq-opts' + (q.col ? ' col' : '') + (q.seq ? ' seq' : '');
     const line = sc.querySelector('.mq-line'); line.hidden = !q.seq; line.innerHTML = '';
     const ok = () => { st.lock = true; good(); say('أحسنت', true); fbEl.textContent = 'أحسنت!'; fbEl.className = 'feedback mq-fb ok'; setTimeout(() => { st.round++; st.round < ROUNDS ? mqRound(step) : finish(step, '#' + fbEl.id); }, 1500); };
-    const no = b => { if (b) { b.classList.remove('is-no'); void b.offsetWidth; b.classList.add('is-no'); } bad(); st.m++; say('حاول مرة أخرى', true); fbEl.textContent = 'حاول مرة أخرى'; fbEl.className = 'feedback mq-fb no'; };
+    const no = b => { if (b) { b.classList.remove('is-no'); void b.offsetWidth; b.classList.add('is-no'); } bad(); st.m++; if (++st.wr === 2 && q.opts) { const k = q.opts.findIndex(o => o.ok); const hb = box.children[k]; if (hb) { hb.classList.add('whint'); say('انْظُرْ هُنَا!', true); } } say('حاول مرة أخرى', true); fbEl.textContent = 'حاول مرة أخرى'; fbEl.className = 'feedback mq-fb no'; };
     if (q.seq) {
       const draw = () => {
         line.innerHTML = st.picked.map(it => `<span class="chip">${it.h}</span>`).join('');
@@ -5168,11 +5351,84 @@ loadClips('common');
     }
   }
 
+
+  /* ---------- Smart Kids World: island home, encouragement, celebration ---------- */
+  const ISLANDS = [
+    { s: 'ar', n: 'الحروف والقراءة', ic: 'أ ب ت', col: '#E8453C', go: 16, count: () => [LESSONS.length, LESSONS.filter(l => best[l.id]).length] },
+    { s: 'math', n: 'الأرقام', ic: '1 2 3', col: '#2E8BEA', go: 43, count: () => [MATH.length, MATH.filter(l => best[l.id]).length] },
+    { s: 'sci', n: 'الاكتشاف', ic: '🔬', col: '#3DBE4F', go: 45, count: () => [SCI.length, SCI.filter(l => best[l.id]).length] },
+    { s: 'art', n: 'الألوان والفنون', ic: '🎨', col: '#8E5CE6', go: 48, count: () => [ART.length, ART.filter(l => best[l.id]).length] },
+    { s: 'isl', n: 'ديني ووطني', ic: '🕌', col: '#16A085', go: 46, count: () => [ISL_LESSONS.length, ISL_LESSONS.filter(l => best[l.id]).length] },
+    { s: 'brain', n: 'الذكاء والألعاب', ic: '🧩', col: '#FF9F1C' }
+  ];
+  const allStars = () => Object.values(best).reduce((a, n) => a + (+n || 0), 0) + Object.values(gbest).reduce((a, n) => a + (+n || 0), 0);
+  const childName = () => { try { return localStorage.getItem('qalami-name') || 'بطلنا'; } catch (e) { return 'بطلنا'; } };
+  function renderWorld() {
+    curYear = 1;
+    $('#whName').textContent = childName(); $('#whStars').textContent = allStars();
+    $('#wisles').innerHTML = ISLANDS.map((it, i) => {
+      const c = it.count && it.count(), digits = /^[0-9 ]+$/.test(it.ic);
+      return `<button type="button" class="wisle" data-isle="${i}" aria-label="${it.n}"><svg viewBox="0 0 220 200" class="wfloat"><use href="#w-island"/><text x="110" y="84" text-anchor="middle" font-size="${it.ic.length > 2 ? 44 : 58}" font-weight="800" fill="${it.col}" stroke="#fff" stroke-width="5" paint-order="stroke" ${digits ? 'direction="ltr" unicode-bidi="bidi-override"' : ''}>${it.ic}</text></svg><span class="lbl">${it.n}</span>${c ? `<span class="prog">${c[1]} / ${c[0]}</span>` : '<span class="badge">قريبًا</span>'}</button>`;
+    }).join('');
+    $('#wyears').innerHTML = YEAR_NAMES.slice(1).map((y, i) => `<span class="${i ? '' : 'on'}">${y}${i ? ' · قريبًا' : ''}</span>`).join('');
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-isle]'); if (!b) return;
+    const it = ISLANDS[b.dataset.isle];
+    if (!it.go) { wreact(b.querySelector('svg'), 'wthink'); say('قَرِيبًا!'); return; }
+    curSubject = it.s; go(it.go);
+  });
+  // today's mission: the next letter the child has not finished yet
+  $('#whPlay').onclick = () => { const l = LESSONS.find(x => !best[x.id]) || LESSONS[Math.floor(Math.random() * LESSONS.length)]; curSubject = 'ar'; startLesson(l); };
+  const wdlg = html => { $('#wdlgBox').innerHTML = html; $('#wdlg').hidden = false; };
+  $('#wdlg').addEventListener('click', e => { if (e.target.id === 'wdlg' || e.target.closest('[data-close]')) $('#wdlg').hidden = true; });
+  $('#whMe').onclick = () => {
+    wdlg(`<b>ما اسم البطل؟</b><input id="wName" maxlength="20" value="${childName().replace(/"/g, '')}" aria-label="اسم الطفل"><div class="opts"><button type="button" class="btn primary" id="wNameOk">حفظ</button><button type="button" class="btn" data-close>إلغاء</button></div>`);
+    $('#wNameOk').onclick = () => { try { localStorage.setItem('qalami-name', $('#wName').value.trim() || 'بطلنا'); } catch (e) {} $('#wdlg').hidden = true; renderWorld(); };
+  };
+  // a small adults-only gate in front of the parents' corner
+  function parentGate(then) {
+    const a = 6 + Math.floor(Math.random() * 4), b = 5 + Math.floor(Math.random() * 4), ok = a + b;
+    const opts = shuffle([ok, ok + 1, ok - 2]);
+    wdlg(`<b>ركن الأولياء</b><span>للكبار فقط: كم ناتج ${a} + ${b}؟</span><div class="opts">${opts.map(v => `<button type="button" class="btn" data-pg="${v}">${v}</button>`).join('')}</div><button type="button" class="btn" data-close>رجوع</button>`);
+    $$('[data-pg]').forEach(x => x.onclick = () => { $('#wdlg').hidden = true; if (+x.dataset.pg === ok) then(); });
+  }
+  // encouragement: many phrases instead of one; a phrase is spoken only once its recording exists
+  const PRAISE = ['أَحْسَنْتَ!', 'رَائِعٌ!', 'مُمْتَازٌ!', 'بَرَافُو عَلَيْكَ!', 'يَا سَلَامُ!', 'أَنْتَ نَجْمٌ!', 'أَنْتَ بَطَلٌ!', 'مَا شَاءَ اللَّهُ عَلَيْكَ!', 'جَوَابٌ صَحِيحٌ!', 'هَكَذَا تَمَامًا!', 'عَمَلٌ جَمِيلٌ!', 'رَائِعٌ جِدًّا، أَنَا فَخُورٌ بِكَ!', 'عَرَفْتَهَا بِنَفْسِكَ!', 'أَصَبْتَ الْهَدَفَ!', 'أَحْسَنْتَ، وَاصِلْ هَكَذَا!', 'تَرْكِيزُكَ رَائِعٌ!', 'أَنْتَ تَتَعَلَّمُ بِسُرْعَةٍ!'];
+  const TRY = ['تَقْرِيبًا! حَاوِلْ مَرَّةً أُخْرَى.', 'لَا بَأْسَ، كُلُّنَا نَتَعَلَّمُ.', 'فَكِّرْ قَلِيلًا، أَنْتَ قَادِرٌ!', 'أَثِقُ فِي قُدُرَاتِكَ، جَرِّبْ مِنْ جَدِيدٍ.', 'الْخَطَأُ يُعَلِّمُنَا، هَيَّا مَرَّةً أُخْرَى!', 'قَرِيبٌ جِدًّا! انْظُرْ جَيِّدًا.', 'لَا تَسْتَسْلِمْ، أَنْتَ تَسْتَطِيعُ!'];
+  const AFTER_TRY = ['رَائِعٌ! لَمْ تَسْتَسْلِمْ وَنَجَحْتَ!', 'أَرَأَيْتَ؟ بِالْمُحَاوَلَةِ تَنْجَحُ!', 'أَحْسَنْتَ، تَعَلَّمْتَ مِنْ خَطَئِكَ!'];
+  const plainAr = t => t.replace(/[ً-ْ]/g, '');
+  const voiced = list => list.filter(t => CLIP_FILE[clipKey(t)]);
+  let wrongStreak = 0;
+  const wreact = (el, cls) => { if (!el) return; el.classList.remove('whappy', 'wthink'); void el.getBoundingClientRect(); el.classList.add(cls); setTimeout(() => el.classList.remove(cls), 1300); };
+  const curScreen = () => screens.find(x => !x.hidden);
+  const COLORS_W = ['#E8453C', '#2E8BEA', '#3DBE4F', '#8E5CE6', '#FF9F1C', '#FF5BA7', '#FFC83D'];
+  function celebrate(text) {
+    const box = $('#wconf');
+    box.innerHTML = Array.from({ length: 46 }, () => `<i style="left:${Math.random() * 100}%;background:${COLORS_W[Math.floor(Math.random() * 7)]};animation-duration:${1.4 + Math.random() * 1.6}s;animation-delay:${Math.random() * .3}s"></i>`).join('') + `<div class="wpraise">${plainAr(text)}</div>`;
+    clearTimeout(celebrate.t); celebrate.t = setTimeout(() => box.innerHTML = '', 3200);
+    const sc = curScreen(); if (sc) wreact(sc.querySelector('.coach .mascot, .gch'), 'whappy');
+  }
+  const sayRaw = say;
+  say = function (text, queued, done) {
+    if (text === 'أحسنت') {
+      const pool = wrongStreak ? AFTER_TRY : PRAISE, t = pool[Math.floor(Math.random() * pool.length)];
+      celebrate(t); wrongStreak = 0;
+      const v = voiced([t]); return sayRaw(v.length ? t : 'أحسنت', queued, done);
+    }
+    if (text === 'حاول مرة أخرى') {
+      wrongStreak++;
+      const sc = curScreen(); if (sc) wreact(sc.querySelector('.coach .mascot, .gch'), 'wthink');
+      const v = voiced(TRY); return sayRaw(v.length ? v[Math.floor(Math.random() * v.length)] : text, queued, done);
+    }
+    return sayRaw(text, queued, done);
+  };
+
   const INIT = {
     2: ex1Init, 3: ex2Init, 4: ex3Init, 5: ex4Init, 6: endInit,
     17: null, 18: slInit, 19: lcInit, 20: bwInit, 21: renderSylMenu,
     22: null, 23: tfInit, 24: qaInit, 25: ordInit, 26: renderReadList, 28: spInit, 29: mlInit, 30: swInit, 31: renderDictList, 40: () => mqInit(40), 41: () => mqInit(41), 42: () => mqInit(42), 43: renderMath, 45: renderSci, 46: () => renderIsl('isl'), 47: () => renderIsl('civ'), 48: renderArt, 49: initStudio,
-    12: renderYears, 13: renderSubjects, 14: renderParents, 15: quizInit, 16: renderUnits,
+    12: renderWorld, 13: renderSubjects, 14: renderParents, 15: quizInit, 16: renderUnits,
     7: renderHub, 8: () => floatInit('fish'), 9: () => floatInit('balloon'), 10: memInit, 11: sortInit
   };
   [8, 9, 10, 11].forEach(k => {
@@ -5191,10 +5447,10 @@ loadClips('common');
   $('#hubMenu').onclick = () => go(0);
   $('#hubLesson').onclick = () => startLesson(L);
   $('#homeBtn').onclick = () => go(12);
-  $('#toParents').onclick = () => go(14);
+  $('#toParents').onclick = () => parentGate(() => go(14));
   $('#toQuiz').onclick = () => { curYear = 1; go(15); };
   $$('.speak').forEach(b => { if (!b.innerHTML) b.innerHTML = SPEAKER; });
   $$('[data-mascot]').forEach(el => { if (!el.innerHTML) el.innerHTML = MASCOT; });
-  renderYears();
+  renderWorld();
 })();
 </script>
