@@ -522,6 +522,73 @@ html,body{background:#8FD3FF}body{background-image:none}
 @keyframes whint{50%{transform:scale(1.07);box-shadow:0 0 0 8px rgba(255,200,61,.85),0 4px 0 var(--ink)}}
 @media(max-width:700px){.wh-bar{flex-wrap:wrap}.wh-bar .wsign{order:-1;width:100%;font-size:1.4rem}.wpraise{font-size:1.4rem;padding:8px 18px}.wh-main{grid-template-columns:1fr}.wh-hero svg{width:140px}.wisles{grid-template-columns:repeat(2,minmax(0,1fr))}.guide svg.gch{width:64px}.wround{width:46px;height:46px}.wh-me .av{width:36px;height:36px}}
 @media(prefers-reduced-motion:reduce){.wfloat,.wplay,.wconf i,.wpraise{animation:none!important}}
+
+/* ---------- phase 2: the letters island ---------- */
+.pbanner{display:flex;align-items:center;gap:12px;width:100%;padding:10px 16px;border:4px solid #fff;border-radius:22px;background:linear-gradient(#7FD36B,#2FA84A);color:#fff;font:inherit;font-weight:800;font-size:1.35rem;text-shadow:0 2px 0 rgba(0,0,0,.25);box-shadow:0 6px 0 rgba(0,0,0,.2);cursor:pointer;text-align:start;margin-bottom:12px}
+.pbanner .pic{font-size:2.4rem}
+.pbanner small{display:block;font-size:.85rem;color:#FFF4DC}
+.pmap-card,.end-map{background:linear-gradient(#F7E7C1,#EBD3A0);border:4px solid #B98B4E;border-radius:20px;padding:10px;box-shadow:0 6px 0 rgba(0,0,0,.15);text-align:center;width:100%;max-width:460px;margin:0 auto}
+.pmap-card h3,.end-map h3{margin:0 0 6px;color:#6B3D17;font-size:1.1rem}
+.pmap svg{width:100%;height:auto;display:block;border-radius:12px}
+.pmap-card p,.end-map p{margin:6px 0 0;font-weight:800;color:#6B3D17}
+.pnew{animation:pnew 1s ease-in-out infinite}
+@keyframes pnew{50%{stroke-width:7}}
+.ptrail{position:relative;width:100%;max-width:440px;margin:0 auto;border-radius:30px;background:radial-gradient(ellipse at 50% 20%,#9BE27A,#4FAE3E 85%);border:7px solid #F2D9A0;box-shadow:0 0 0 5px #4FB3F5,0 12px 0 rgba(0,0,0,.15);overflow:hidden}
+.ptrail>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.pst{position:absolute;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;border:5px solid #fff;background:radial-gradient(circle at 35% 30%,#FFE07A,#F2A900 75%);box-shadow:0 6px 0 rgba(0,0,0,.25),inset 0 -6px 0 rgba(0,0,0,.12);display:grid;place-items:center;padding:0;cursor:pointer;font:inherit;color:#5A3300;z-index:2}
+.pst .l{font-family:var(--f-school);font-weight:700;font-size:2.1rem;line-height:1;margin-top:-4px}
+.pst .ps{position:absolute;bottom:-14px;display:flex;background:#fff;border-radius:999px;padding:1px 5px;box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.pst .ps .star{width:15px;height:15px}
+.pst .pg{position:absolute;top:-13px;background:#B9783A;color:#FFF4DC;border:2px solid #6B3D17;border-radius:999px;font-size:.68rem;font-weight:800;padding:0 6px;line-height:1.5;white-space:nowrap}
+.pst.done{background:radial-gradient(circle at 35% 30%,#9BF09B,#21A33A 75%);color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.pst.locked{background:radial-gradient(circle at 35% 30%,#EEF3F6,#A9BAC6 75%);color:#61798A;cursor:pointer}
+.pst .lock{position:absolute;bottom:-12px;font-size:1.15rem}
+.pst.cur{animation:pcur 1.4s ease-in-out infinite;box-shadow:0 0 0 8px rgba(255,255,255,.65),0 6px 0 rgba(0,0,0,.25)}
+@keyframes pcur{50%{transform:translate(-50%,-50%) scale(1.09)}}
+.pbiko{position:absolute;width:58px;height:80px;transform:translate(-50%,-100%);z-index:3;pointer-events:none;animation:pbiko 1.2s ease-in-out infinite}
+@keyframes pbiko{50%{margin-top:-8px}}
+.psign{position:absolute;transform:translate(-50%,-50%);z-index:1;background:linear-gradient(#D9954F,#B9783A 55%,#8A5424);border:3px solid #6B3D17;border-radius:12px;color:#FFF4DC;font-weight:800;font-size:.82rem;line-height:1.25;padding:3px 10px 4px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.2);white-space:nowrap}
+.psign small{display:block;color:#FFE07A;font-size:.72rem}
+.pmore{text-align:center;margin:14px 0 0}
+.like{flex-direction:row;gap:10px;margin:8px auto 0;font-weight:800;font-size:1.3rem;padding:6px 18px}
+.like .sym{font-size:2.4rem}.like .pic{font-size:2.2rem}
+.trace-wrap #trSvg{position:absolute;inset:0;width:100%;height:100%;touch-action:none;display:none;user-select:none;-webkit-user-select:none}
+.trace-wrap.pathmode #trSvg{display:block}
+.trace-wrap.pathmode canvas{display:none}
+.tr-road{fill:none;stroke:rgba(243,246,238,.2);stroke-linecap:round;stroke-linejoin:round}
+.tr-road-dot{fill:rgba(243,246,238,.22)}
+.tr-center{fill:none;stroke:rgba(243,246,238,.8);stroke-linecap:round}
+.tr-ink{fill:none;stroke:#FFC83D;stroke-linecap:round;stroke-linejoin:round}
+.tr-ink-dot{fill:#FFC83D}
+.tr-demo{fill:none;stroke:#7FD3FF;stroke-linecap:round;stroke-linejoin:round}
+.tr-start{fill:#3DDC5A;stroke:#fff;transform-box:fill-box;transform-origin:center;animation:trpulse 1s ease-in-out infinite}
+@keyframes trpulse{50%{transform:scale(1.3)}}
+.tr-end{fill:#E8453C;stroke:#fff}
+.tr-arrow{fill:#fff}
+.tr-num{fill:#18324A;font-weight:800;font-family:var(--f-display)}
+.trace-wrap.slip{animation:shake .4s}
+.lq-q{display:flex;align-items:center;justify-content:center;gap:14px;min-height:96px}
+.lq-q .pic{font-size:4.6rem;line-height:1}
+.lq-opts .chip .sym{font-size:3rem}
+.lq-opts .chip .pic{font-size:3rem}
+.lq-opts .chip.off{opacity:.4;pointer-events:none}
+.field.sea.deep{background:linear-gradient(#63CBF2,#1F6FA6 55%,#0E3F6B)}
+.sea-deco{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.sea-deco i{position:absolute;bottom:24px;width:11px;height:11px;border-radius:50%;border:2px solid rgba(255,255,255,.75);animation:bubble 5s linear infinite}
+@keyframes bubble{from{transform:translateY(0);opacity:0}10%{opacity:1}to{transform:translateY(-400px);opacity:0}}
+.sea-deco .weed{position:absolute;bottom:20px;width:16px;border-radius:14px 14px 0 0;background:linear-gradient(#5FD07A,#1F8F45);transform-origin:bottom;animation:weed 3s ease-in-out infinite}
+.weed.w1{left:4%;height:74px}.weed.w2{left:9%;height:48px;animation-delay:-1s}.weed.w3{left:58%;height:60px;animation-delay:-2s}
+@keyframes weed{50%{transform:rotate(9deg)}}
+.sea-deco .sub{position:absolute;bottom:24px;right:8px;width:124px;animation:wfloat 3s ease-in-out infinite}
+.net{position:absolute;left:0;top:0;width:72px;height:72px;border-radius:50%;border:4px solid #8A5424;background:repeating-linear-gradient(45deg,transparent 0 7px,rgba(255,255,255,.9) 7px 9px),repeating-linear-gradient(-45deg,transparent 0 7px,rgba(255,255,255,.9) 7px 9px);z-index:3;pointer-events:none;animation:netdrop .7s ease-out forwards}
+@keyframes netdrop{from{opacity:0;margin-top:-60px;scale:.5}40%{opacity:1;margin-top:0;scale:1}to{opacity:0;scale:.7}}
+.progress.jr{gap:4px}
+.progress.jr span{height:auto;display:grid;place-items:center;font-size:1.05rem;line-height:1.5;background:rgba(255,255,255,.7);border-color:var(--line)}
+.progress.jr span.done{background:var(--ok-bg);border-color:var(--ok)}
+.progress.jr span.current{background:var(--sun);border-color:var(--ink)}
+.punlock{display:flex;gap:10px;align-items:center;background:var(--sky);border-radius:14px;padding:8px 12px;font-weight:700;cursor:pointer}
+.punlock input{width:24px;height:24px;flex:none}
+@media(prefers-reduced-motion:reduce){.pst.cur,.pbiko,.pnew,.tr-start,.sea-deco i,.sea-deco .weed,.sea-deco .sub,.net{animation:none!important}}
 </style>
 
 <div class="wbg" aria-hidden="true"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
@@ -687,6 +754,28 @@ html,body{background:#8FD3FF}body{background-image:none}
       <div class="units" id="units"></div>
     </section>
 
+    <!-- 50: the letters island: a winding path of the book's letters -->
+    <section class="screen" data-step="50" hidden>
+      <div class="top-bar"><button type="button" class="btn" data-go="16">الحروف والقراءة</button><h2>جزيرة الحروف</h2></div>
+      <div class="guide"><svg viewBox="0 0 160 220" class="gch"><use href="#w-pencil"/></svg><p class="wbubble" id="pathHello"></p></div>
+      <div class="pmap-card"><h3>🗺️ خريطة جزيرة الحروف</h3><div class="pmap" id="pathMap"></div><p id="pathMapNote"></p></div>
+      <div class="ptrail" id="pathTrail"></div>
+      <p class="pmore"><button type="button" class="btn" data-go="0">كل تمارين الحروف (9 أنشطة لكل حرف)</button></p>
+    </section>
+
+    <!-- 51: the letter check: 3 questions -->
+    <section class="screen" data-step="51" hidden>
+      <span class="kicker">اختبار الحرف</span>
+      <div class="coach">
+        <span class="mascot" data-mascot></span>
+        <p class="bubble" id="lqPrompt"></p>
+      </div>
+      <div class="round"><span>السؤال <span id="lqCount">1 / 3</span></span></div>
+      <div class="lq-q"><span class="pic" id="lqPic" aria-hidden="true"></span><button type="button" class="speak" id="lqSay" aria-label="استمع"></button></div>
+      <div class="row3 lq-opts" id="lqOpts"></div>
+      <p class="feedback" id="lqFb" aria-live="polite"></p>
+    </section>
+
     <!-- 27: a page from the textbook (letter, ال, التنوين, punctuation...) -->
     <section class="screen" data-step="27" hidden>
       <div class="top-bar"><button type="button" class="btn" data-go="16">كتابي</button><h2 id="bpTitle"></h2></div>
@@ -704,6 +793,7 @@ html,body{background:#8FD3FF}body{background-image:none}
       <div class="top-bar"><button type="button" class="btn" data-go="12">الرئيسية</button><h2>فضاء الأولياء</h2></div>
       <p class="hint">متابعة تقدّم طفلك في هذا الجهاز: ما أنجزه، ونجومه، وعلامته في التقويم، وما يحتاج إلى مراجعة.</p>
       <div class="tiles4" id="pStats"></div>
+      <label class="punlock"><input type="checkbox" id="pUnlock">افتح كل محطّات جزيرة الحروف (إن كان طفلك قد درس هذه الحروف في القسم)</label>
       <p class="advice" id="pAdvice"></p>
       <h3>الحروف</h3>
       <div class="table-wrap">
@@ -1062,6 +1152,7 @@ html,body{background:#8FD3FF}body{background-image:none}
         <div class="big-letter" id="bigLetter"></div>
         <p id="boardNote"></p>
       </div>
+      <button type="button" class="chip like" id="learnLike"></button>
       <div class="book-panel" id="bookPanel" hidden></div>
       <div class="h-say"><h3>الحركات: اضغط واسمع</h3><button type="button" class="speak sm" data-say="الحَرَكَات. اِضْغَطْ وَاسْمَعْ"></button></div>
       <div class="row3" id="harakat"></div>
@@ -1093,8 +1184,10 @@ html,body{background:#8FD3FF}body{background-image:none}
       <div class="trace-wrap" id="trWrap">
         <canvas id="trGuide" aria-hidden="true"></canvas>
         <canvas id="trInk" aria-label="لوحة الكتابة"></canvas>
+        <svg id="trSvg" aria-label="لوحة الكتابة"></svg>
       </div>
       <div class="btns">
+        <button type="button" class="btn" id="trShow" hidden>✏️ شاهد بيكو</button>
         <button type="button" class="btn" id="trClear">امسح</button>
         <button type="button" class="btn primary" id="trCheck">تحقّق</button>
       </div>
@@ -1145,6 +1238,8 @@ html,body{background:#8FD3FF}body{background-image:none}
       <h2 id="endTitle">أحسنت!</h2>
       <div class="stars" id="endStars"></div>
       <p class="hint" id="endSub"></p>
+      <div class="end-map" id="endMap" hidden></div>
+      <div class="btns"><button type="button" class="btn primary big" id="endNext" hidden></button></div>
       <h3>تقرير للأولياء</h3>
       <table class="report">
         <thead><tr><th>النشاط</th><th>النجوم</th><th>المحاولات الخاطئة</th></tr></thead>
@@ -3202,6 +3297,9 @@ loadClips('common');
   /* ---------- state ---------- */
   // lesson order: activities with a game after each one, then the results screen
   const LETTER_FLOW = [1, 2, 8, 3, 9, 4, 10, 5, 11, 6];
+  // the letters island: meet, trace, fish, pictures and words, memory, check, then the result and a map piece
+  const JOURNEY_FLOW = [1, 3, 8, 2, 10, 51, 6];
+  const JOURNEY_ICONS = ['👀', '✍️', '🎣', '🖼️', '🃏', '⭐', '🗺️'];
   const SYL_FLOW = [17, 18, 9, 19, 20, 6];
   const READ_FLOW = [22, 23, 10, 24, 25, 6];
   const DICT_FLOW = [28, 29, 10, 30, 6];
@@ -3240,10 +3338,10 @@ loadClips('common');
       box.appendChild(wrap);
     });
   }
-  function startLesson(les) {
+  function startLesson(les, flow) {
     loadClips(les.id);
     (BOOK_BY_LESSON[les.id] || []).forEach(x => loadClips(x.u.id));
-    FLOW = LETTER_FLOW;
+    FLOW = flow || LETTER_FLOW;
     setBalloonCoach('افقع كل بالون عليه هذا الحرف!', 'افقعْ كلَّ بالونٍ عليه هذا الحرف!');
     tone([0], 0.01);
     if (!window.AudioContext && !window.webkitAudioContext) $('#voiceNote').hidden = false;
@@ -3260,6 +3358,9 @@ loadClips('common');
     $('#learnBubble').textContent = L.learn.bubble;
     $('#learnSay').dataset.say = L.learn.say;
     $('#bigLetter').textContent = L.letter;
+    const lf = L.forms[0];
+    $('#learnLike').innerHTML = `<span class="sym">${L.letter}</span><span>مثل</span><span class="pic" aria-hidden="true">${lf.p}</span><span class="word">${lf.w}</span>`;
+    $('#learnLike').dataset.say = lf.w;
     $('#boardNote').textContent = L.learn.note;
     renderBookPanel();
     $('#harakat').innerHTML = L.harakat.map(h => `<button type="button" class="chip" data-say="${h.s}"><span class="sym">${h.s}</span><small>${h.n}</small></button>`).join('');
@@ -3279,8 +3380,13 @@ loadClips('common');
   function canNext(i) { return i === 1 || i === 17 || i === 22 || (S.ex[i] && S.ex[i].done); }
   function go(i) {
     stopEngine();
-    if ([0, 7, 12, 13, 14, 15, 16, 21, 26, 27, 31, 43, 45, 46, 47, 48, 49].includes(i)) inLesson = false;
-    if (progress.children.length !== FLOW.length) progress.innerHTML = '<span></span>'.repeat(FLOW.length);
+    if ([0, 7, 12, 13, 14, 15, 16, 21, 26, 27, 31, 43, 45, 46, 47, 48, 49, 50].includes(i)) inLesson = false;
+    const pk = FLOW === JOURNEY_FLOW ? 'j' : 'n' + FLOW.length;
+    if (progress.dataset.k !== pk) {
+      progress.dataset.k = pk;
+      progress.classList.toggle('jr', FLOW === JOURNEY_FLOW);
+      progress.innerHTML = FLOW === JOURNEY_FLOW ? JOURNEY_ICONS.map(x => `<span aria-hidden="true">${x}</span>`).join('') : '<span></span>'.repeat(FLOW.length);
+    }
     S.step = i;
     $('.app').classList.toggle('in-lesson', inLesson);
     screens.forEach(s => s.hidden = +s.dataset.step !== i);
@@ -3352,6 +3458,8 @@ loadClips('common');
     const st = S.ex[3];
     if (st.built) return;
     st.built = true;
+    if (TRACE[L.letter]) { setupPathTrace(); return; }
+    $('#trWrap').classList.remove('pathmode'); $('#trCheck').hidden = false; $('#trShow').hidden = true;
     try { await document.fonts.load(FONT(100), L.letter); } catch (e) {}
     setupTrace();
   }
@@ -3407,7 +3515,7 @@ loadClips('common');
   });
   tr.ink.addEventListener('pointermove', e => { if (!tr.drawing) return; const p = pos(e); stroke(tr.last, p); tr.last = p; });
   ['pointerup', 'pointercancel'].forEach(t => tr.ink.addEventListener(t, () => tr.drawing = false));
-  $('#trClear').onclick = () => { if (!S.ex[3].done) { clearInk(); fb('#ex2Fb', ''); } };
+  $('#trClear').onclick = () => { if (S.ex[3].done) return; fb('#ex2Fb', ''); if ($('#trWrap').classList.contains('pathmode')) setupPathTrace(); else clearInk(); };
   $('#trCheck').onclick = () => {
     const st = S.ex[3];
     if (st.done || !tr.mask) return;
@@ -3529,7 +3637,7 @@ loadClips('common');
   function endInit() {
     const total = totalStars(), max = FLOW.filter(i => EX_NAMES[i]).length * 3;
     $('#endGames').hidden = !!L.kind;
-    if (total > (best[L.id] || 0)) {
+    if (FLOW !== JOURNEY_FLOW && total > (best[L.id] || 0)) {
       best[L.id] = total;
       try { localStorage.setItem('qalami-best', JSON.stringify(best)); } catch (e) {}
     }
@@ -3617,7 +3725,8 @@ loadClips('common');
     stopEngine();
     const field = $(mode === 'fish' ? '#fishField' : '#balloonField');
     $(mode === 'fish' ? '#fishDone' : '#balloonDone').hidden = true;
-    field.hidden = false; field.innerHTML = '';
+    field.hidden = false; field.innerHTML = mode === 'fish' ? seaDeco() : '';
+    field.classList.toggle('deep', mode === 'fish');
     Object.assign(eng, { mode, field, items: [], caught: 0, m: 0, goal: mode === 'fish' ? 6 : 8, over: false });
     $$('.target-letter').forEach(e => e.textContent = L.letter);
     $$('.target').forEach(el => { if (el.firstChild && el.firstChild.nodeType === 3) el.firstChild.textContent = L.kind === 'math' ? 'العدد ' : 'الحرف '; });
@@ -3694,6 +3803,7 @@ loadClips('common');
     if (it.t) {
       it.busy = true;
       it.el.classList.add('got');
+      if (eng.mode === 'fish') netAt(it);
       good();
       eng.caught++;
       updCounter();
@@ -3830,7 +3940,7 @@ loadClips('common');
   const load = k => { try { return JSON.parse(localStorage.getItem(k) || '{}'); } catch (e) { return {}; } };
   const store = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
   let curYear = 1, curSubject = 'ar';
-  const lessonsDone = () => LESSONS.filter(l => (best[l.id] || 0) > 0).length;
+  const lessonsDone = () => LESSONS.filter(l => (best[l.id] || 0) > 0 || (jbest[l.id] || 0) > 0).length;
 
   function renderYears() {
     $('#years').innerHTML = [1, 2, 3, 4, 5].map(y => `<button type="button" class="chip year-card y${y}" data-year="${y}"><span class="num">${y}</span><b>${YEAR_NAMES[y]}</b><small>${y === 1 ? '<span class="ready">دروس جاهزة</span>' : '<span class="soon">قريبًا</span>'}</small>${y === 5 ? '<small>التحضير لشهادة التعليم الابتدائي</small>' : ''}</button>`).join('');
@@ -3847,8 +3957,9 @@ loadClips('common');
     const done = lessonsDone(), qb = load('qalami-quiz').best;
     const first = LESSONS[0].letter, last = LESSONS[LESSONS.length - 1].letter;
     const unit = (pic, title, sub, go, pct) => `<button type="button" class="chip unit${go === undefined ? ' locked' : ''}" ${go === undefined ? 'aria-disabled="true"' : `data-go="${go}"`}><span class="pic" aria-hidden="true">${pic}</span><div><b>${title}</b><small>${sub}</small>${pct === undefined ? '' : `<span class="meter"><i style="width:${pct}%"></i></span>`}</div></button>`;
-    $('#units').innerHTML = renderBook() +
-      unit('🔤', `الحروف الهجائية (${LESSONS.length} حرفًا)`, `${done} من ${LESSONS.length} دروس مكتملة · لكل حرف شرح و4 أنشطة و4 ألعاب`, 0, Math.round(done / LESSONS.length * 100)) +
+    const pd = PATH.filter(p => pathDone(p.les)).length;
+    $('#units').innerHTML = `<button type="button" class="pbanner" data-go="50"><span class="pic" aria-hidden="true">🏝️</span><span>جزيرة الحروف<small>${PATH.length} محطّة بترتيب كتابك · ${pd} مكتملة · قطعة من الخريطة لكل حرف</small></span></button>` + renderBook() +
+      unit('🔤', `الحروف الهجائية (${LESSONS.length} حرفًا)`, `${done} من ${LESSONS.length} دروس مكتملة · طريق الحروف بترتيب الكتاب`, 50, Math.round(done / LESSONS.length * 100)) +
       unit('📝', 'تقويم الحروف', qb !== undefined ? `أفضل علامة: ${qb} / 10` : `10 أسئلة بالصوت على الحروف من ${first} إلى ${last} · يصحَّح آليًا`, 15) +
       unit('🧩', 'المقاطع والكلمات', `${SYLLABLES.filter(sy => best[sy.id]).length} من ${SYLLABLES.length} دروس · المدّ والسكون وتركيب الكلمات`, 21, Math.round(SYLLABLES.filter(sy => best[sy.id]).length / SYLLABLES.length * 100)) +
       unit('📚', 'القراءة والفهم', `${READINGS.filter(r => best[r.id]).length} من ${READINGS.length} نصوص · قراءة بالصوت وأسئلة فهم`, 26, Math.round(READINGS.filter(r => best[r.id]).length / READINGS.length * 100)) +
@@ -3872,7 +3983,7 @@ loadClips('common');
       const r = reps[l.id], g = Object.keys(GAMES).reduce((s, k) => s + (gb[l.id + ':' + k] || 0), 0);
       let weak = '—';
       if (r) { const w = Object.entries(r.ex).sort((a, b) => b[1].m - a[1].m)[0]; weak = w && w[1].m > 0 ? EX_NAMES[w[0]] : 'لا شيء'; }
-      return `<tr><td><b style="font-family:var(--f-school);font-size:1.4rem">${l.letter}</b></td><td class="n">${best[l.id] ? best[l.id] + ' / ' + MAX_STARS : 'لم يبدأ'}</td><td class="n">${g} / 12</td><td>${weak}</td></tr>`;
+      return `<tr><td><b style="font-family:var(--f-school);font-size:1.4rem">${l.letter}</b></td><td class="n">${best[l.id] ? best[l.id] + ' / ' + MAX_STARS : jbest[l.id] ? jbest[l.id] + ' / 15' : 'لم يبدأ'}</td><td class="n">${g} / 12</td><td>${weak}</td></tr>`;
     }).join('') + [...SYLLABLES, ...READINGS].map(sy => {
       const r = reps[sy.id];
       let weak = '—';
@@ -4304,7 +4415,7 @@ loadClips('common');
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-bunit]'), b = e.target.closest('[data-blesson]'), c = e.target.closest('[data-bpage]');
     if (a) startRead(BOOK_UNITS.find(u => u.id === a.dataset.bunit));
-    else if (b) startLesson(LESSONS.find(l => l.id === b.dataset.blesson));
+    else if (b) startJourney(LESSONS.find(l => l.id === b.dataset.blesson));
     else if (c) { const [id, k] = c.dataset.bpage.split(':'); openBookPage(BOOK_UNITS.find(u => u.id === id), +k); }
   });
 
@@ -5354,14 +5465,14 @@ loadClips('common');
 
   /* ---------- Smart Kids World: island home, encouragement, celebration ---------- */
   const ISLANDS = [
-    { s: 'ar', n: 'الحروف والقراءة', ic: 'أ ب ت', col: '#E8453C', go: 16, count: () => [LESSONS.length, LESSONS.filter(l => best[l.id]).length] },
+    { s: 'ar', n: 'الحروف والقراءة', ic: 'أ ب ت', col: '#E8453C', go: 16, count: () => [PATH.length, PATH.filter(p => pathDone(p.les)).length] },
     { s: 'math', n: 'الأرقام', ic: '1 2 3', col: '#2E8BEA', go: 43, count: () => [MATH.length, MATH.filter(l => best[l.id]).length] },
     { s: 'sci', n: 'الاكتشاف', ic: '🔬', col: '#3DBE4F', go: 45, count: () => [SCI.length, SCI.filter(l => best[l.id]).length] },
     { s: 'art', n: 'الألوان والفنون', ic: '🎨', col: '#8E5CE6', go: 48, count: () => [ART.length, ART.filter(l => best[l.id]).length] },
     { s: 'isl', n: 'ديني ووطني', ic: '🕌', col: '#16A085', go: 46, count: () => [ISL_LESSONS.length, ISL_LESSONS.filter(l => best[l.id]).length] },
     { s: 'brain', n: 'الذكاء والألعاب', ic: '🧩', col: '#FF9F1C' }
   ];
-  const allStars = () => Object.values(best).reduce((a, n) => a + (+n || 0), 0) + Object.values(gbest).reduce((a, n) => a + (+n || 0), 0);
+  const allStars = () => [best, gbest, jbest].reduce((t, o) => t + Object.values(o).reduce((a, n) => a + (+n || 0), 0), 0);
   const childName = () => { try { return localStorage.getItem('qalami-name') || 'بطلنا'; } catch (e) { return 'بطلنا'; } };
   function renderWorld() {
     curYear = 1;
@@ -5379,7 +5490,7 @@ loadClips('common');
     curSubject = it.s; go(it.go);
   });
   // today's mission: the next letter the child has not finished yet
-  $('#whPlay').onclick = () => { const l = LESSONS.find(x => !best[x.id]) || LESSONS[Math.floor(Math.random() * LESSONS.length)]; curSubject = 'ar'; startLesson(l); };
+  $('#whPlay').onclick = () => { const p = PATH.find(x => !pathDone(x.les)) || PATH[Math.floor(Math.random() * PATH.length)]; curSubject = 'ar'; startJourney(p.les); };
   const wdlg = html => { $('#wdlgBox').innerHTML = html; $('#wdlg').hidden = false; };
   $('#wdlg').addEventListener('click', e => { if (e.target.id === 'wdlg' || e.target.closest('[data-close]')) $('#wdlg').hidden = true; });
   $('#whMe').onclick = () => {
@@ -5424,6 +5535,355 @@ loadClips('common');
     return sayRaw(text, queued, done);
   };
 
+  /* ---------- phase 2: the letters island (path, map pieces, journey, tracer, letter check) ---------- */
+  // how each letter is written: strokes in order, in a 100-unit box (drawn over Noto Naskh Arabic); {dot:[x,y]} is a dot to tap
+  const TRACE = {
+    'أ': ['M51 22 L50 59', 'M53 7 C48 4 45 10 50 11 L54 11 L46 15'],
+    'ب': ['M67 36 C70 44 70 52 62 55 C54 58 42 59 37 56 C32 53 32 47 33 42', { dot: [48, 68] }],
+    'ت': ['M67 36 C70 44 70 52 62 55 C54 58 42 59 37 56 C32 53 32 47 33 42', { dot: [52, 36] }, { dot: [43, 37] }],
+    'ث': ['M67 36 C70 44 70 52 62 55 C54 58 42 59 37 56 C32 53 32 47 33 42', { dot: [53, 36] }, { dot: [44, 37] }, { dot: [48, 31] }],
+    'ج': ['M36 41 C40 36 48 37 54 39 L66 40 L60 45 C50 46 42 52 40 60 C38 70 42 77 52 77 C58 77 62 74 66 72', { dot: [53, 61] }],
+    'ح': ['M36 41 C40 36 48 37 54 39 L66 40 L60 45 C50 46 42 52 40 60 C38 70 42 77 52 77 C58 77 62 74 66 72'],
+    'خ': ['M36 41 C40 36 48 37 54 39 L66 40 L60 45 C50 46 42 52 40 60 C38 70 42 77 52 77 C58 77 62 74 66 72', { dot: [50, 28] }],
+    'د': ['M54 35 C57 42 61 49 59 53 C56 58 46 58 40 56'],
+    'ذ': ['M53 36 C56 44 61 50 58 55 C54 59 44 59 41 54', { dot: [50, 26] }],
+    'ر': ['M53 39 C57 48 59 58 54 66 C50 72 42 70 38 66'],
+    'ز': ['M54 39 C58 48 60 58 54 66 C50 72 42 70 37 65', { dot: [50, 30] }],
+    'س': ['M75 39 C77 48 77 56 71 58 C66 59 62 57 63 46 C62 56 58 60 52 58 C50 56 48 50 48 45 C52 56 50 70 38 73 C28 75 24 66 26 55'],
+    'ش': ['M75 39 C77 48 77 56 71 58 C66 59 62 57 63 46 C62 56 58 60 52 58 C50 56 48 50 48 45 C52 56 50 70 38 73 C28 75 24 66 26 55', { dot: [64, 34] }, { dot: [55, 34] }, { dot: [61, 29] }],
+    'ص': ['M49 55 C55 44 63 37 70 38 C78 40 80 47 72 51 C66 54 56 56 49 56 C48 68 40 73 32 73 C25 73 22 66 24 57'],
+    'ض': ['M49 55 C55 44 63 37 70 38 C78 40 80 47 72 51 C66 54 56 56 49 56 C48 68 40 73 32 73 C25 73 22 66 24 57', { dot: [60, 28] }],
+    'ط': ['M38 58 C46 48 56 37 64 38 C72 39 74 47 68 52 C62 56 50 58 38 58 L29 53', 'M41 22 L39 57'],
+    'ظ': ['M38 58 C46 48 56 37 64 38 C72 39 74 47 68 52 C62 56 50 58 38 58 L29 53', 'M41 22 L41 52', { dot: [57, 28] }],
+    'ع': ['M55 38 C52 33 44 33 42 40 C41 47 48 51 56 48 L61 45 C50 50 40 56 40 65 C40 74 48 78 56 76 L67 70'],
+    'غ': ['M55 38 C52 33 44 33 42 40 C41 47 48 51 56 48 L61 45 C50 50 40 56 40 65 C40 74 48 78 56 76 L67 70', { dot: [46, 24] }],
+    'ف': ['M66 47 C60 44 60 36 67 34 C73 33 76 42 75 50 C74 56 64 58 56 59 C44 60 36 58 34 54 C32 50 33 45 33 42', { dot: [61, 21] }],
+    'ق': ['M53 53 C47 50 48 39 55 39 C62 39 65 48 64 56 C63 68 56 74 48 74 C40 74 34 68 36 56', { dot: [59, 29] }, { dot: [51, 29] }],
+    'ك': ['M62 21 C60 24 61 30 62 38 L63 52 C63 57 60 59 54 59 L35 59', 'M50 38 C46 36 43 41 47 42 L50 42 L43 45'],
+    'ل': ['M57 22 L58 54 C58 66 54 72 46 73 C38 73 34 66 35 56'],
+    'م': ['M40 52 C44 44 48 38 53 38 C57 40 60 46 61 50 C61 55 50 57 40 57 C38 64 38 71 39 78'],
+    'ن': ['M61 45 C64 54 64 64 58 69 C52 74 42 74 38 70 C35 66 36 60 38 55', { dot: [49, 41] }],
+    'ه': ['M49 33 C60 37 68 48 65 59 C58 58 52 56 47 52 C43 48 45 42 50 44 C55 47 51 56 44 58 C38 60 34 57 33 54'],
+    'و': ['M58 54 C50 55 44 52 45 46 C46 39 56 37 59 44 C62 52 60 64 52 69 C48 71 42 69 38 66'],
+    'ي': ['M66 44 C64 37 56 38 54 44 C52 50 58 54 64 57 C68 62 62 70 52 72 C42 74 36 68 37 55', { dot: [52, 79] }, { dot: [44, 80] }]
+  };
+  EX_NAMES[51] = 'اختبار الحرف';
+
+  // the path: the letters in the order the book teaches them, with their page and مقطع
+  const PATH = [];
+  BOOK_UNITS.forEach(u => u.pages.forEach(pg => {
+    const les = pg.lesson && LESSONS.find(l => l.id === pg.lesson);
+    if (les && TRACE[les.letter] && !PATH.some(p => p.les === les)) PATH.push({ les, page: pg.page, maqta: u.maqta });
+  }));
+  LESSONS.forEach(les => { if (TRACE[les.letter] && !PATH.some(p => p.les === les)) PATH.push({ les, page: 0, maqta: 9 }); });
+  const jbest = load('qalami-path');
+  const unlockAll = () => !!load('qalami-unlock').all;
+  const pathDone = les => (jbest[les.id] || 0) > 0 || (best[les.id] || 0) > 0;
+  const pathStars = les => {
+    const j = jbest[les.id] || 0, b = best[les.id] || 0;
+    if (!j && !b) return 0;
+    const r = Math.max(j / 15, b / MAX_STARS);
+    return r >= 0.85 ? 3 : r >= 0.6 ? 2 : 1;
+  };
+  const pathOpen = i => i === 0 || unlockAll() || pathDone(PATH[i].les) || pathDone(PATH[i - 1].les);
+  function startJourney(les) { startLesson(les, JOURNEY_FLOW); }
+  $('#pUnlock').onchange = e => store('qalami-unlock', { all: e.target.checked });
+
+  // the treasure map of the island: one piece per letter, uncovered when the letter is done
+  function mapSvg(fresh) {
+    const cols = 7, rows = Math.ceil(PATH.length / cols), W = 280, H = 160, pw = W / cols, ph = H / rows;
+    let cover = '';
+    PATH.forEach((p, k) => {
+      const x = W - (k % cols + 1) * pw, y = Math.floor(k / cols) * ph;
+      if (!pathDone(p.les)) cover += `<rect x="${x}" y="${y}" width="${pw}" height="${ph}" fill="#EBD3A0" stroke="#B98B4E" stroke-width="1.2"/><text x="${x + pw / 2}" y="${y + ph / 2 + 7}" text-anchor="middle" font-size="19" font-weight="700" font-family="Noto Naskh Arabic, serif" fill="#B98B4E">${p.les.letter}</text>`;
+      else if (k === fresh) cover += `<rect class="pnew" x="${x + 2}" y="${y + 2}" width="${pw - 4}" height="${ph - 4}" rx="4" fill="none" stroke="#FFC83D" stroke-width="3.5"/>`;
+    });
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="خريطة جزيرة الحروف">
+      <rect width="${W}" height="${H}" fill="#4FB3F5"/>
+      <path d="M10 30q10-6 20 0t20 0M220 140q10-6 20 0t20 0M14 130q10-6 20 0t20 0M226 22q10-6 20 0t20 0" fill="none" stroke="#BFE8FF" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M36 108C26 70 66 28 130 32C196 24 258 50 250 94C244 134 190 148 130 144C78 150 44 138 36 108Z" fill="#F2D9A0"/>
+      <path d="M52 104C46 74 80 42 132 44C188 38 238 60 234 92C230 122 186 132 132 130C86 134 58 124 52 104Z" fill="#5CC85A"/>
+      <path d="M150 74L170 44L190 74Z" fill="#9A7653"/><path d="M164 53L170 44L176 53L170 50Z" fill="#fff"/>
+      <path d="M176 76L192 54L208 76Z" fill="#86664A"/>
+      <g transform="translate(92 60)"><rect x="0" y="10" width="34" height="24" fill="#F4E9FF" stroke="#8E5CE6" stroke-width="2"/><rect x="-4" y="0" width="12" height="34" fill="#E3D4FF" stroke="#8E5CE6" stroke-width="2"/><rect x="26" y="0" width="12" height="34" fill="#E3D4FF" stroke="#8E5CE6" stroke-width="2"/><path d="M-6 0L2-12L10 0ZM24 0L32-12L40 0Z" fill="#8E5CE6"/><rect x="12" y="20" width="10" height="14" rx="5" fill="#8A5424"/></g>
+      <use href="#w-tree" transform="translate(70 100) scale(.18)"/><use href="#w-tree" transform="translate(214 104) scale(.16)"/><use href="#w-tree" transform="translate(150 112) scale(.14)"/>
+      <path d="M64 116C90 96 120 118 150 100S196 84 214 98" fill="none" stroke="#8A5424" stroke-width="2.5" stroke-dasharray="5 4"/>
+      <path d="M208 90l12 12M220 90l-12 12" stroke="#E8453C" stroke-width="4" stroke-linecap="round"/>
+      <g transform="translate(30 132)"><circle r="13" fill="#fff" stroke="#8A5424" stroke-width="2"/><path d="M0-10L4 0L0 10L-4 0Z" fill="#E8453C"/></g>
+      ${cover}</svg>`;
+  }
+  const mapNote = () => {
+    const n = PATH.filter(p => pathDone(p.les)).length;
+    return n === PATH.length ? '🎉 اكتملت الخريطة! وجدت كنز جزيرة الحروف!' : `قطع الخريطة: ${n} من ${PATH.length}`;
+  };
+
+  // the winding path: one station per letter, a wooden sign at each new مقطع
+  function renderPath() {
+    const W = 360, pts = [], signs = [];
+    let y = 46, prevM = 0;
+    PATH.forEach((p, i) => {
+      if (p.maqta !== prevM) { signs.push({ y: y - 4, m: p.maqta, i }); y += 70; prevM = p.maqta; }
+      pts.push({ x: W / 2 + Math.sin(i * 1.15 + 0.6) * 108, y });
+      y += 96;
+    });
+    const H = y - 20;
+    let d = `M${pts[0].x.toFixed(1)} ${(pts[0].y - 60).toFixed(1)} L${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      d += ` C${(p1.x + (p2.x - p0.x) / 6).toFixed(1)} ${(p1.y + (p2.y - p0.y) / 6).toFixed(1)} ${(p2.x - (p3.x - p1.x) / 6).toFixed(1)} ${(p2.y - (p3.y - p1.y) / 6).toFixed(1)} ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
+    }
+    let deco = '';
+    pts.forEach((p, i) => {
+      const side = p.x > W / 2 ? -1 : 1, x = W / 2 + side * (70 + (i % 3) * 22);
+      if (Math.abs(p.x - W / 2) < 50) return;
+      deco += i % 2 ? `<use href="#w-tree" transform="translate(${x.toFixed(0)} ${p.y - 6}) scale(.32)"/>` : `<use href="#w-flower" transform="translate(${x.toFixed(0)} ${p.y + 18}) scale(1.3)"/><use href="#w-flower" transform="translate(${(x + 22).toFixed(0)} ${p.y + 6})"/>`;
+    });
+    const cur = PATH.findIndex((p, i) => pathOpen(i) && !pathDone(p.les));
+    const pct = (v, t) => (v / t * 100).toFixed(2) + '%';
+    let h = `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true">${deco}<path d="${d}" fill="none" stroke="#D2AE62" stroke-width="40" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#F2D9A0" stroke-width="32" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/></svg>`;
+    signs.forEach(sg => {
+      const m = MAQATI.find(x => x.n === sg.m), p = pts[sg.i];
+      h += `<div class="psign" style="left:${pct(p.x > W / 2 ? W / 2 - 60 : W / 2 + 60, W)};top:${pct(sg.y, H)}">${m ? 'المقطع ' + m.n + `<small>${m.pic} ${m.title}</small>` : 'حروف أخرى'}</div>`;
+    });
+    PATH.forEach((p, i) => {
+      const open = pathOpen(i), done = pathDone(p.les), n = pathStars(p.les), q = pts[i];
+      const cls = done ? 'done' : open ? 'open' : 'locked';
+      h += `<button type="button" class="pst ${cls}${i === cur ? ' cur' : ''}" data-pst="${i}" style="left:${pct(q.x, W)};top:${pct(q.y, H)}" aria-label="حرف ${p.les.name}${p.page ? '، كتابي صفحة ' + p.page : ''}${open ? '' : '، مقفل'}">`
+        + (p.page ? `<span class="pg">ص ${p.page}</span>` : '')
+        + `<span class="l">${p.les.letter}</span>`
+        + (done ? `<span class="ps">${[0, 1, 2].map(k => STAR(k < n)).join('')}</span>` : open ? '' : '<span class="lock" aria-hidden="true">🔒</span>')
+        + '</button>';
+    });
+    if (cur >= 0) h += `<svg class="pbiko" viewBox="0 0 160 220" style="left:${pct(pts[cur].x + (pts[cur].x > W / 2 ? -62 : 62), W)};top:${pct(pts[cur].y + 34, H)}" aria-hidden="true"><use href="#w-pencil"/></svg>`;
+    const trail = $('#pathTrail');
+    trail.style.aspectRatio = W + ' / ' + H;
+    trail.innerHTML = h;
+    $('#pathMap').innerHTML = mapSvg(-1);
+    $('#pathMapNote').textContent = mapNote();
+    $('#pathHello').textContent = cur >= 0
+      ? `أنا بيكو! محطّتك التالية: حرف ${PATH[cur].les.name}${PATH[cur].page ? '، كما في صفحة ' + PATH[cur].page + ' من كتابك' : ''}. كل حرف تكمله يكشف قطعة من الخريطة!`
+      : 'أنا بيكو! أكملت كل محطّات الجزيرة. يمكنك أن تعيد أيّ حرف لتجمع نجومًا أكثر.';
+    if (cur >= 0) setTimeout(() => { const b = trail.querySelector('.pst.cur'); if (b && S.step === 50) b.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, 450);
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-pst]'); if (!b) return;
+    const i = +b.dataset.pst;
+    if (!pathOpen(i)) { wreact(b, 'wthink'); say('أَكْمِلِ الْمَحَطَّةَ السَّابِقَةَ أَوَّلًا.'); return; }
+    curSubject = 'ar';
+    startJourney(PATH[i].les);
+  });
+
+  // the end of a journey: keep the best stars, show the new map piece, offer the next station
+  function journeyEnd() {
+    const jr = FLOW === JOURNEY_FLOW && !L.kind;
+    $('#endMap').hidden = !jr; $('#endNext').hidden = true;
+    if (!jr) return;
+    const total = totalStars(), k = PATH.findIndex(p => p.les === L), fresh = !pathDone(L);
+    if (total > (jbest[L.id] || 0)) { jbest[L.id] = total; store('qalami-path', jbest); }
+    $('#endMap').innerHTML = `<h3>${fresh ? '🗺️ ربحت قطعة جديدة من خريطة الجزيرة!' : '🗺️ خريطة جزيرة الحروف'}</h3><div class="pmap">${mapSvg(fresh ? k : -1)}</div><p>${mapNote()}</p>`;
+    if (fresh) say('رَبِحْتَ قِطْعَةً جَدِيدَةً مِنَ الْخَرِيطَةِ!', true);
+    const nx = PATH[k + 1];
+    if (nx) {
+      const b = $('#endNext');
+      b.hidden = false; b.textContent = 'المحطّة التالية: حرف ' + nx.les.name + ' ←';
+      b.onclick = () => startJourney(nx.les);
+    }
+  }
+
+  /* the tracer: follow the road stroke by stroke, from the green dot to the red one; dots are tapped */
+  const ptr = { strokes: [], k: 0, down: false, slips: 0, demo: false, size: 60, tol: 6 };
+  const NS = 'http://www.w3.org/2000/svg';
+  const svgEl = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); Object.entries(attrs).forEach(([a, v]) => e.setAttribute(a, v)); if (parent) parent.appendChild(e); return e; };
+  function setupPathTrace() {
+    const data = TRACE[L.letter], svg = $('#trSvg');
+    $('#trWrap').classList.add('pathmode'); $('#trCheck').hidden = true; $('#trShow').hidden = false;
+    cancelAnimationFrame(ptr.raf);
+    Object.assign(ptr, { k: 0, down: false, slips: 0, demo: false });
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.innerHTML = '';
+    const roads = svgEl('g', {}, svg), inks = svgEl('g', {}, svg);
+    ptr.marks = svgEl('g', {}, svg);
+    ptr.demoPath = svgEl('path', { class: 'tr-demo', d: '' }, svg);
+    ptr.pen = svgEl('svg', { viewBox: '0 0 160 220', style: 'display:none;overflow:visible' }, svg);
+    svgEl('use', { href: '#w-pencil' }, ptr.pen);
+    ptr.strokes = data.map(st => {
+      if (typeof st !== 'string') return { dot: st.dot, road: svgEl('circle', { class: 'tr-road-dot', cx: st.dot[0], cy: st.dot[1], r: 3.4 }, roads), ink: svgEl('circle', { class: 'tr-ink-dot', cx: st.dot[0], cy: st.dot[1], r: 0 }, inks) };
+      const road = svgEl('path', { class: 'tr-road', d: st }, roads);
+      const len = road.getTotalLength(), pts = [];
+      for (let t = 0; t < len; t += 0.6) { const q = road.getPointAtLength(t); pts.push([q.x, q.y]); }
+      const e = road.getPointAtLength(len); pts.push([e.x, e.y]);
+      const center = svgEl('path', { class: 'tr-center', d: st }, roads);
+      const ink = svgEl('path', { class: 'tr-ink', d: st }, inks);
+      ink.style.strokeDasharray = len; ink.style.strokeDashoffset = len;
+      return { d: st, len, pts, i: 0, road, center, ink };
+    });
+    // fit the letter to the board
+    let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    ptr.strokes.forEach(st => {
+      const bb = st.dot ? { x: st.dot[0] - 3, y: st.dot[1] - 3, width: 6, height: 6 } : st.road.getBBox();
+      x0 = Math.min(x0, bb.x); y0 = Math.min(y0, bb.y); x1 = Math.max(x1, bb.x + bb.width); y1 = Math.max(y1, bb.y + bb.height);
+    });
+    const size = Math.max(42, x1 - x0, y1 - y0) * 1.32, cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    svg.setAttribute('viewBox', `${(cx - size / 2).toFixed(2)} ${(cy - size / 2).toFixed(2)} ${size.toFixed(2)} ${size.toFixed(2)}`);
+    Object.assign(ptr, { size, tol: size * 0.085 });
+    ptr.strokes.forEach(st => {
+      if (st.dot) { st.road.setAttribute('r', size * 0.06); return; }
+      st.road.style.strokeWidth = size * 0.13; st.center.style.strokeWidth = size * 0.012; st.center.style.strokeDasharray = `${size * 0.02} ${size * 0.025}`;
+      st.ink.style.strokeWidth = size * 0.09;
+    });
+    ptr.demoPath.style.strokeWidth = size * 0.07;
+    ptr.pen.setAttribute('width', size * 0.16); ptr.pen.setAttribute('height', size * 0.22);
+    trMarks();
+  }
+  function trMarks() {
+    const g = ptr.marks, st = ptr.strokes[ptr.k], z = ptr.size;
+    g.innerHTML = '';
+    if (!st) return;
+    const num = (x, y) => { svgEl('text', { class: 'tr-num', x, y: y + z * 0.025, 'text-anchor': 'middle', 'font-size': z * 0.07 }, g).textContent = ptr.k + 1; };
+    if (st.dot) { svgEl('circle', { class: 'tr-start', cx: st.dot[0], cy: st.dot[1], r: z * 0.055, 'stroke-width': z * 0.012 }, g); num(st.dot[0], st.dot[1]); return; }
+    const end = st.pts[st.pts.length - 1], a = st.pts[st.i], b = st.pts[Math.min(st.i + Math.round(z * 0.14 / 0.6), st.pts.length - 1)];
+    svgEl('circle', { class: 'tr-end', cx: end[0], cy: end[1], r: z * 0.03, 'stroke-width': z * 0.008 }, g);
+    if (b !== a) {
+      const ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI, s = z * 0.035;
+      svgEl('path', { class: 'tr-arrow', d: `M${s} 0 L${-s * 0.7} ${s * 0.75} L${-s * 0.7} ${-s * 0.75} Z`, transform: `translate(${b[0]} ${b[1]}) rotate(${ang})` }, g);
+    }
+    svgEl('circle', { class: 'tr-start', cx: a[0], cy: a[1], r: z * 0.055, 'stroke-width': z * 0.012 }, g);
+    num(a[0], a[1]);
+  }
+  const trPos = e => { const svg = $('#trSvg'), p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; return p.matrixTransform(svg.getScreenCTM().inverse()); };
+  const dist = (p, q) => Math.hypot(p.x - q[0], p.y - q[1]);
+  function trInk(st) { st.ink.style.strokeDashoffset = st.len * (1 - st.i / (st.pts.length - 1)); }
+  function trStrokeDone() {
+    const st = ptr.strokes[ptr.k];
+    if (st.dot) st.ink.setAttribute('r', ptr.size * 0.05); else { st.i = st.pts.length - 1; trInk(st); }
+    ptr.down = false; ptr.slips = 0; ptr.k++;
+    good();
+    if (ptr.k < ptr.strokes.length) { trMarks(); fb('#ex2Fb', ''); return; }
+    trMarks();
+    say(L.trace.doneSay);
+    finish(3, '#ex2Fb');
+  }
+  function trSlip() {
+    ptr.down = false;
+    S.ex[3].m++; ptr.slips++;
+    bad();
+    const w = $('#trWrap'); w.classList.remove('slip'); void w.offsetWidth; w.classList.add('slip');
+    if (ptr.slips >= 2) { ptr.slips = 0; fb('#ex2Fb', 'انظر كيف يرسمه بيكو، ثم جرّب أنت', 'no'); say('اُنْظُرْ كَيْفَ يَرْسُمُهُ بِيكُو، ثُمَّ جَرِّبْ أَنْتَ.'); setTimeout(() => trDemo(ptr.k), 600); }
+    else { fb('#ex2Fb', 'اتبع الطريق بإصبعك، وابدأ من النقطة الخضراء', 'no'); say('حاول مرة أخرى'); }
+  }
+  function trDemo(k) {
+    const st = ptr.strokes[k];
+    if (!st || ptr.demo || S.step !== 3) return;
+    ptr.demo = true;
+    const pen = ptr.pen, at = (x, y) => { pen.setAttribute('x', x - ptr.size * 0.05); pen.setAttribute('y', y - ptr.size * 0.22); };
+    pen.style.display = '';
+    const stop = () => { pen.style.display = 'none'; ptr.demoPath.setAttribute('d', ''); ptr.demo = false; };
+    if (st.dot) { at(st.dot[0], st.dot[1]); st.ink.setAttribute('r', ptr.size * 0.05); setTimeout(() => { st.ink.setAttribute('r', 0); stop(); }, 1100); return; }
+    ptr.demoPath.setAttribute('d', st.d); ptr.demoPath.style.strokeDasharray = st.len; ptr.demoPath.style.strokeDashoffset = st.len;
+    const t0 = performance.now(), dur = Math.min(3600, Math.max(1500, st.len * 28));
+    const step = now => {
+      const f = Math.min(1, (now - t0) / dur), q = st.pts[Math.round(f * (st.pts.length - 1))];
+      at(q[0], q[1]); ptr.demoPath.style.strokeDashoffset = st.len * (1 - f);
+      if (f < 1) ptr.raf = requestAnimationFrame(step); else setTimeout(stop, 600);
+    };
+    ptr.raf = requestAnimationFrame(step);
+  }
+  $('#trShow').onclick = () => trDemo(ptr.k);
+  $('#trSvg').addEventListener('pointerdown', e => {
+    const st = ptr.strokes[ptr.k];
+    if (!st || ptr.demo || S.ex[3].done) return;
+    e.preventDefault();
+    const p = trPos(e);
+    if (st.dot) { if (dist(p, st.dot) < ptr.tol * 1.6) trStrokeDone(); else { fb('#ex2Fb', 'المس النقطة الخضراء'); } return; }
+    if (dist(p, st.pts[st.i]) < ptr.tol * 1.5) { ptr.down = true; $('#trSvg').setPointerCapture(e.pointerId); fb('#ex2Fb', ''); }
+    else { fb('#ex2Fb', 'ابدأ من النقطة الخضراء ✋'); say('اِبْدَأْ مِنَ النُّقْطَةِ الْخَضْرَاءِ.'); }
+  });
+  $('#trSvg').addEventListener('pointermove', e => {
+    if (!ptr.down) return;
+    const st = ptr.strokes[ptr.k], p = trPos(e), n = st.pts.length, ahead = Math.round(ptr.size * 0.3 / 0.6);
+    let hit = -1, near = 1e9;
+    for (let j = st.i; j < Math.min(n, st.i + ahead); j++) { const dd = dist(p, st.pts[j]); near = Math.min(near, dd); if (dd < ptr.tol) hit = j; }
+    if (hit > st.i) { st.i = hit; trInk(st); trMarks(); }
+    if (st.i >= n - 3) trStrokeDone();
+    else if (near > ptr.tol * 2.3) trSlip();
+  });
+  ['pointerup', 'pointercancel'].forEach(t => $('#trSvg').addEventListener(t, () => { ptr.down = false; }));
+
+  /* the underwater fishing: bubbles, sea grass, a submarine with the letter, and a net for each catch */
+  function seaDeco() {
+    const bubbles = Array.from({ length: 9 }, (_, k) => `<i style="left:${4 + k * 11}%;animation-delay:-${(k * 0.73) % 5}s;animation-duration:${4 + k % 3}s"></i>`).join('');
+    return `<div class="sea-deco" aria-hidden="true">${bubbles}<span class="weed w1"></span><span class="weed w2"></span><span class="weed w3"></span>`
+      + `<svg class="sub" viewBox="0 0 124 72"><path d="M112 42l10-10v20z" fill="#E8453C" stroke="#18324A" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="60" cy="44" rx="52" ry="23" fill="#FFC83D" stroke="#18324A" stroke-width="3"/><rect x="46" y="10" width="28" height="18" rx="6" fill="#FFC83D" stroke="#18324A" stroke-width="3"/><path d="M60 10V2h10" fill="none" stroke="#18324A" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="44" r="13" fill="#E6F7FF" stroke="#18324A" stroke-width="3"/><text x="40" y="51" font-size="19" text-anchor="middle" font-weight="700" font-family="Noto Naskh Arabic, serif" fill="#18324A">${L.letter}</text><circle cx="74" cy="44" r="8" fill="#BFE8FF" stroke="#18324A" stroke-width="3"/><circle cx="96" cy="44" r="5" fill="#BFE8FF" stroke="#18324A" stroke-width="2.5"/></svg></div>`;
+  }
+  function netAt(it) {
+    const n = document.createElement('span');
+    n.className = 'net';
+    n.style.transform = `translate(${it.x + 16}px, ${it.y - 6}px)`;
+    eng.field.appendChild(n);
+    setTimeout(() => n.remove(), 750);
+  }
+
+  /* the letter check: 3 questions, all with recorded sounds; a wrong answer only greys the option, a hint after two */
+  const NOT_IN = { 'أ': 'اأإآءئؤى', 'ت': 'ة', 'ه': 'ة' };
+  function lqMake() {
+    const mine = L.chars || [L.letter], avoid = mine.join('') + (NOT_IN[L.letter] || '');
+    const look = (LOOKALIKE[L.letter] || '').split('').filter(c => PATH.some(p => p.les.letter === c));
+    const others = shuffle(PATH.map(p => p.les.letter).filter(c => c !== L.letter && !look.includes(c)));
+    const letters = () => shuffle([L.letter, ...[...shuffle(look), ...others].slice(0, 2)]).map(c => ({ t: c, ok: c === L.letter }));
+    const qs = [{ prompt: 'استمع واختر الحرف الصحيح.', voice: 'استمع واختر الحرف الصحيح.', say: NAMES[L.letter] || L.letter, opts: letters() }];
+    // pictures: one whose name has the letter, two from other letters' lessons that do not
+    const yes = shuffle([...L.memory, ...L.forms].filter(x => hasClip(x.w)))[0];
+    const seen = new Set([yes && yes.p]), no = [];
+    shuffle(LESSONS.filter(l => l !== L).flatMap(l => l.memory || [])).forEach(x => {
+      if (no.length < 2 && !seen.has(x.p) && hasClip(x.w) && ![...bare(x.w)].some(c => avoid.includes(c))) { seen.add(x.p); no.push(x); }
+    });
+    if (yes && no.length === 2) qs.push({ prompt: L.ex1.bubble, say: L.ex1.say, pics: 1, opts: shuffle([{ ...yes, ok: true }, ...no]).map(x => ({ t: x.w, p: x.p, ok: !!x.ok })) });
+    // the first letter of a word from the lesson
+    const starts = shuffle([...(L.ex4 || []), ...L.forms.filter(f => /أوّل/.test(f.pos))].filter(x => mine.includes(bare(x.w)[0]) && hasClip(x.w)));
+    if (starts[0]) qs.push({ prompt: 'بأيّ حرف تبدأ هذه الكلمة؟', voice: 'بأيّ حرف تبدأ هذه الكلمة؟', say: starts[0].w, pic: starts[0].p, opts: letters() });
+    while (qs.length < 3) qs.push({ ...qs[0], opts: letters() });
+    return qs.slice(0, 3);
+  }
+  function lqInit() {
+    const st = S.ex[51];
+    if (st.built) { if (st.done) return; } else { st.built = true; st.qs = lqMake(); st.i = 0; }
+    st.qs.forEach(q => { loadClipFor(clipKey(q.say)); q.opts.forEach(o => loadClipFor(clipKey(o.t))); });
+    lqQ();
+  }
+  function lqQ() {
+    const st = S.ex[51], q = st.qs[st.i], box = $('#lqOpts');
+    st.lock = false; st.wrong = 0;
+    $('#lqCount').textContent = (st.i + 1) + ' / ' + st.qs.length;
+    $('#lqPrompt').textContent = q.prompt;
+    $('#lqPic').textContent = q.pic || '';
+    $('#lqSay').dataset.say = q.say;
+    fb('#lqFb', '');
+    box.innerHTML = '';
+    q.opts.forEach(o => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip' + (q.pics ? ' pic-btn' : '');
+      b.setAttribute('aria-label', o.t);
+      b.innerHTML = q.pics ? `<span class="pic" aria-hidden="true">${o.p}</span><span class="word">${o.t}</span>` : `<span class="sym">${o.t}</span>`;
+      b.onclick = () => {
+        if (st.lock) return;
+        if (q.pics) say(o.t);
+        if (o.ok) {
+          st.lock = true; b.classList.remove('whint'); b.classList.add('is-ok'); good();
+          say('أحسنت', true);
+          setTimeout(() => { st.i++; st.i < st.qs.length ? lqQ() : finish(51, '#lqFb'); }, 1500);
+        } else {
+          st.m++; st.wrong++; bad();
+          b.classList.add('is-no', 'off');
+          say('حاول مرة أخرى', true);
+          if (st.wrong >= 2) [...box.children].find((x, k) => q.opts[k].ok).classList.add('whint');
+        }
+      };
+      box.appendChild(b);
+    });
+    if (q.voice) say(q.voice);
+    say(q.say, !!q.voice);
+  }
+
   const INIT = {
     2: ex1Init, 3: ex2Init, 4: ex3Init, 5: ex4Init, 6: endInit,
     17: null, 18: slInit, 19: lcInit, 20: bwInit, 21: renderSylMenu,
@@ -5439,13 +5899,17 @@ loadClips('common');
     };
     INIT['replay' + k] = run;
   });
+  INIT[50] = renderPath;
+  INIT[51] = lqInit;
+  INIT[6] = (f => () => { f(); journeyEnd(); })(INIT[6]);
+  INIT[14] = (f => () => { f(); $('#pUnlock').checked = unlockAll(); })(INIT[14]);
 
   $('#voiceNoteClose').onclick = () => $('#voiceNote').hidden = true;
-  $('#replayBtn').onclick = () => L.kind === 'syl' ? startSyl(L) : L.kind === 'read' ? startRead(L) : L.kind === 'dict' ? startDict(L) : L.kind === 'math' || L.kind === 'sci' || L.kind === 'art' ? startMath(L) : startLesson(L);
-  $('#menuBtn').onclick = () => go(L.kind === 'syl' ? 21 : L.kind === 'read' ? (L.subj ? (L.subj === 'civ' ? 47 : 46) : L.maqta ? 16 : 26) : L.kind === 'dict' ? 31 : L.kind === 'math' ? 43 : L.kind === 'sci' ? 45 : L.kind === 'art' ? 48 : 0);
+  $('#replayBtn').onclick = () => L.kind === 'syl' ? startSyl(L) : L.kind === 'read' ? startRead(L) : L.kind === 'dict' ? startDict(L) : L.kind === 'math' || L.kind === 'sci' || L.kind === 'art' ? startMath(L) : startLesson(L, FLOW === JOURNEY_FLOW ? JOURNEY_FLOW : undefined);
+  $('#menuBtn').onclick = () => go(L.kind === 'syl' ? 21 : L.kind === 'read' ? (L.subj ? (L.subj === 'civ' ? 47 : 46) : L.maqta ? 16 : 26) : L.kind === 'dict' ? 31 : L.kind === 'math' ? 43 : L.kind === 'sci' ? 45 : L.kind === 'art' ? 48 : FLOW === JOURNEY_FLOW ? 50 : 0);
   $('#endGames').onclick = () => go(7);
-  $('#hubMenu').onclick = () => go(0);
-  $('#hubLesson').onclick = () => startLesson(L);
+  $('#hubMenu').onclick = () => go(FLOW === JOURNEY_FLOW ? 50 : 0);
+  $('#hubLesson').onclick = () => startLesson(L, FLOW === JOURNEY_FLOW ? JOURNEY_FLOW : undefined);
   $('#homeBtn').onclick = () => go(12);
   $('#toParents').onclick = () => parentGate(() => go(14));
   $('#toQuiz').onclick = () => { curYear = 1; go(15); };
