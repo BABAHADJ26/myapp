@@ -24,7 +24,7 @@ app.whenReady().then(() => {
   protocol.handle('qalami', req => {
     const p = path.normalize(path.join(root, decodeURIComponent(new URL(req.url).pathname)));
     if (!p.startsWith(root)) return new Response('', { status: 403 });
-    const type = { '.html': 'text/html; charset=utf-8', '.json': 'application/json; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2' }[path.extname(p)];
+    const type = { '.html': 'text/html; charset=utf-8', '.json': 'application/json; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2', '.webp': 'image/webp' }[path.extname(p)];
     return net.fetch(pathToFileURL(p).toString()).then(r => type ? new Response(r.body, { status: r.status, headers: { 'content-type': type } }) : r);
   });
   Menu.setApplicationMenu(null);

@@ -669,6 +669,23 @@ html,body{overflow-x:clip}
 .gift.open .box{opacity:0;transition:opacity .5s .5s}
 .gift.gone{transition:opacity .5s,transform .5s;opacity:0;transform:translate(-50%,-50%) scale(.3)}
 @media(prefers-reduced-motion:reduce){.scene-cast .cast,#trSvg.tr-enter,#trSvg.tr-win,.app.scene #nextBtn,.gift,.gift .box,.gift.open .rays{animation:none!important}}
+
+/* ---------- the characters (the user's art) ---------- */
+img.gch,.scene-cast .cast img,.mascot img,.pbiko,.end-hero{user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
+.wh-hero img.gch{width:min(100%,250px);height:auto;filter:drop-shadow(0 10px 6px rgba(0,60,0,.25))}
+.guide img.gch{width:100px;height:auto;flex:none;filter:drop-shadow(0 6px 4px rgba(0,0,0,.18))}
+.wh-hero img.gch,.guide img.gch{animation:castbob 3s ease-in-out infinite}
+.scene-cast .cast img{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 4px rgba(0,60,0,.25))}
+.mascot img{width:100%;height:auto;display:block}
+.wh-me .av img{width:100%;height:100%;object-fit:cover}
+.pbiko{height:auto}
+.end-hero{width:min(46vw,190px);height:auto;align-self:center;animation:endhero 1s cubic-bezier(.2,1.5,.4,1),castbob 3s ease-in-out 1s infinite}
+@keyframes endhero{from{transform:scale(.2) rotate(-20deg);opacity:0}}
+.wpop-char{position:fixed;bottom:-10px;width:min(34vw,170px);z-index:26;pointer-events:none;animation:wpopchar 2.6s ease-in-out forwards}
+.wpop-char.l{left:2vw}.wpop-char.r{right:2vw}
+@keyframes wpopchar{0%{transform:translateY(110%)}18%,78%{transform:translateY(0)}30%{transform:translateY(-14px) rotate(-4deg)}42%{transform:translateY(0) rotate(3deg)}100%{transform:translateY(110%)}}
+@media(max-width:700px){.wh-hero img.gch{width:150px}.guide img.gch{width:80px}}
+@media(prefers-reduced-motion:reduce){.wh-hero img.gch,.guide img.gch,.end-hero,.wpop-char{animation:none!important}}
 </style>
 
 <div class="wbg" aria-hidden="true"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
@@ -791,7 +808,7 @@ html,body{overflow-x:clip}
 <div class="wdlg" id="wdlg" hidden><div id="wdlgBox"></div></div>
 <div class="app" dir="rtl" lang="ar">
   <svg class="scene-rainbow" viewBox="0 0 1000 500" aria-hidden="true"><g fill="none" stroke-width="34" opacity=".85"><circle cx="500" cy="520" r="470" stroke="#FF6B6B"/><circle cx="500" cy="520" r="436" stroke="#FFA94D"/><circle cx="500" cy="520" r="402" stroke="#FFE066"/><circle cx="500" cy="520" r="368" stroke="#69DB7C"/><circle cx="500" cy="520" r="334" stroke="#4DABF7"/><circle cx="500" cy="520" r="300" stroke="#9775FA"/></g></svg>
-  <div class="scene-cast" aria-hidden="true"><div class="cast l"><svg viewBox="0 0 200 220" id="castL"><use href="#w-lion"/></svg></div><div class="cast r"><svg viewBox="0 0 160 220" id="castR"><use href="#w-pencil"/></svg></div></div>
+  <div class="scene-cast" aria-hidden="true"><div class="cast l"><img src="img/lumi.webp" alt="" draggable="false" id="castL"></div><div class="cast r"><img src="img/biko.webp" alt="" draggable="false" id="castR"></div></div>
   <header class="top">
     <button type="button" class="brand" id="homeBtn" aria-label="الرئيسية"><span class="mascot" data-mascot></span>قلمي</button>
     <div class="lesson-tag">التعليم الابتدائي · المنهاج الجزائري</div>
@@ -807,20 +824,20 @@ html,body{overflow-x:clip}
     <!-- 12: home: choose a year -->
     <section class="screen world-home" data-step="12">
       <div class="wh-bar">
-        <button type="button" class="wh-me" id="whMe" aria-label="اسم الطفل"><span class="av"><svg viewBox="0 0 160 220" width="40" height="40"><use href="#w-pencil"/></svg></span><span><span id="whName">بطلنا</span><small><svg width="18" height="18"><use href="#w-star"/></svg><span id="whStars">0</span></small></span></button>
+        <button type="button" class="wh-me" id="whMe" aria-label="اسم الطفل"><span class="av"><img src="img/girl-face.webp" alt="" draggable="false"></span><span><span id="whName">بطلنا</span><small><svg width="18" height="18"><use href="#w-star"/></svg><span id="whStars">0</span></small></span></button>
         <div class="wsign">عالم الأذكياء الصغار<small>قلمي · السنة الأولى ابتدائي</small></div>
         <div class="wh-tools"><button type="button" class="wround gold" id="toQuiz" aria-label="الفروض والاختبارات">🏆</button><button type="button" class="wround" id="toParents" aria-label="فضاء الأولياء">⚙️</button></div>
       </div>
       <div class="wh-main">
         <div class="wh-hero">
           <div class="wbubble" id="whHello">مرحبًا يا صديقي! أنا لومي. اختر جزيرة، وهيا نتعلّم ونلعب!</div>
-          <svg viewBox="0 0 200 220" class="gch" id="whLion"><use href="#w-lion"/></svg>
+          <img src="img/lumi.webp" alt="" draggable="false" class="gch" id="whLion">
         </div>
         <div class="wisles" id="wisles"></div>
       </div>
       <button type="button" class="wplay" id="whPlay"><i>▶</i><span>مهمّة اليوم</span></button>
       <div class="wyears" id="wyears"></div>
-      <p class="wnote">وفق منهاج وزارة التربية الوطنية وكتب السنة الأولى. الشخصيات رسوم مؤقتة.</p>
+      <p class="wnote">وفق منهاج وزارة التربية الوطنية وكتب السنة الأولى.</p>
     </section>
 
     <!-- 13: a year: its subjects -->
@@ -832,14 +849,14 @@ html,body{overflow-x:clip}
     <!-- 16: a subject: its units -->
     <section class="screen" data-step="16" hidden>
       <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2 id="subjectTitle"></h2></div>
-      <div class="guide"><svg viewBox="0 0 160 220" class="gch"><use href="#w-pencil"/></svg><p class="wbubble">أنا بيكو! هنا الحروف والقراءة والإملاء، كما في كتابك.</p></div>
+      <div class="guide"><img src="img/biko.webp" alt="" draggable="false" class="gch"><p class="wbubble">أنا بيكو! هنا الحروف والقراءة والإملاء، كما في كتابك.</p></div>
       <div class="units" id="units"></div>
     </section>
 
     <!-- 50: the letters island: a winding path of the book's letters -->
     <section class="screen" data-step="50" hidden>
       <div class="top-bar"><button type="button" class="btn" data-go="16">الحروف والقراءة</button><h2>جزيرة الحروف</h2></div>
-      <div class="guide"><svg viewBox="0 0 160 220" class="gch"><use href="#w-pencil"/></svg><p class="wbubble" id="pathHello"></p></div>
+      <div class="guide"><img src="img/biko.webp" alt="" draggable="false" class="gch"><p class="wbubble" id="pathHello"></p></div>
       <div class="pmap-card"><h3>🗺️ خريطة جزيرة الحروف</h3><div class="pmap" id="pathMap"></div><p id="pathMapNote"></p></div>
       <div class="ptrail" id="pathTrail"></div>
       <p class="pmore"><button type="button" class="btn" data-go="0">كل تمارين الحروف (9 أنشطة لكل حرف)</button></p>
@@ -975,7 +992,7 @@ html,body{overflow-x:clip}
     <!-- 43: mathematics, year 1: lessons by الوضعية الانطلاقية -->
     <section class="screen" data-step="43" hidden>
       <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2>الرياضيات · كتابي</h2></div>
-      <div class="guide"><svg viewBox="0 0 180 230" class="gch"><use href="#w-rabbit"/></svg><p class="wbubble">أهلًا يا بطل! أنا بوني. هيا نعدّ ونحسب معًا!</p></div>
+      <div class="guide"><img src="img/boni.webp" alt="" draggable="false" class="gch"><p class="wbubble">أهلًا يا بطل! أنا بوني. هيا نعدّ ونحسب معًا!</p></div>
       <p class="hint">مرتّبة كما في «كتابي في الرياضيات» للسنة الأولى: 5 وضعيات انطلاقية، ودروس الأعداد والحساب والهندسة والقياس وتنظيم المعطيات. أسئلة كل درس تتغيّر في كل مرّة.</p>
       <div class="units" id="mathList"></div>
     </section>
@@ -983,14 +1000,14 @@ html,body{overflow-x:clip}
     <!-- 46, 47: Islamic and civic education, year 1 (pages of the combined Arabic book) -->
     <section class="screen" data-step="46" hidden>
       <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2>التربية الإسلامية · كتابي</h2></div>
-      <div class="guide"><svg viewBox="0 0 200 220" class="gch"><use href="#w-lion"/></svg><p class="wbubble">أنا لومي! هنا دروس «أحبّ ديني».</p></div>
+      <div class="guide"><img src="img/lumi.webp" alt="" draggable="false" class="gch"><p class="wbubble">أنا لومي! هنا دروس «أحبّ ديني».</p></div>
       <p class="hint">دروس «أحبّ ديني» من «كتابي في اللغة العربية والتربية الإسلامية والتربية المدنية». في كل درس: ألاحظ وأفهم وأحفظ، ثمّ صحيح أم خطأ، ولعبة الذاكرة، وسؤال، وترتيب. وفي السور: أستمع وأحفظ ثمّ أرتّب الآيات.</p>
       <div class="units" id="islList"></div>
       <button type="button" class="chip unit" data-go="47"><span class="pic" aria-hidden="true">🇩🇿</span><div><b>التربية المدنية: أحبّ وطني</b><small>8 دروس من كتابي</small></div></button>
     </section>
     <section class="screen" data-step="47" hidden>
       <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2>التربية المدنية · كتابي</h2></div>
-      <div class="guide"><svg viewBox="0 0 200 220" class="gch"><use href="#w-lion"/></svg><p class="wbubble">أنا لومي! هنا دروس «أحبّ وطني».</p></div>
+      <div class="guide"><img src="img/lumi.webp" alt="" draggable="false" class="gch"><p class="wbubble">أنا لومي! هنا دروس «أحبّ وطني».</p></div>
       <p class="hint">دروس «أحبّ وطني» من «كتابي»: التحيّة، بطاقتي المدرسية، احترام الكبير، العطف على الصغار، علم وطني، العملة الوطنية، وثائق هويّتي، النشيد الوطني.</p>
       <div class="units" id="civList"></div>
     </section>
@@ -1025,7 +1042,7 @@ html,body{overflow-x:clip}
     <!-- 45: science and technology, year 1 -->
     <section class="screen" data-step="45" hidden>
       <div class="top-bar"><button type="button" class="btn" data-go="12">الخريطة</button><h2>التربية العلمية · كتابي</h2></div>
-      <div class="guide"><svg viewBox="0 0 180 220" class="gch"><use href="#w-owl"/></svg><p class="wbubble">أنا أولي! هيا نكتشف العالم من حولنا.</p></div>
+      <div class="guide"><img src="img/oli.webp" alt="" draggable="false" class="gch"><p class="wbubble">أنا أولي! هيا نكتشف العالم من حولنا.</p></div>
       <p class="hint">مرتّبة كما في «كتابي في التربية العلمية والتكنولوجية» للسنة الأولى: 6 مجالات مفاهيمية. في كل وحدة 3 أنشطة بالصور ولعبة الذاكرة، والأسئلة تتغيّر في كل مرّة.</p>
       <div class="units" id="sciList"></div>
     </section>
@@ -1316,7 +1333,7 @@ html,body{overflow-x:clip}
     <!-- 6: end -->
     <section class="screen end" data-step="6" hidden>
       <div class="confetti" id="confetti" aria-hidden="true"></div>
-      <span class="mascot" data-mascot style="width:84px"></span>
+      <img src="img/lumi-happy.webp" alt="" draggable="false" class="end-hero">
       <h2 id="endTitle">أحسنت!</h2>
       <div class="stars" id="endStars"></div>
       <p class="hint" id="endSub"></p>
@@ -3267,17 +3284,7 @@ loadClips('common');
   const NAMES = { 'ب': 'باء', 'ا': 'ألف', 'أ': 'ألف', 'ي': 'ياء', 'ت': 'تاء', 'ن': 'نون', 'م': 'ميم', 'س': 'سين', 'د': 'دال', 'ر': 'راء', 'ج': 'جيم', 'ث': 'ثاء', 'ل': 'لام', 'و': 'واو', 'ح': 'حاء', 'خ': 'خاء', 'ز': 'زاي', 'ذ': 'ذال', 'ه': 'هاء', 'ش': 'شين', 'ص': 'صاد', 'ض': 'ضاد', 'ط': 'طاء', 'ظ': 'ظاء', 'ع': 'عين', 'غ': 'غين', 'ف': 'فاء', 'ق': 'قاف', 'ك': 'كاف' };
   let L = LESSONS[0];
 
-  const MASCOT = `<svg viewBox="0 0 80 130" width="100%" aria-hidden="true">
-    <rect x="18" y="6" width="44" height="20" rx="7" fill="#F49AB0" stroke="#18324A" stroke-width="3"/>
-    <rect x="18" y="24" width="44" height="9" fill="#B8C4CC" stroke="#18324A" stroke-width="3"/>
-    <rect x="18" y="33" width="44" height="63" fill="#FFC83D" stroke="#18324A" stroke-width="3"/>
-    <path d="M18 96 L62 96 L40 126 Z" fill="#F3D3A6" stroke="#18324A" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M33.5 116 L46.5 116 L40 125 Z" fill="#18324A"/>
-    <circle cx="31" cy="58" r="5" fill="#18324A"/><circle cx="49" cy="58" r="5" fill="#18324A"/>
-    <circle cx="32.6" cy="56.4" r="1.6" fill="#fff"/><circle cx="50.6" cy="56.4" r="1.6" fill="#fff"/>
-    <path d="M31 71 Q40 79 49 71" fill="none" stroke="#18324A" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="25" cy="68" r="3.5" fill="#F49AB0"/><circle cx="55" cy="68" r="3.5" fill="#F49AB0"/>
-  </svg>`;
+  const MASCOT = `<img src="img/biko.webp" alt="" draggable="false" class="mimg">`;
   const SPEAKER = `<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;
   const STAR = on => `<svg class="star${on ? '' : ' off'}" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z"/></svg>`;
 
@@ -3474,6 +3481,7 @@ loadClips('common');
     const wasScene = $('.app').classList.contains('scene'), scene = inLesson && FLOW === JOURNEY_FLOW && i !== 6;
     $('.app').classList.toggle('scene', scene);
     if (scene && !wasScene) setTimeout(() => castReact('whappy'), 300);
+    setCoach();
     screens.forEach(s => s.hidden = +s.dataset.step !== i);
     const f = inLesson ? FLOW.indexOf(i) : -1;
     progress.hidden = f < 0;
@@ -5604,7 +5612,7 @@ loadClips('common');
     box.innerHTML = Array.from({ length: 46 }, () => `<i style="left:${Math.random() * 100}%;background:${COLORS_W[Math.floor(Math.random() * 7)]};animation-duration:${1.4 + Math.random() * 1.6}s;animation-delay:${Math.random() * .3}s"></i>`).join('') + `<div class="wpraise">${plainAr(text)}</div>`;
     clearTimeout(celebrate.t); celebrate.t = setTimeout(() => box.innerHTML = '', 3200);
     const sc = curScreen(); if (sc) wreact(sc.querySelector('.coach .mascot, .gch'), 'whappy');
-    castReact('whappy');
+    castReact('whappy'); popChar();
   }
   const sayRaw = say;
   say = function (text, queued, done) {
@@ -5741,7 +5749,7 @@ loadClips('common');
         + (done ? `<span class="ps">${[0, 1, 2].map(k => STAR(k < n)).join('')}</span>` : open ? '' : '<span class="lock" aria-hidden="true">🔒</span>')
         + '</button>';
     });
-    if (cur >= 0) h += `<svg class="pbiko" viewBox="0 0 160 220" style="left:${pct(pts[cur].x + (pts[cur].x > W / 2 ? -62 : 62), W)};top:${pct(pts[cur].y + 34, H)}" aria-hidden="true"><use href="#w-pencil"/></svg>`;
+    if (cur >= 0) h += `<img class="pbiko" src="img/biko.webp" alt="" style="left:${pct(pts[cur].x + (pts[cur].x > W / 2 ? -62 : 62), W)};top:${pct(pts[cur].y + 34, H)}">`;
     const trail = $('#pathTrail');
     trail.style.aspectRatio = W + ' / ' + H;
     trail.innerHTML = h;
@@ -5793,7 +5801,7 @@ loadClips('common');
     ptr.marks = svgEl('g', {}, svg);
     ptr.demoPath = svgEl('path', { class: 'tr-demo', d: '' }, svg);
     ptr.pen = svgEl('svg', { viewBox: '0 0 160 220', style: 'display:none;overflow:visible' }, svg);
-    svgEl('use', { href: '#w-pencil' }, ptr.pen);
+    svgEl('image', { href: 'img/biko.webp', width: 160, height: 220, preserveAspectRatio: 'xMidYMax meet' }, ptr.pen);
     ptr.strokes = data.map(st => {
       if (typeof st !== 'string') return { dot: st.dot, road: svgEl('circle', { class: 'tr-road-dot', cx: st.dot[0], cy: st.dot[1], r: 3.4 }, roads), ink: svgEl('circle', { class: 'tr-ink-dot', cx: st.dot[0], cy: st.dot[1], r: 0 }, inks) };
       const edge = svgEl('path', { class: 'tr-edge', d: st }, roads);
@@ -5987,7 +5995,24 @@ loadClips('common');
   }
 
   /* ---------- open scene: the cast reacts, the tracer celebrates, a gift opens on a sticker ---------- */
-  function castReact(cls) { if ($('.app').classList.contains('scene')) { wreact($('#castL'), cls); setTimeout(() => wreact($('#castR'), cls), 150); } }
+  const FACES = { castL: ['img/lumi.webp', 'img/lumi-happy.webp'], castR: ['img/biko.webp', 'img/biko-wink.webp'] };
+  function castReact(cls) {
+    if (!$('.app').classList.contains('scene')) return;
+    ['castL', 'castR'].forEach((id, k) => setTimeout(() => {
+      const el = $('#' + id);
+      if (cls === 'whappy') { el.src = FACES[id][1]; clearTimeout(el.t); el.t = setTimeout(() => { el.src = FACES[id][0]; }, 1800); }
+      wreact(el, cls);
+    }, k * 150));
+  }
+  // the guide of each subject coaches its lessons
+  const GUIDE_IMG = { math: 'boni', sci: 'oli', isl: 'lumi', civ: 'lumi' };
+  function setCoach() { const src = 'img/' + (GUIDE_IMG[curSubject] || 'biko') + '.webp'; $$('.coach .mascot img').forEach(im => { if (!im.src.endsWith(src)) im.src = src; }); }
+  function popChar() {
+    if ($('.app').classList.contains('scene') || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const pick = [['lumi-happy', 'l'], ['biko-wink', 'r'], ['girl', 'r'], ['boni', 'l'], ['oli', 'r']][Math.floor(Math.random() * 5)];
+    const im = document.createElement('img'); im.src = `img/${pick[0]}.webp`; im.alt = ''; im.className = 'wpop-char ' + pick[1];
+    document.body.appendChild(im); setTimeout(() => im.remove(), 2700);
+  }
   function trSpark(q) {
     const z = ptr.size, r = z * 0.03, star = [0, 1, 2, 3, 4].map(k => { const a = -Math.PI / 2 + k * Math.PI * 2 / 5, b = a + Math.PI / 5; return `${q[0] + Math.cos(a) * r},${q[1] + Math.sin(a) * r} ${q[0] + Math.cos(b) * r * 0.45},${q[1] + Math.sin(b) * r * 0.45}`; }).join(' ');
     const el = svgEl('polygon', { class: 'tr-spark', points: star, transform: `translate(${(Math.random() - 0.5) * z * 0.08} ${(Math.random() - 0.5) * z * 0.08})` }, $('#trSvg'));
