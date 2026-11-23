@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>عالم قلمي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&display=swap">
+<style>
+/* VOICE: a playful picture book that a 6-year-old can use without reading.
+   IDEA: an archipelago off the Algerian coast; each island is a subject of the year-1 curriculum.
+   PICTURE: the sea map with drawn islands, the pencil guide «قلمي» and the fennec «فنّوك».
+   COLOUR and TYPE: Mediterranean blue, sand, sunny yellow, one sharp red; Baloo Bhaijaan 2.
+   LAYOUT: one full-screen scene per step: welcome, map, lesson, reward. */
+:root{color-scheme:light dark;
+  --sea:light-dark(#2B8FD6,#103B62);--sea2:light-dark(#5FB8EE,#1B5687);--sand:light-dark(#F4D9A0,#C9A86A);--grass:light-dark(#69C46B,#3E8F47);
+  --sun:#FFC83D;--ink:light-dark(#18324A,#F2F6FA);--card:light-dark(#FFFFFF,#16263A);--red:#E8453C;--ok:#1EA55A;--soft:light-dark(#E8F4FC,#0C1B2B)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--sea);color:var(--ink);font:18px/1.5 "Baloo Bhaijaan 2",system-ui,sans-serif;overflow-x:clip;min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:4px solid var(--sun);outline-offset:3px}
+.scene{display:none;min-height:100vh;padding:16px max(4vw,16px) 28px;flex-direction:column;align-items:center;gap:14px;position:relative;overflow:hidden}
+.scene.on{display:flex}
+.top{width:100%;max-width:980px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pill{background:var(--card);border-radius:999px;padding:6px 16px;font-weight:800;display:flex;gap:8px;align-items:center;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.big{background:var(--sun);color:#18324A;font-weight:800;font-size:1.6rem;padding:14px 44px;border-radius:999px;box-shadow:0 6px 0 #C98F00;transition:transform .1s}
+.big:active{transform:translateY(5px);box-shadow:0 1px 0 #C98F00}
+.bubble{background:var(--card);border-radius:22px;padding:12px 18px;font-weight:700;font-size:1.2rem;max-width:520px;box-shadow:0 5px 0 rgba(0,0,0,.15);position:relative;text-align:center}
+.bubble:after{content:"";position:absolute;bottom:-12px;inset-inline-start:40px;border:12px solid transparent;border-top-color:var(--card);border-bottom:0}
+/* the two companions */
+.duo{display:flex;align-items:flex-end;gap:6px}
+.pencil{width:120px;height:170px}.fennec{width:130px;height:130px}
+.bob{animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.happy{animation:happy .9s ease}
+@keyframes happy{0%{transform:none}25%{transform:translateY(-34px) rotate(-12deg)}50%{transform:translateY(0) rotate(0)}70%{transform:translateY(-16px) rotate(10deg)}100%{transform:none}}
+.think{animation:think 1.2s ease}
+@keyframes think{30%,70%{transform:rotate(-10deg)}}
+.wave .arm-r{animation:wave .5s ease-in-out 3;transform-origin:88px 92px}
+@keyframes wave{50%{transform:rotate(-40deg)}}
+.ears{transform-origin:65px 60px;animation:ears 3s ease-in-out infinite}
+@keyframes ears{92%{transform:none}96%{transform:scaleY(.88)}}
+h1{margin:0;font-size:clamp(2rem,6vw,3.2rem);line-height:1.05;color:#fff;text-shadow:0 4px 0 rgba(0,0,0,.18);text-wrap:balance;text-align:center}
+.sub{color:#fff;margin:0;text-align:center;opacity:.95}
+/* map */
+.map{position:relative;width:100%;max-width:980px;aspect-ratio:16/11;border-radius:28px;background:radial-gradient(circle at 30% 20%,var(--sea2),var(--sea) 70%);box-shadow:inset 0 0 0 6px rgba(255,255,255,.25)}
+.map svg.waves{position:absolute;inset:0;width:100%;height:100%;opacity:.35}
+.isle{position:absolute;width:24%;display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .15s}
+.isle:hover{transform:scale(1.04)}
+.isle svg{width:100%;height:auto;filter:drop-shadow(0 8px 0 rgba(0,0,0,.18))}
+.isle b{background:var(--card);border-radius:999px;padding:2px 14px;font-size:clamp(.8rem,2.2vw,1.05rem);white-space:nowrap;box-shadow:0 3px 0 rgba(0,0,0,.15)}
+.isle .lock{position:absolute;top:22%;font-size:clamp(1.6rem,5vw,2.4rem)}
+.isle.locked svg{filter:grayscale(.85) drop-shadow(0 8px 0 rgba(0,0,0,.18));opacity:.75}
+.boat{position:absolute;width:13%;animation:sail 9s ease-in-out infinite alternate}
+@keyframes sail{to{transform:translate(-40%,10%) rotate(-4deg)}}
+/* lesson */
+.board{width:100%;max-width:760px;background:var(--card);border-radius:28px;padding:18px;box-shadow:0 8px 0 rgba(0,0,0,.2);display:flex;flex-direction:column;align-items:center;gap:14px}
+.prog{width:100%;height:16px;border-radius:99px;background:var(--soft);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),#FF9F1C);transition:width .5s}
+.sum{display:flex;align-items:center;gap:12px;font-size:clamp(2.4rem,9vw,4rem);font-weight:800;direction:ltr}
+.sum .q{width:1.3em;height:1.3em;border:5px dashed #7C5CE0;border-radius:18px;display:grid;place-items:center;color:#7C5CE0}
+.sum .q.ok{border-style:solid;border-color:var(--ok);color:var(--ok)}
+.trays{display:flex;gap:16px;align-items:center;min-height:120px;flex-wrap:wrap;justify-content:center;direction:ltr}
+.tray{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;max-width:170px;padding:10px;border-radius:20px;background:var(--soft);min-height:90px;transition:all .6s}
+.tray.merge{max-width:300px}
+.apple{width:46px;height:46px;transition:transform .5s}
+.apple.pop{animation:pop .35s ease}
+@keyframes pop{50%{transform:scale(1.35)}}
+.opts{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.opt{width:86px;height:86px;border-radius:50%;font-size:2.6rem;font-weight:800;color:#fff;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.opt:active{transform:translateY(4px)}
+.opt.no{animation:shake .4s}.opt.hint{animation:glow 1s ease-in-out infinite}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes glow{50%{box-shadow:0 0 0 10px rgba(255,200,61,.7),0 6px 0 rgba(0,0,0,.25);transform:scale(1.08)}}
+.tip{min-height:1.6em;font-weight:800;font-size:1.3rem;text-align:center}
+.tip.ok{color:var(--ok)}.tip.no{color:var(--red)}
+/* reward */
+.sticker{width:180px;height:180px;border-radius:50%;background:#fff;border:8px dashed var(--sun);display:grid;place-items:center;animation:spin-in 1s cubic-bezier(.2,1.6,.4,1)}
+@keyframes spin-in{from{transform:scale(0) rotate(-200deg)}}
+.stars{display:flex;gap:10px}.stars svg{width:54px;height:54px}
+.stars svg{animation:spin-in .8s cubic-bezier(.2,1.6,.4,1) backwards}
+.stars svg:nth-child(2){animation-delay:.25s}.stars svg:nth-child(3){animation-delay:.5s}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.confetti i{position:absolute;top:-20px;width:10px;height:16px;border-radius:3px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.note{color:#fff;opacity:.85;font-size:.9rem;text-align:center;max-width:620px}
+@media(max-width:600px){.map{aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px}.map .isle{position:relative;left:auto!important;top:auto!important;width:auto}.boat,.map svg.waves{display:none}.pencil{width:84px;height:120px}.fennec{width:92px;height:92px}.opt{width:72px;height:72px;font-size:2.1rem}.apple{width:36px;height:36px}.isle{width:30%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- قلمي: the pencil guide -->
+    <symbol id="pencil" viewBox="0 0 120 170">
+      <ellipse cx="60" cy="164" rx="34" ry="5" fill="rgba(0,0,0,.18)"/>
+      <path d="M24 36h72v84H24z" fill="#FFC83D" stroke="#18324A" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M50 36v84M70 36v84" stroke="#E9A800" stroke-width="4"/>
+      <path d="M24 14a10 10 0 0 1 10-10h52a10 10 0 0 1 10 10v22H24z" fill="#F49AB0" stroke="#18324A" stroke-width="5"/>
+      <path d="M24 30h72v10H24z" fill="#B9C6D2" stroke="#18324A" stroke-width="4"/>
+      <path d="M24 120h72l-36 40z" fill="#F4D9A0" stroke="#18324A" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M50 148l10 12 10-12z" fill="#18324A"/>
+      <circle cx="47" cy="70" r="7" fill="#18324A"/><circle cx="73" cy="70" r="7" fill="#18324A"/>
+      <circle cx="49" cy="68" r="2.4" fill="#fff"/><circle cx="75" cy="68" r="2.4" fill="#fff"/>
+      <circle cx="38" cy="84" r="5" fill="#F49AB0" opacity=".8"/><circle cx="82" cy="84" r="5" fill="#F49AB0" opacity=".8"/>
+      <path d="M48 86q12 12 24 0" fill="none" stroke="#18324A" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M26 92q-16 6-18 22" fill="none" stroke="#18324A" stroke-width="5" stroke-linecap="round"/>
+      <g class="arm-r"><path d="M94 92q16-6 20-22" fill="none" stroke="#18324A" stroke-width="5" stroke-linecap="round"/><circle cx="114" cy="68" r="6" fill="#FFC83D" stroke="#18324A" stroke-width="4"/></g>
+      <circle cx="8" cy="116" r="6" fill="#FFC83D" stroke="#18324A" stroke-width="4"/>
+    </symbol>
+    <!-- فنّوك: the fennec companion -->
+    <symbol id="fennec" viewBox="0 0 130 130">
+      <ellipse cx="65" cy="124" rx="36" ry="5" fill="rgba(0,0,0,.18)"/>
+      <g class="ears">
+        <path d="M30 62L14 6l40 34z" fill="#F1C98B" stroke="#18324A" stroke-width="4.5" stroke-linejoin="round"/>
+        <path d="M27 50L20 18l22 22z" fill="#F6A9A0"/>
+        <path d="M100 62l16-56-40 34z" fill="#F1C98B" stroke="#18324A" stroke-width="4.5" stroke-linejoin="round"/>
+        <path d="M103 50l7-32-22 22z" fill="#F6A9A0"/>
+      </g>
+      <path d="M40 98q25 34 50 0v24H40z" fill="#E9B872" stroke="#18324A" stroke-width="4.5" stroke-linejoin="round"/>
+      <ellipse cx="65" cy="72" rx="38" ry="32" fill="#F1C98B" stroke="#18324A" stroke-width="4.5"/>
+      <path d="M44 80q21 26 42 0q-21 8-42 0z" fill="#FFF3DF"/>
+      <circle cx="51" cy="68" r="6" fill="#18324A"/><circle cx="79" cy="68" r="6" fill="#18324A"/>
+      <circle cx="53" cy="66" r="2" fill="#fff"/><circle cx="81" cy="66" r="2" fill="#fff"/>
+      <ellipse cx="65" cy="82" rx="6" ry="4.5" fill="#18324A"/>
+      <path d="M58 90q7 6 14 0" fill="none" stroke="#18324A" stroke-width="3.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="apple" viewBox="0 0 48 48"><path d="M24 14c-10-6-20 2-18 14 2 12 10 18 18 15 8 3 16-3 18-15 2-12-8-20-18-14z" fill="#E8453C" stroke="#18324A" stroke-width="3"/><path d="M24 14q0-8 6-11" fill="none" stroke="#18324A" stroke-width="3" stroke-linecap="round"/><path d="M27 9q8-4 12 1q-7 4-12-1z" fill="#69C46B" stroke="#18324A" stroke-width="2.5"/><ellipse cx="15" cy="24" rx="3" ry="5" fill="#fff" opacity=".5"/></symbol>
+    <symbol id="star" viewBox="0 0 54 54"><path d="M27 4l7 15 16 2-12 11 3 16-14-8-14 8 3-16L4 21l16-2z" fill="#FFC83D" stroke="#18324A" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+    <symbol id="isle" viewBox="0 0 200 150">
+      <ellipse cx="100" cy="112" rx="94" ry="30" fill="#BFE6FF" opacity=".55"/>
+      <path d="M12 104q8-46 58-58q34-10 66 2q46 14 52 54q-10 18-88 20q-80-2-88-18z" fill="var(--sand)" stroke="#18324A" stroke-width="4"/>
+      <path d="M34 92q10-34 52-40q36-4 62 10q22 14 20 32q-30 10-68 10q-40 0-66-12z" fill="var(--grass)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<!-- 1. welcome -->
+<section class="scene on" id="welcome" aria-label="الترحيب">
+  <div class="top"><span class="pill">✏️ قلمي</span><span class="pill" aria-label="النجوم"><svg width="24" height="24"><use href="#star"/></svg><span class="starN">0</span></span></div>
+  <h1>عالم قلمي</h1>
+  <p class="sub">مغامرات السنة الأولى، على منهاج المدرسة الجزائرية</p>
+  <div class="bubble" id="hello">مرحبًا يا صديقي! أنا قلمي، وهذا صديقي فنّوك. في بحرنا جزر سحرية، وكل جزيرة فيها دروس وألعاب. هل أنت مستعد للمغامرة؟</div>
+  <div class="duo"><svg class="pencil bob wave" id="pen1"><use href="#pencil"/></svg><svg class="fennec bob" style="animation-delay:.6s"><use href="#fennec"/></svg></div>
+  <button class="big" id="go">هيا بنا!</button>
+  <p class="note">نموذج تجريبي لشكل التطبيق الجديد. الكلام هنا مكتوب، وفي التطبيق يُسمع بصوتك.</p>
+</section>
+
+<!-- 2. map -->
+<section class="scene" id="map" aria-label="خريطة الجزر">
+  <div class="top"><span class="pill">🗺️ الخريطة</span><span class="pill"><svg width="24" height="24"><use href="#star"/></svg><span class="starN">0</span></span></div>
+  <div class="bubble">اختر جزيرة! جزيرة الأرقام مفتوحة لك اليوم.</div>
+  <div class="map" id="mapBox">
+    <svg class="waves" viewBox="0 0 160 110" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width=".6" stroke-linecap="round">
+      <path d="M8 20q4-3 8 0t8 0"/><path d="M120 12q4-3 8 0t8 0"/><path d="M60 54q4-3 8 0t8 0"/><path d="M14 92q4-3 8 0t8 0"/><path d="M128 96q4-3 8 0t8 0"/><path d="M96 74q4-3 8 0t8 0"/></g></svg>
+    <svg class="boat" style="left:42%;top:44%" viewBox="0 0 80 70" aria-hidden="true"><path d="M8 46h64l-10 16H18z" fill="#E8453C" stroke="#18324A" stroke-width="3"/><path d="M40 6v40" stroke="#18324A" stroke-width="3"/><path d="M42 8l24 32H42z" fill="#fff" stroke="#18324A" stroke-width="3"/></svg>
+  </div>
+</section>
+
+<!-- 3. lesson -->
+<section class="scene" id="lesson" aria-label="درس">
+  <div class="top"><button class="pill" data-to="map">→ الخريطة</button><span class="pill"><svg width="24" height="24"><use href="#star"/></svg><span class="starN">0</span></span></div>
+  <div class="board">
+    <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+    <div class="bubble" id="say">لدى فنّوك تفاحتان، وجد ثلاث تفاحات أخرى. اضغط على التفاح لنجمعه!</div>
+    <div class="sum"><span id="a">2</span>+<span id="b">3</span>=<span class="q" id="qBox">؟</span></div>
+    <div class="trays" id="trays"></div>
+    <div class="opts" id="opts"></div>
+    <p class="tip" id="tip" aria-live="polite"></p>
+  </div>
+  <div class="duo"><svg class="pencil bob" id="pen2"><use href="#pencil"/></svg><svg class="fennec bob" id="fen2"><use href="#fennec"/></svg></div>
+</section>
+
+<!-- 4. reward -->
+<section class="scene" id="reward" aria-label="المكافأة">
+  <h1>أنهيت الدرس!</h1>
+  <div class="stars" id="rStars"></div>
+  <div class="bubble">ربحت ملصقًا جديدًا لألبومك: فنّوك المستكشف!</div>
+  <div class="sticker"><svg width="130" height="130"><use href="#fennec"/></svg></div>
+  <button class="big" data-to="map">إلى الخريطة</button>
+</section>
+
+<script>
+{
+const $ = s => document.querySelector(s);
+const ISLES = [
+  { n: 'جزيرة الحروف', ic: '📖', x: 4, y: 6, open: false },
+  { n: 'جزيرة الأرقام', ic: '🔢', x: 38, y: 2, open: true },
+  { n: 'جزيرة الاكتشاف', ic: '🔬', x: 72, y: 8, open: false },
+  { n: 'جزيرة ديني ووطني', ic: '🕌', x: 6, y: 56, open: false },
+  { n: 'جزيرة الفنون', ic: '🎨', x: 40, y: 60, open: false },
+  { n: 'جزيرة الذكاء', ic: '🧩', x: 73, y: 56, open: false }
+];
+const PRAISE = ['أحسنت!', 'رائع!', 'برافو عليك!', 'يا سلام!', 'أنت نجم!', 'ما شاء الله عليك!', 'حسبتها بسرعة!', 'أنت بارع في الحساب!'];
+const TRY = ['تقريبًا! حاول مرة أخرى.', 'أثق في قدراتك، جرّب من جديد.', 'فكّر قليلًا، أنت قادر!', 'لا بأس، كلّنا نتعلّم.'];
+const AFTER = ['رائع! لم تستسلم ونجحت!', 'أرأيت؟ بالمحاولة تنجح!'];
+const COLORS = ['#E8453C', '#1E88E5', '#1EA55A', '#7C5CE0', '#FF9F1C'];
+let stars = 0, round = 0, wrong = 0, q;
+const apples = n => n === 1 ? 'تفاحة واحدة' : n === 2 ? 'تفاحتان' : n <= 10 ? n + ' تفاحات' : n + ' تفاحة';
+const ROUNDS = 4, pick = a => a[Math.floor(Math.random() * a.length)];
+const show = id => { document.querySelectorAll('.scene').forEach(s => s.classList.toggle('on', s.id === id)); window.scrollTo(0, 0); };
+const setStars = () => document.querySelectorAll('.starN').forEach(e => e.textContent = stars);
+const react = (el, cls) => { el.classList.remove('happy', 'think', 'bob'); void el.getBoundingClientRect(); el.classList.add(cls); setTimeout(() => { el.classList.remove(cls); el.classList.add('bob'); }, 1300); };
+const confetti = () => {
+  const box = $('#confetti');
+  box.innerHTML = Array.from({ length: 60 }, () => `<i style="left:${Math.random() * 100}%;background:${pick(COLORS)};animation-duration:${1.6 + Math.random() * 1.6}s;animation-delay:${Math.random() * .4}s"></i>`).join('');
+  setTimeout(() => box.innerHTML = '', 3600);
+};
+// map
+$('#mapBox').insertAdjacentHTML('beforeend', ISLES.map((s, i) => `<button class="isle${s.open ? '' : ' locked'}" style="left:${s.x}%;top:${s.y}%" data-i="${i}" aria-label="${s.n}${s.open ? '' : '، مقفلة'}"><svg viewBox="0 0 200 150"><use href="#isle"/><text x="100" y="84" text-anchor="middle" font-size="46">${s.ic}</text></svg>${s.open ? '' : '<span class="lock" aria-hidden="true">🔒</span>'}<b>${s.n}</b></button>`).join(''));
+$('#mapBox').addEventListener('click', e => {
+  const b = e.target.closest('.isle'); if (!b) return;
+  const s = ISLES[b.dataset.i];
+  if (!s.open) { b.animate([{ transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'none' }], 300); return; }
+  round = 0; newRound(); show('lesson');
+});
+document.addEventListener('click', e => { const t = e.target.closest('[data-to]'); if (t) show(t.dataset.to); });
+$('#go').onclick = () => show('map');
+// lesson: add with apples that the child gathers, then picks the total
+function newRound() {
+  const a = 1 + Math.floor(Math.random() * 4), b = 1 + Math.floor(Math.random() * 4);
+  q = { a, b, sum: a + b, gathered: false }; wrong = 0;
+  $('#a').textContent = a; $('#b').textContent = b; $('#qBox').textContent = '؟'; $('#qBox').className = 'q';
+  $('#say').textContent = round === 0 ? `لدى فنّوك ${apples(a)}، ووجد ${apples(b).replace('تفاحة واحدة', 'تفاحة')} أخرى. اضغط على التفاح لنجمعه!` : pick(['هيا نعدّ معًا! اضغط على التفاح.', 'سؤال جديد! اجمع التفاح أولًا.']);
+  const apple = '<svg class="apple"><use href="#apple"/></svg>';
+  $('#trays').innerHTML = `<div class="tray" id="t1">${apple.repeat(a)}</div><b style="font-size:2rem">+</b><div class="tray" id="t2">${apple.repeat(b)}</div>`;
+  $('#opts').innerHTML = ''; $('#tip').textContent = ''; $('#tip').className = 'tip';
+  $('#prog').style.width = (round / ROUNDS * 100) + '%';
+  $('#trays').onclick = gather;
+}
+function gather() {
+  if (q.gathered) return; q.gathered = true;
+  const t1 = $('#t1'), t2 = $('#t2');
+  t1.append(...t2.children); t2.remove(); $('#trays b').remove(); t1.classList.add('merge');
+  [...t1.children].forEach((ap, i) => setTimeout(() => ap.classList.add('pop'), i * 220));
+  $('#say').textContent = 'عُدّ التفاح الآن: كم تفاحة صارت عند فنّوك؟';
+  const opts = [q.sum]; while (opts.length < 3) { const v = Math.max(1, q.sum + pick([-2, -1, 1, 2, 3])); if (!opts.includes(v)) opts.push(v); }
+  setTimeout(() => {
+    $('#opts').innerHTML = opts.sort(() => Math.random() - .5).map((v, i) => `<button class="opt" style="background:${COLORS[i + 1]}" data-v="${v}">${v}</button>`).join('');
+  }, q.sum * 220 + 200);
+}
+$('#opts').addEventListener('click', e => {
+  const b = e.target.closest('.opt'); if (!b || b.disabled) return;
+  const tip = $('#tip');
+  if (+b.dataset.v === q.sum) {
+    $('#qBox').textContent = q.sum; $('#qBox').className = 'q ok';
+    tip.textContent = wrong ? pick(AFTER) : pick(PRAISE); tip.className = 'tip ok';
+    react($('#pen2'), 'happy'); react($('#fen2'), 'happy'); confetti(); stars++; setStars();
+    document.querySelectorAll('.opt').forEach(o => o.disabled = true);
+    round++; $('#prog').style.width = (round / ROUNDS * 100) + '%';
+    setTimeout(() => round < ROUNDS ? newRound() : finish(), 1700);
+  } else {
+    wrong++; b.classList.remove('no'); void b.offsetWidth; b.classList.add('no');
+    tip.textContent = pick(TRY); tip.className = 'tip no'; react($('#pen2'), 'think');
+    if (wrong >= 2) { document.querySelector(`.opt[data-v="${q.sum}"]`).classList.add('hint'); $('#say').textContent = 'سأساعدك قليلًا: انظر إلى ما يلمع!'; }
+  }
+});
+function finish() {
+  $('#rStars').innerHTML = '<svg><use href="#star"/></svg>'.repeat(3);
+  show('reward'); confetti(); setTimeout(confetti, 900);
+}
+setStars();
+}
+</script>
+</body>
+</html>
