@@ -5,7 +5,7 @@ const OUT = process.argv[2] || '.';
 const URL = 'http://localhost:8765/index.html';
 const b = await chromium.launch();
 const step = pg => pg.evaluate(() => [...document.querySelectorAll('.screen')].find(s => !s.hidden).dataset.step);
-const next = async pg => { await pg.click('#nextBtn'); await pg.waitForTimeout(500); };
+const next = async pg => { await pg.click('#nextBtn', { force: true }); await pg.waitForTimeout(500); };
 const fails = [];
 const check = (ok, what) => { if (!ok) fails.push(what); console.log(ok ? '  ok ' : '  FAIL', what); };
 
@@ -21,7 +21,7 @@ const strokePts = (pg, k) => pg.evaluate(k => {
   return out;
 }, k);
 
-for (const [tag, vp] of [['m', { width: 400, height: 860 }], ['d', { width: 1280, height: 860 }]]) {
+for (const [tag, vp] of [['m', { width: 400, height: 860 }], ['l', { width: 915, height: 412 }], ['d', { width: 1280, height: 860 }]]) {
   console.log('viewport', tag);
   const pg = await b.newPage({ viewport: vp, deviceScaleFactor: 1 });
   const errs = [];
