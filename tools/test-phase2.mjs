@@ -56,7 +56,7 @@ for (const [tag, vp] of [['m', { width: 400, height: 860 }], ['l', { width: 915,
   await pg.click('#homeBtn'); await pg.waitForTimeout(200); await pg.click('[data-isle="0"]'); await pg.waitForTimeout(300); await pg.click('.pbanner'); await pg.waitForTimeout(600);
   await pg.click(`.pst[data-pst="${idx('حرف الميم')}"]`, { force: true }); await pg.waitForTimeout(700);
   check(await step(pg) === '1', 'the letter journey starts with meeting the letter');
-  check(await pg.$$eval('#progress span', s => s.length) === 9, 'nine stage icons');
+  check(await pg.$$eval('#progress span', s => s.length) === 10, 'ten stage icons');
   check(await pg.isVisible('#buddy') && await pg.isVisible('#exitBtn'), 'the companion and the exit button are there');
   await pg.screenshot({ path: `${OUT}/p2-${tag}-meet.png` });
 
@@ -112,6 +112,22 @@ for (const [tag, vp] of [['m', { width: 400, height: 860 }], ['l', { width: 915,
     await pg.waitForTimeout(1900);
   }
   s = await rideTo(pg, '4');
+  check(s === '53', 'then the cannon');
+
+  // the cannon: touch what carries the letter until the ring is full
+  await pg.waitForTimeout(2400);
+  for (let t = 0; t < 220 && !(await pg.evaluate(() => __qalami.S.ex[53].done)); t++) {
+    const hit = await pg.evaluate(() => {
+      const tg = new Set(__qalami.L.targets), f = document.querySelector('#cnField').getBoundingClientRect();
+      const it = [...document.querySelectorAll('#cnField .cn-item:not(.pop):not(.away)')].find(e => { const r = e.getBoundingClientRect(); return tg.has(e.getAttribute('aria-label')) && r.y > f.y + 30 && r.bottom < f.bottom - 5; });
+      if (it) it.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+      return !!it;
+    });
+    if (hit && t < 30) await pg.screenshot({ path: `${OUT}/p2-${tag}-cannon.png` });
+    await pg.waitForTimeout(hit ? 600 : 200);
+  }
+  check(await pg.evaluate(() => __qalami.S.ex[53].done), 'six hits with the cannon');
+  s = await rideTo(pg, '53');
   check(s === '52', 'then the sentence from the book');
 
   // the sentence: find the words with the letter, then order the words
