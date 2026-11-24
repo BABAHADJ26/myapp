@@ -61,3 +61,7 @@ jobs:
           tag="v1.0.${{ github.run_number }}"
           gh release create "$tag" windows/Qalami-Setup.exe android/Qalami.apk --repo "$GITHUB_REPOSITORY" --title "قلمي — نسخة ${tag}" \
             --notes "قلمي: مواد السنة الأولى الست بكل الأصوات، ويعمل بلا إنترنت. لحاسوب ويندوز: Qalami-Setup.exe — للهاتف أو اللوحة (أندرويد): Qalami.apk"
+          # keep only the newest version on the Releases page: delete every older release and its tag
+          gh release list --repo "$GITHUB_REPOSITORY" --limit 200 --json tagName --jq '.[].tagName' | while read -r old; do
+            if [ "$old" != "$tag" ]; then gh release delete "$old" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag; fi
+          done
