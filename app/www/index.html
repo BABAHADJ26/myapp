@@ -694,6 +694,49 @@ img.gch,.scene-cast .cast img,.mascot img,.pbiko,.end-hero{user-select:none;-web
 @keyframes wcheer{0%{opacity:0;transform:translate(-50%,-30px) scale(.8)}12%,82%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-20px)}}
 .wh-hero .wbubble{animation:none}
 @media(prefers-reduced-motion:reduce){.wcheer.on{animation:none}}
+
+/* ---------- the companion, the ride, the exit button, the sentence stage ---------- */
+.exitb{width:44px;height:44px;font-size:1.2rem;color:#fff;background:linear-gradient(#FF8A7A,#E8453C);border-width:3px}
+.top{position:relative}
+.buddy{position:fixed;left:max(4px,env(safe-area-inset-left,0px));bottom:6px;z-index:6;width:clamp(78px,13vw,150px);pointer-events:none;transform-origin:50% 100%;animation:buddysway 2.6s ease-in-out infinite}
+.buddy img{width:100%;height:auto;display:block;filter:drop-shadow(0 6px 4px rgba(0,0,0,.25))}
+.buddy.hop{animation:buddyhop .8s ease}
+@keyframes buddysway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(-4px)}}
+@keyframes buddyhop{30%{transform:translateY(-34px) rotate(-6deg)}60%{transform:translateY(0)}80%{transform:translateY(-10px)}}
+.app.in-lesson:not(.scene) .nav{margin-left:clamp(84px,13vw,150px)}
+.app.scene .scene-cast .cast.l{display:none}
+.app.in-lesson{padding-bottom:110px}
+.ride{position:fixed;inset:0;z-index:28;pointer-events:none;overflow:hidden}
+.ride .rider{position:absolute;right:-40vw;display:flex;flex-direction:column;align-items:center}
+.ride.heli .rider{top:22vh;width:clamp(120px,22vw,220px);animation:heli 2.5s cubic-bezier(.45,.05,.55,.95) forwards}
+.ride.skate .rider{bottom:2vh;width:clamp(120px,22vw,230px);animation:skate 2.5s cubic-bezier(.45,.05,.55,.95) forwards}
+.ride .rider img{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 8px rgba(0,0,0,.25))}
+.ride .cap{width:78%;margin-bottom:-14%;position:relative;z-index:1}
+.ride .prop{transform-box:fill-box;transform-origin:center;animation:propspin .12s linear infinite}
+.ride .skb{width:100%;margin-top:-10%}
+.ride .trail{position:absolute;top:40%;left:100%;width:60vw;height:6px;border-radius:6px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.9) 0 26px,transparent 26px 44px)}
+@keyframes propspin{50%{transform:scaleX(.08)}}
+@keyframes heli{0%{transform:translate(0,30px) rotate(6deg)}45%{transform:translate(calc(-50vw - 50%),-10px) rotate(-4deg)}55%{transform:translate(calc(-60vw - 50%),-14px) rotate(-6deg)}100%{transform:translate(calc(-140vw - 100%),20px) rotate(-10deg)}}
+@keyframes skate{0%{transform:translate(0,0)}45%{transform:translate(calc(-50vw - 50%),0) rotate(-3deg)}50%{transform:translate(calc(-56vw - 50%),-30px) rotate(-8deg)}58%{transform:translate(calc(-62vw - 50%),0)}100%{transform:translate(calc(-140vw - 100%),0)}}
+.screen.enter{animation:screenin .45s ease-out}
+@keyframes screenin{from{opacity:0;transform:translateX(-40px)}}
+.sn-sent{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;direction:rtl}
+.sn-sent .chip{flex-direction:row;padding:6px 16px;font-family:var(--f-school);font-weight:700;font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.7}
+.sn-sent .chip.slot-e{min-width:70px;border-style:dashed;background:rgba(255,255,255,.6);color:transparent}
+.sn-tiles{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.sn-tiles .chip{flex-direction:row;padding:6px 16px;font-family:var(--f-school);font-weight:700;font-size:clamp(1.4rem,4.6vw,1.9rem);line-height:1.7;background:#FFF4DC}
+.sn-tiles .chip.used{visibility:hidden}
+.sn-ref{font-weight:800;color:var(--ink-soft);font-size:.9rem}
+.pst .ic{font-size:2rem;line-height:1}
+.pst .ic.ar{font-family:var(--f-school);font-weight:700;font-size:1.9rem}
+.pst .nm{position:absolute;top:100%;margin-top:16px;background:rgba(255,255,255,.92);color:var(--ink);border-radius:10px;padding:1px 8px;font-size:.72rem;font-weight:800;line-height:1.35;white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis;text-shadow:none}
+.pst.t-text{background:radial-gradient(circle at 35% 30%,#9FD8FF,#2E8BEA 75%)}
+.pst.t-dict{background:radial-gradient(circle at 35% 30%,#E3D0FF,#8E5CE6 75%)}
+.pst.t-page,.pst.t-syl{width:64px;height:64px}
+.pcontinue{display:flex;align-items:center;gap:10px;width:100%;padding:8px 14px;border:4px solid #fff;border-radius:20px;background:radial-gradient(circle at 40% 30%,#9BF09B,#21A33A 75%);color:#fff;font:inherit;font-weight:800;font-size:1.15rem;text-shadow:0 2px 0 rgba(0,0,0,.25);box-shadow:0 6px 0 rgba(0,0,0,.2);cursor:pointer;text-align:start}
+.pcontinue i{width:42px;height:42px;flex:none;border-radius:50%;background:#fff;color:#21A33A;display:grid;place-items:center;font-style:normal;text-shadow:none}
+.pcontinue small{display:block;font-size:.8rem;color:#EFFFF0}
+@media(prefers-reduced-motion:reduce){.buddy,.screen.enter,.ride .prop{animation:none!important}}
 </style>
 
 <div class="wbg" aria-hidden="true"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
@@ -814,11 +857,14 @@ img.gch,.scene-cast .cast img,.mascot img,.pbiko,.end-hero{user-select:none;-web
   </symbol></defs></svg>
 <div class="wconf" id="wconf" aria-hidden="true"></div>
 <div class="wcheer" id="wcheer" hidden aria-live="polite"></div>
+<div class="buddy" id="buddy" hidden aria-hidden="true"><img id="buddyImg" src="img/boy-think.webp" alt=""></div>
+<div class="ride" id="ride" hidden aria-hidden="true"></div>
 <div class="wdlg" id="wdlg" hidden><div id="wdlgBox"></div></div>
 <div class="app" dir="rtl" lang="ar">
   <svg class="scene-rainbow" viewBox="0 0 1000 500" aria-hidden="true"><g fill="none" stroke-width="34" opacity=".85"><circle cx="500" cy="520" r="470" stroke="#FF6B6B"/><circle cx="500" cy="520" r="436" stroke="#FFA94D"/><circle cx="500" cy="520" r="402" stroke="#FFE066"/><circle cx="500" cy="520" r="368" stroke="#69DB7C"/><circle cx="500" cy="520" r="334" stroke="#4DABF7"/><circle cx="500" cy="520" r="300" stroke="#9775FA"/></g></svg>
   <div class="scene-cast" aria-hidden="true"><div class="cast l"><img src="img/lumi.webp" alt="" draggable="false" id="castL"></div><div class="cast r"><img src="img/biko.webp" alt="" draggable="false" id="castR"></div></div>
   <header class="top">
+    <button type="button" class="wround exitb" id="exitBtn" hidden aria-label="الخروج إلى قائمة الدروس">✕</button>
     <button type="button" class="brand" id="homeBtn" aria-label="الرئيسية"><span class="mascot" data-mascot></span>قلمي</button>
     <div class="lesson-tag">التعليم الابتدائي · المنهاج الجزائري</div>
     <div class="progress" id="progress" hidden></div>
@@ -869,6 +915,19 @@ img.gch,.scene-cast .cast img,.mascot img,.pbiko,.end-hero{user-select:none;-web
       <div class="pmap-card"><h3>🗺️ خريطة جزيرة الحروف</h3><div class="pmap" id="pathMap"></div><p id="pathMapNote"></p></div>
       <div class="ptrail" id="pathTrail"></div>
       <p class="pmore"><button type="button" class="btn" data-go="0">كل تمارين الحروف (9 أنشطة لكل حرف)</button></p>
+    </section>
+
+    <!-- 52: the book's sentence: find the letter in its words, then put the words in order -->
+    <section class="screen" data-step="52" hidden>
+      <span class="kicker">الجملة من كتابي</span>
+      <div class="coach">
+        <span class="mascot" data-mascot></span>
+        <p class="bubble" id="snBubble"></p>
+      </div>
+      <div class="lq-q"><span class="sn-ref" id="snRef"></span><button type="button" class="speak" id="snSay" aria-label="استمع إلى الجملة"></button></div>
+      <div class="sn-sent" id="snSent"></div>
+      <div class="sn-tiles" id="snTiles" hidden></div>
+      <p class="feedback" id="snFb" aria-live="polite"></p>
     </section>
 
     <!-- 51: the letter check: 3 questions -->
@@ -3396,8 +3455,9 @@ loadClips('common');
   // lesson order: activities with a game after each one, then the results screen
   const LETTER_FLOW = [1, 2, 8, 3, 9, 4, 10, 5, 11, 6];
   // the letters island: meet, trace, fish, pictures and words, memory, check, then the result and a map piece
-  const JOURNEY_FLOW = [1, 3, 8, 2, 10, 51, 6];
-  const JOURNEY_ICONS = ['👀', '✍️', '🎣', '🖼️', '🃏', '⭐', '🗺️'];
+  // letter → vowels → writing → game → words → building a word → the book's sentence → check
+  const JOURNEY_FLOW = Object.assign([1, 5, 3, 8, 2, 4, 52, 51, 6], { journey: true });
+  const JOURNEY_ICONS = { 1: '👀', 5: '🔤', 3: '✍️', 8: '🎣', 2: '🖼️', 4: '🧩', 52: '📖', 51: '⭐', 6: '🗺️', 10: '🃏' };
   const SYL_FLOW = [17, 18, 9, 19, 20, 6];
   const READ_FLOW = [22, 23, 10, 24, 25, 6];
   const DICT_FLOW = [28, 29, 10, 30, 6];
@@ -3439,7 +3499,7 @@ loadClips('common');
   function startLesson(les, flow) {
     loadClips(les.id);
     (BOOK_BY_LESSON[les.id] || []).forEach(x => loadClips(x.u.id));
-    FLOW = flow || LETTER_FLOW;
+    FLOW = flow && flow.journey ? journeyFlow(les) : flow || LETTER_FLOW;
     setBalloonCoach('افقع كل بالون عليه هذا الحرف!', 'افقعْ كلَّ بالونٍ عليه هذا الحرف!');
     tone([0], 0.01);
     if (!window.AudioContext && !window.webkitAudioContext) $('#voiceNote').hidden = false;
@@ -3479,15 +3539,18 @@ loadClips('common');
   function go(i) {
     stopEngine();
     if ([0, 7, 12, 13, 14, 15, 16, 21, 26, 27, 31, 43, 45, 46, 47, 48, 49, 50].includes(i)) inLesson = false;
-    const pk = FLOW === JOURNEY_FLOW ? 'j' : 'n' + FLOW.length;
+    const pk = FLOW.journey ? 'j' + FLOW.join() : 'n' + FLOW.length;
     if (progress.dataset.k !== pk) {
       progress.dataset.k = pk;
-      progress.classList.toggle('jr', FLOW === JOURNEY_FLOW);
-      progress.innerHTML = FLOW === JOURNEY_FLOW ? JOURNEY_ICONS.map(x => `<span aria-hidden="true">${x}</span>`).join('') : '<span></span>'.repeat(FLOW.length);
+      progress.classList.toggle('jr', !!FLOW.journey);
+      progress.innerHTML = !!FLOW.journey ? FLOW.map(k => `<span aria-hidden="true">${JOURNEY_ICONS[k] || '•'}</span>`).join('') : '<span></span>'.repeat(FLOW.length);
     }
     S.step = i;
+    clearTimeout(autoNext.t);
+    if ([0, 12, 13, 14, 15, 16, 21, 26, 31, 43, 45, 46, 47, 48, 49].includes(i)) fromRoute = false;
     $('.app').classList.toggle('in-lesson', inLesson);
-    const wasScene = $('.app').classList.contains('scene'), scene = inLesson && FLOW === JOURNEY_FLOW && i !== 6;
+    $('#exitBtn').hidden = !inLesson;
+    const wasScene = $('.app').classList.contains('scene'), scene = inLesson && !!FLOW.journey && i !== 6;
     $('.app').classList.toggle('scene', scene);
     if (scene && !wasScene) setTimeout(() => castReact('whappy'), 300);
     setCoach();
@@ -3514,6 +3577,8 @@ loadClips('common');
     }
     if (coach) say(coach.dataset.say, said);
     if (INIT[i]) INIT[i]();
+    buddyOn(i);
+    const sc0 = screens.find(sc => +sc.dataset.step === i); sc0.classList.remove('enter'); void sc0.offsetWidth; sc0.classList.add('enter');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   function updateStarsNow() { $('#starsNow').innerHTML = STAR(true) + '<span>' + totalStars() + '</span>'; }
@@ -3528,8 +3593,7 @@ loadClips('common');
     el.className = 'feedback ok';
     el.innerHTML = '<div class="stars">' + [0, 1, 2].map(k => STAR(k < n)).join('') + '</div>انتهى النشاط! ربحت ' + starWord(n);
     fanfare();
-    say('رائع! انتهى النشاط. اضغط التالي.', true);
-    if (S.step === i) nextBtn.disabled = false;
+    if (S.step === i) { nextBtn.disabled = false; autoNext(i); }
     updateStarsNow();
   }
 
@@ -3749,7 +3813,7 @@ loadClips('common');
   function endInit() {
     const total = totalStars(), max = FLOW.filter(i => EX_NAMES[i]).length * 3;
     $('#endGames').hidden = !!L.kind;
-    if (FLOW !== JOURNEY_FLOW && total > (best[L.id] || 0)) {
+    if (!FLOW.journey && total > (best[L.id] || 0)) {
       best[L.id] = total;
       try { localStorage.setItem('qalami-best', JSON.stringify(best)); } catch (e) {}
     }
@@ -3827,9 +3891,8 @@ loadClips('common');
     if (inLesson) {
       Object.assign(S.ex[step], { done: true, stars: n, m: mistakes ?? m });
       p.innerHTML = head;
-      if (S.step === step) nextBtn.disabled = false;
+      if (S.step === step) { nextBtn.disabled = false; autoNext(step); }
       updateStarsNow();
-      say('رائع! انتهى النشاط. اضغط التالي.', true);
       return;
     }
     p.innerHTML = head + `<div class="btns"><button type="button" class="btn" data-replay="${key}">العب مرة أخرى</button><button type="button" class="btn primary" data-hub>ألعاب أخرى</button></div>`;
@@ -4079,8 +4142,8 @@ loadClips('common');
     const done = lessonsDone(), qb = load('qalami-quiz').best;
     const first = LESSONS[0].letter, last = LESSONS[LESSONS.length - 1].letter;
     const unit = (pic, title, sub, go, pct) => `<button type="button" class="chip unit${go === undefined ? ' locked' : ''}" ${go === undefined ? 'aria-disabled="true"' : `data-go="${go}"`}><span class="pic" aria-hidden="true">${pic}</span><div><b>${title}</b><small>${sub}</small>${pct === undefined ? '' : `<span class="meter"><i style="width:${pct}%"></i></span>`}</div></button>`;
-    const pd = PATH.filter(p => pathDone(p.les)).length;
-    $('#units').innerHTML = `<button type="button" class="pbanner" data-go="50"><span class="pic" aria-hidden="true">🏝️</span><span>جزيرة الحروف<small>${PATH.length} محطّة بترتيب كتابك · ${pd} مكتملة · قطعة من الخريطة لكل حرف</small></span></button>` + renderBook() +
+    const pd = ROUTE.filter(stDone).length;
+    $('#units').innerHTML = `<button type="button" class="pbanner" data-go="50"><span class="pic" aria-hidden="true">🏝️</span><span>جزيرة الحروف: برنامج السنة الأولى<small>${ROUTE.length} محطّة بترتيب كتابك: الحروف، ثم الكلمات، ثم الجمل والنصوص · ${pd} مكتملة</small></span></button>` + renderBook() +
       unit('🔤', `الحروف الهجائية (${LESSONS.length} حرفًا)`, `${done} من ${LESSONS.length} دروس مكتملة · طريق الحروف بترتيب الكتاب`, 50, Math.round(done / LESSONS.length * 100)) +
       unit('📝', 'تقويم الحروف', qb !== undefined ? `أفضل علامة: ${qb} / 10` : `10 أسئلة بالصوت على الحروف من ${first} إلى ${last} · يصحَّح آليًا`, 15) +
       unit('🧩', 'المقاطع والكلمات', `${SYLLABLES.filter(sy => best[sy.id]).length} من ${SYLLABLES.length} دروس · المدّ والسكون وتركيب الكلمات`, 21, Math.round(SYLLABLES.filter(sy => best[sy.id]).length / SYLLABLES.length * 100)) +
@@ -4105,7 +4168,7 @@ loadClips('common');
       const r = reps[l.id], g = Object.keys(GAMES).reduce((s, k) => s + (gb[l.id + ':' + k] || 0), 0);
       let weak = '—';
       if (r) { const w = Object.entries(r.ex).sort((a, b) => b[1].m - a[1].m)[0]; weak = w && w[1].m > 0 ? EX_NAMES[w[0]] : 'لا شيء'; }
-      return `<tr><td><b style="font-family:var(--f-school);font-size:1.4rem">${l.letter}</b></td><td class="n">${best[l.id] ? best[l.id] + ' / ' + MAX_STARS : jbest[l.id] ? jbest[l.id] + ' / 15' : 'لم يبدأ'}</td><td class="n">${g} / 12</td><td>${weak}</td></tr>`;
+      return `<tr><td><b style="font-family:var(--f-school);font-size:1.4rem">${l.letter}</b></td><td class="n">${best[l.id] ? best[l.id] + ' / ' + MAX_STARS : jbest[l.id] ? jbest[l.id] + ' / 21' : 'لم يبدأ'}</td><td class="n">${g} / 12</td><td>${weak}</td></tr>`;
     }).join('') + [...SYLLABLES, ...READINGS].map(sy => {
       const r = reps[sy.id];
       let weak = '—';
@@ -5587,7 +5650,7 @@ loadClips('common');
 
   /* ---------- Smart Kids World: island home, encouragement, celebration ---------- */
   const ISLANDS = [
-    { s: 'ar', n: 'الحروف والقراءة', ic: 'أ ب ت', col: '#E8453C', go: 16, count: () => [PATH.length, PATH.filter(p => pathDone(p.les)).length] },
+    { s: 'ar', n: 'الحروف والقراءة', ic: 'أ ب ت', col: '#E8453C', go: 16, count: () => [ROUTE.length, ROUTE.filter(stDone).length] },
     { s: 'math', n: 'الأرقام', ic: '1 2 3', col: '#2E8BEA', go: 43, count: () => [MATH.length, MATH.filter(l => best[l.id]).length] },
     { s: 'sci', n: 'الاكتشاف', ic: '🔬', col: '#3DBE4F', go: 45, count: () => [SCI.length, SCI.filter(l => best[l.id]).length] },
     { s: 'art', n: 'الألوان والفنون', ic: '🎨', col: '#8E5CE6', go: 48, count: () => [ART.length, ART.filter(l => best[l.id]).length] },
@@ -5621,7 +5684,7 @@ loadClips('common');
     curSubject = it.s; go(it.go);
   });
   // today's mission: the next letter the child has not finished yet
-  $('#whPlay').onclick = () => { const p = PATH.find(x => !pathDone(x.les)) || PATH[Math.floor(Math.random() * PATH.length)]; curSubject = 'ar'; startJourney(p.les); };
+  $('#whPlay').onclick = () => { let i = ROUTE.findIndex((st, k) => stOpen(k) && !stDone(st)); if (i < 0) i = Math.floor(Math.random() * ROUTE.length); startStation(i); };
   const wdlg = html => { $('#wdlgBox').innerHTML = html; $('#wdlg').hidden = false; };
   $('#wdlg').addEventListener('click', e => { if (e.target.id === 'wdlg' || e.target.closest('[data-close]')) $('#wdlg').hidden = true; });
   $('#whMe').onclick = () => {
@@ -5638,6 +5701,7 @@ loadClips('common');
   // encouragement: many phrases instead of one; a phrase is spoken only once its recording exists
   // the 90 encouragement lines, by situation (see voice-scripts/voice-script-encouragement.txt)
   const ENC = {"praise": ["أَحْسَنْتَ!", "رَائِعٌ!", "مُمْتَازٌ!", "بَرَافُو عَلَيْكَ!", "يَا سَلَامُ!", "أَنْتَ نَجْمٌ!", "أَنْتَ بَطَلٌ!", "مَا شَاءَ اللَّهُ عَلَيْكَ!", "جَوَابٌ صَحِيحٌ!", "هَكَذَا تَمَامًا!", "عَمَلٌ جَمِيلٌ!", "وَاوْ! أَنْتَ سَرِيعٌ!", "رَائِعٌ جِدًّا، أَنَا فَخُورٌ بِكَ!", "عَرَفْتَهَا بِنَفْسِكَ!", "أَصَبْتَ الْهَدَفَ!", "هَذَا هُوَ الْجَوَابُ!", "عَبْقَرِيٌّ صَغِيرٌ!", "أَحْسَنْتَ، وَاصِلْ هَكَذَا!", "تَرْكِيزُكَ رَائِعٌ!", "أَنْتَ تَتَعَلَّمُ بِسُرْعَةٍ!"], "streak": ["ثَلَاثُ إِجَابَاتٍ صَحِيحَةٍ! لَا أَحَدَ يُوقِفُكَ!", "أَنْتَ فِي أَحْسَنِ حَالٍ الْيَوْمَ!", "سِلْسِلَةٌ رَائِعَةٌ، اسْتَمِرَّ!", "كُلُّهَا صَحِيحَةٌ! مَا أَرْوَعَكَ!"], "oops": ["تَقْرِيبًا! حَاوِلْ مَرَّةً أُخْرَى.", "لَا بَأْسَ، كُلُّنَا نَتَعَلَّمُ.", "فَكِّرْ قَلِيلًا، أَنْتَ قَادِرٌ!", "أَثِقُ فِي قُدُرَاتِكَ، جَرِّبْ مِنْ جَدِيدٍ.", "الْخَطَأُ يُعَلِّمُنَا، هَيَّا مَرَّةً أُخْرَى!", "قَرِيبٌ جِدًّا! انْظُرْ جَيِّدًا.", "لَا تَسْتَسْلِمْ، أَنْتَ تَسْتَطِيعُ!", "خُذْ وَقْتَكَ، وَفَكِّرْ بِهُدُوءٍ."], "hint": ["انْظُرْ هُنَا!", "سَأُسَاعِدُكَ قَلِيلًا، انْظُرْ إِلَى مَا يَلْمَعُ.", "هَيَّا نَحُلُّهَا مَعًا!"], "afterTry": ["رَائِعٌ! لَمْ تَسْتَسْلِمْ وَنَجَحْتَ!", "أَرَأَيْتَ؟ بِالْمُحَاوَلَةِ تَنْجَحُ!", "أَحْسَنْتَ، تَعَلَّمْتَ مِنْ خَطَئِكَ!", "هَذَا هُوَ الْإِصْرَارُ!"], "start": ["مَرْحَبًا يَا صَدِيقِي! هَيَّا نَتَعَلَّمُ!", "أَنَا مُتَحَمِّسٌ! هَلْ أَنْتَ جَاهِزٌ؟", "دَرْسٌ جَدِيدٌ وَمُغَامَرَةٌ جَدِيدَةٌ!", "هَيَّا نَلْعَبُ وَنَتَعَلَّمُ مَعًا!"], "back": ["اشْتَقْتُ إِلَيْكَ! هَيَّا نُكْمِلُ.", "أَهْلًا بِكَ مِنْ جَدِيدٍ!"], "next": ["هَيَّا إِلَى النَّشَاطِ التَّالِي!"], "almost": ["أَحْسَنْتَ! بَقِيَ الْقَلِيلُ."], "half": ["أَنْتَ فِي مُنْتَصَفِ الطَّرِيقِ، وَاصِلْ!"], "last": ["نَشَاطٌ أَخِيرٌ، هَيَّا!"], "game": ["وَالْآنَ، لُعْبَةٌ مُمْتِعَةٌ!"], "done": ["أَنْهَيْتَ الدَّرْسَ! أَنَا فَخُورٌ بِكَ جِدًّا!", "يَا لَكَ مِنْ بَطَلٍ! أَكْمَلْتَ كُلَّ شَيْءٍ!", "تَعَلَّمْتَ الْيَوْمَ شَيْئًا جَدِيدًا!", "عَمَلٌ رَائِعٌ! أَنْتَ تَكْبُرُ وَتَتَعَلَّمُ.", "أَحْسَنْتَ! أَثِقُ أَنَّكَ سَتَتَعَلَّمُ أَكْثَرَ غَدًا.", "كُلُّ النُّجُومِ لَكَ!", "جَهْدُكَ الْيَوْمَ رَائِعٌ!"], "full": ["ثَلَاثُ نُجُومٍ! نَتِيجَةٌ كَامِلَةٌ!", "كُلُّ النُّجُومِ لَكَ!"], "mid": ["نَتِيجَةٌ جَيِّدَةٌ! يُمْكِنُكَ أَنْ تَجْمَعَ نُجُومًا أَكْثَرَ."], "low": ["أَحْسَنْتَ عَلَى الْمُحَاوَلَةِ! هَلْ نُعِيدُ الدَّرْسَ مَعًا؟"], "sticker": ["رَبِحْتَ مُلْصَقًا جَدِيدًا!", "انْظُرْ إِلَى مُلْصَقِكَ الْجَدِيدِ!", "مُفَاجَأَةٌ! مُلْصَقٌ جَدِيدٌ فِي أَلْبُومِكَ!", "أَلْبُومُكَ يَكْبُرُ!"], "maqta": ["جَمَعْتَ كُلَّ مُلْصَقَاتِ هَذَا الْمَقْطَعِ! رَائِعٌ!"], "play": ["هَيَّا نَلْعَبُ!"], "hurry": ["أَسْرِعْ!"], "catch": ["الْتَقِطْهُ!", "أَصَبْتَهُ!"], "allCaught": ["رَائِعٌ، جَمَعْتَهَا كُلَّهَا!"], "timeUp": ["انْتَهَى الْوَقْتُ! لَعِبْتَ جَيِّدًا."], "arrow": ["اتْبَعِ السَّهْمَ بِإِصْبَعِكَ."], "green": ["ابْدَأْ مِنَ النُّقْطَةِ الْخَضْرَاءِ."], "line": ["خَطٌّ جَمِيلٌ!"], "writing": ["كِتَابَتُكَ جَمِيلَةٌ!"], "calm": ["بِهُدُوءٍ، عَلَى الْخَطِّ."], "count": ["هَيَّا نَعُدُّ مَعًا!"], "countWell": ["عُدَّ جَيِّدًا."], "fast": ["حَسَبْتَهَا بِسُرْعَةٍ!"], "mathPro": ["أَنْتَ بَارِعٌ فِي الْحِسَابِ!"], "reading": ["قِرَاءَتُكَ رَائِعَةٌ!"], "listen": ["اسْتَمِعْ جَيِّدًا."], "understood": ["فَهِمْتَ النَّصَّ جَيِّدًا!"], "morning": ["صَبَاحُ الْخَيْرِ يَا بَطَلُ!"], "evening": ["مَسَاءُ الْخَيْرِ يَا بَطَلُ!"], "newToday": ["هَلْ نَتَعَلَّمُ شَيْئًا جَدِيدًا الْيَوْمَ؟"], "week": ["تَعَلَّمْتَ كَثِيرًا هَذَا الْأُسْبُوعَ!"], "better": ["أَنْتَ تَتَحَسَّنُ كُلَّ يَوْمٍ!"], "bye": ["إِلَى اللِّقَاءِ يَا صَدِيقِي!"], "tomorrow": ["أَرَاكَ غَدًا، لَا تَنْسَ!"]};
+  ENC.trust = ['أَنَا أَثِقُ بِقُدُرَاتِكَ!'];
   const PRAISE = ENC.praise, TRY = ENC.oops, AFTER_TRY = ENC.afterTry;
   const plainAr = t => t.replace(/[ً-ْ]/g, '');
   const voiced = list => list.filter(t => CLIP_FILE[clipKey(t)]);
@@ -5684,7 +5748,7 @@ loadClips('common');
       const k = subjKind();
       const keys = wrongStreak ? ['afterTry'] : rightStreak >= 3 && rightStreak % 3 === 0 ? ['streak'] : k === 'math' && Math.random() < 0.35 ? ['fast', 'mathPro'] : k === 'read' && Math.random() < 0.35 ? ['reading', 'understood'] : ['praise'];
       const t = encPick(...keys);
-      celebrate(t); wrongStreak = 0;
+      celebrate(t); wrongStreak = 0; buddyFace('cheer', 1800);
       return sayRaw(isRec(t) ? t : 'أحسنت', queued, done);
     }
     if (text === 'حاول مرة أخرى') {
@@ -5695,7 +5759,7 @@ loadClips('common');
       // the second mistake brings the hint (the activity makes the answer shine)
       const keys = wrongStreak === 2 ? ['hint'] : S.step === 3 ? ['oops', 'calm'] : k === 'math' ? ['oops', 'countWell'] : k === 'read' ? ['oops', 'listen'] : ['oops'];
       const t = encPick(...keys);
-      cheer(t, 'biko');
+      cheer(t, 'biko'); buddyFace('think', 0, true);
       return sayRaw(isRec(t) ? t : text, queued, done);
     }
     return sayRaw(text, queued, done);
@@ -5734,6 +5798,7 @@ loadClips('common');
     'ي': ['M66 44 C64 37 56 38 54 44 C52 50 58 54 64 57 C68 62 62 70 52 72 C42 74 36 68 37 55', { dot: [52, 79] }, { dot: [44, 80] }]
   };
   EX_NAMES[51] = 'اختبار الحرف';
+  EX_NAMES[52] = 'الجملة من كتابي';
 
   // the path: the letters in the order the book teaches them, with their page and مقطع
   const PATH = [];
@@ -5748,11 +5813,14 @@ loadClips('common');
   const pathStars = les => {
     const j = jbest[les.id] || 0, b = best[les.id] || 0;
     if (!j && !b) return 0;
-    const r = Math.max(j / 15, b / MAX_STARS);
+    const r = Math.max(j / 21, b / MAX_STARS);
     return r >= 0.85 ? 3 : r >= 0.6 ? 2 : 1;
   };
   const pathOpen = i => i === 0 || unlockAll() || pathDone(PATH[i].les) || pathDone(PATH[i - 1].les);
   function startJourney(les) { startLesson(les, JOURNEY_FLOW); }
+  // the book's sentence for a letter (its page in «كتابي»), and the journey without that stage when there is none
+  const bookSent = les => { const x = (BOOK_BY_LESSON[les.id] || []).find(x => x.pg.sents && x.pg.sents.length); return x ? { u: x.u, pg: x.pg, s: plain(x.pg.sents[0]).replace(/[.،!؟]+$/, '') } : null; };
+  function journeyFlow(les) { return Object.assign(JOURNEY_FLOW.filter(k => k !== 52 || bookSent(les)), { journey: true }); }
   $('#pUnlock').onchange = e => store('qalami-unlock', { all: e.target.checked });
 
   // the treasure map of the island: one piece per letter, uncovered when the letter is done
@@ -5783,14 +5851,60 @@ loadClips('common');
     return n === PATH.length ? '🎉 اكتملت الخريطة! وجدت كنز جزيرة الحروف!' : `قطع الخريطة: ${n} من ${PATH.length}`;
   };
 
-  // the winding path: one station per letter, a wooden sign at each new مقطع
+  // the route: the whole Arabic programme of «كتابي في اللغة العربية», in its order (letters → words → sentences → texts)
+  const ROUTE = [];
+  {
+    const seen = new Set(), lastLetter = PATH.length ? PATH[PATH.length - 1].les.id : '';
+    MAQATI.forEach(m => {
+      BOOK_UNITS.filter(u => u.maqta === m.n).forEach(u => {
+        u.pages.forEach((pg, k) => {
+          const les = pg.lesson && LESSONS.find(l => l.id === pg.lesson);
+          if (les && TRACE[les.letter]) {
+            if (seen.has(les.id)) return;
+            seen.add(les.id);
+            ROUTE.push({ t: 'letter', ref: les, page: pg.page, maqta: m.n });
+            // the long vowels and sukun come once every letter is known
+            if (les.id === lastLetter) SYLLABLES.forEach(sy => ROUTE.push({ t: 'syl', ref: sy, maqta: m.n }));
+          } else if (!pg.lesson) ROUTE.push({ t: 'page', ref: u, k, id: 'pg-' + u.id + '-' + k, page: pg.page, maqta: m.n, name: pageName(pg) });
+        });
+        ROUTE.push({ t: 'text', ref: u, page: u.page, maqta: m.n });
+      });
+      const d = DICTS.find(x => x.maqta === m.n);
+      if (d) ROUTE.push({ t: 'dict', ref: d, maqta: m.n });
+    });
+  }
+  const pagesSeen = load('qalami-pages');
+  const flowMax = f => f.filter(k => EX_NAMES[k]).length * 3;
+  const stDone = st => st.t === 'letter' ? pathDone(st.ref) : st.t === 'page' ? !!pagesSeen[st.id] : (best[st.ref.id] || 0) > 0;
+  const stStars = st => {
+    if (st.t === 'letter') return pathStars(st.ref);
+    if (st.t === 'page') return stDone(st) ? 3 : 0;
+    const b = best[st.ref.id] || 0; if (!b) return 0;
+    const r = b / flowMax(st.t === 'text' ? READ_FLOW : st.t === 'dict' ? DICT_FLOW : SYL_FLOW);
+    return r >= 0.85 ? 3 : r >= 0.6 ? 2 : 1;
+  };
+  const stOpen = i => i === 0 || unlockAll() || stDone(ROUTE[i]) || stDone(ROUTE[i - 1]);
+  const stName = st => st.t === 'letter' ? 'حرف ' + st.ref.name : st.t === 'text' ? 'نصّ «' + st.ref.title + '»' : st.t === 'dict' ? 'إملاء المقطع ' + st.ref.maqta : st.t === 'syl' ? st.ref.title : st.name;
+  let fromRoute = false;
+  function startStation(i) {
+    const st = ROUTE[i];
+    curSubject = 'ar';
+    if (st.t === 'letter') startJourney(st.ref);
+    else if (st.t === 'text') startRead(st.ref);
+    else if (st.t === 'dict') startDict(st.ref);
+    else if (st.t === 'syl') startSyl(st.ref);
+    else { pagesSeen[st.id] = 1; store('qalami-pages', pagesSeen); openBookPage(st.ref, st.k); }
+    fromRoute = true;
+  }
+
+  // the winding path: one station per lesson, a wooden sign at each new مقطع
   function renderPath() {
     const W = 360, pts = [], signs = [];
     let y = 46, prevM = 0;
-    PATH.forEach((p, i) => {
+    ROUTE.forEach((p, i) => {
       if (p.maqta !== prevM) { signs.push({ y: y - 4, m: p.maqta, i }); y += 70; prevM = p.maqta; }
       pts.push({ x: W / 2 + Math.sin(i * 1.15 + 0.6) * 108, y });
-      y += 96;
+      y += p.t === 'letter' ? 96 : 104;
     });
     const H = y - 20;
     let d = `M${pts[0].x.toFixed(1)} ${(pts[0].y - 60).toFixed(1)} L${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
@@ -5804,20 +5918,24 @@ loadClips('common');
       if (Math.abs(p.x - W / 2) < 50) return;
       deco += i % 2 ? `<use href="#w-tree" transform="translate(${x.toFixed(0)} ${p.y - 6}) scale(.32)"/>` : `<use href="#w-flower" transform="translate(${x.toFixed(0)} ${p.y + 18}) scale(1.3)"/><use href="#w-flower" transform="translate(${(x + 22).toFixed(0)} ${p.y + 6})"/>`;
     });
-    const cur = PATH.findIndex((p, i) => pathOpen(i) && !pathDone(p.les));
+    const cur = ROUTE.findIndex((p, i) => stOpen(i) && !stDone(p));
     const pct = (v, t) => (v / t * 100).toFixed(2) + '%';
     let h = `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true">${deco}<path d="${d}" fill="none" stroke="#D2AE62" stroke-width="40" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#F2D9A0" stroke-width="32" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/></svg>`;
     signs.forEach(sg => {
       const m = MAQATI.find(x => x.n === sg.m), p = pts[sg.i];
-      h += `<div class="psign" style="left:${pct(p.x > W / 2 ? W / 2 - 60 : W / 2 + 60, W)};top:${pct(sg.y, H)}">${m ? 'المقطع ' + m.n + `<small>${m.pic} ${m.title}</small>` : 'حروف أخرى'}</div>`;
+      h += `<div class="psign" style="left:${pct(p.x > W / 2 ? W / 2 - 60 : W / 2 + 60, W)};top:${pct(sg.y, H)}">${m ? 'المقطع ' + m.n + `<small>${m.pic} ${m.title}</small>` : ''}</div>`;
     });
-    PATH.forEach((p, i) => {
-      const open = pathOpen(i), done = pathDone(p.les), n = pathStars(p.les), q = pts[i];
-      const cls = done ? 'done' : open ? 'open' : 'locked';
-      h += `<button type="button" class="pst ${cls}${i === cur ? ' cur' : ''}" data-pst="${i}" style="left:${pct(q.x, W)};top:${pct(q.y, H)}" aria-label="حرف ${p.les.name}${p.page ? '، كتابي صفحة ' + p.page : ''}${open ? '' : '، مقفل'}">`
+    ROUTE.forEach((p, i) => {
+      const open = stOpen(i), done = stDone(p), n = stStars(p), q = pts[i];
+      const cls = (done ? 'done' : open ? 'open' : 'locked') + ' t-' + p.t;
+      const face = p.t === 'letter' ? `<span class="l">${p.ref.letter}</span>`
+        : p.t === 'syl' ? `<span class="ic ar">${p.ref.mark || p.ref.letter}</span>`
+        : `<span class="ic" aria-hidden="true">${p.t === 'text' ? p.ref.letter : p.t === 'dict' ? '✍️' : '📗'}</span>`;
+      h += `<button type="button" class="pst ${cls}${i === cur ? ' cur' : ''}" data-pst="${i}" style="left:${pct(q.x, W)};top:${pct(q.y, H)}" aria-label="${stName(p)}${p.page ? '، كتابي صفحة ' + p.page : ''}${open ? '' : '، مقفل'}">`
         + (p.page ? `<span class="pg">ص ${p.page}</span>` : '')
-        + `<span class="l">${p.les.letter}</span>`
+        + face
         + (done ? `<span class="ps">${[0, 1, 2].map(k => STAR(k < n)).join('')}</span>` : open ? '' : '<span class="lock" aria-hidden="true">🔒</span>')
+        + (p.t !== 'letter' ? `<span class="nm">${p.t === 'text' ? p.ref.title : stName(p)}</span>` : '')
         + '</button>';
     });
     if (cur >= 0) h += `<img class="pbiko" src="img/biko.webp" alt="" style="left:${pct(pts[cur].x + (pts[cur].x > W / 2 ? -62 : 62), W)};top:${pct(pts[cur].y + 34, H)}">`;
@@ -5827,34 +5945,200 @@ loadClips('common');
     $('#pathMap').innerHTML = mapSvg(-1);
     $('#pathMapNote').textContent = mapNote();
     $('#pathHello').textContent = cur >= 0
-      ? `أنا بيكو! محطّتك التالية: حرف ${PATH[cur].les.name}${PATH[cur].page ? '، كما في صفحة ' + PATH[cur].page + ' من كتابك' : ''}. كل حرف تكمله يكشف قطعة من الخريطة!`
-      : 'أنا بيكو! أكملت كل محطّات الجزيرة. يمكنك أن تعيد أيّ حرف لتجمع نجومًا أكثر.';
+      ? `أنا بيكو! محطّتك التالية: ${stName(ROUTE[cur])}${ROUTE[cur].page ? '، كما في صفحة ' + ROUTE[cur].page + ' من كتابك' : ''}. نتعلّم الحروف، ثم الكلمات، ثم الجمل والنصوص. وكل حرف تكمله يكشف قطعة من الخريطة!`
+      : 'أنا بيكو! أكملت برنامج السنة الأولى كلّه. يمكنك أن تعيد أيّ محطّة لتجمع نجومًا أكثر.';
     if (cur >= 0) setTimeout(() => { const b = trail.querySelector('.pst.cur'); if (b && S.step === 50) b.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, 450);
   }
   document.addEventListener('click', e => {
     const b = e.target.closest('[data-pst]'); if (!b) return;
     const i = +b.dataset.pst;
-    if (!pathOpen(i)) { wreact(b, 'wthink'); say('أَكْمِلِ الْمَحَطَّةَ السَّابِقَةَ أَوَّلًا.'); return; }
-    curSubject = 'ar';
-    startJourney(PATH[i].les);
+    if (!stOpen(i)) { wreact(b, 'wthink'); say('أَكْمِلِ الْمَحَطَّةَ السَّابِقَةَ أَوَّلًا.'); return; }
+    startStation(i);
   });
 
-  // the end of a journey: keep the best stars, show the new map piece, offer the next station
+  // the next lesson in its own list (book order), for lessons opened from the lists
+  function nextInList(l) {
+    const after = (list, f, start, label) => { const k = list.indexOf(l); const n = k >= 0 ? list[k + 1] : null; return n ? { go: () => start(n), label: (f && f(l) !== f(n) ? 'الوحدة التالية · ' : 'الدرس التالي: ') + label(n) } : null; };
+    if (!l.kind) return after(LESSONS.filter(x => TRACE[x.letter]), null, n => startLesson(n), n => 'حرف ' + n.name);
+    if (l.kind === 'syl') return after(SYLLABLES, null, startSyl, n => n.title);
+    if (l.kind === 'dict') return after(DICTS, null, startDict, n => n.title);
+    if (l.kind === 'math') return after(MATH, x => x.sit, startMath, n => n.title);
+    if (l.kind === 'sci') return after(SCI, x => x.sit, startMath, n => n.title);
+    if (l.kind === 'art') return after(ART, x => x.sit, startMath, n => n.title);
+    if (l.kind === 'read' && l.subj) return after(ISL_LESSONS.filter(x => x.subj === l.subj), x => x.maqta, startRead, n => n.title);
+    if (l.kind === 'read' && BOOK_UNITS.includes(l)) return after(BOOK_UNITS, x => x.maqta, startRead, n => n.title);
+    if (l.kind === 'read') return after(READINGS, null, startRead, n => n.title);
+    return null;
+  }
+
+  // the end of a lesson: a letter's map piece, then the next station (or the next lesson / unit of its list)
   function journeyEnd() {
-    const jr = FLOW === JOURNEY_FLOW && !L.kind;
+    const jr = !!FLOW.journey && !L.kind;
     $('#endMap').hidden = !jr; $('#endNext').hidden = true;
-    if (!jr) return;
-    const total = totalStars(), k = PATH.findIndex(p => p.les === L), fresh = !pathDone(L);
-    if (total > (jbest[L.id] || 0)) { jbest[L.id] = total; store('qalami-path', jbest); }
-    $('#endMap').innerHTML = `<h3>${fresh ? '🗺️ ربحت قطعة جديدة من خريطة الجزيرة!' : '🗺️ خريطة جزيرة الحروف'}</h3><div class="pmap">${mapSvg(fresh ? k : -1)}</div><p>${mapNote()}</p>`;
-    if (fresh) say('رَبِحْتَ قِطْعَةً جَدِيدَةً مِنَ الْخَرِيطَةِ!', true);
-    if (fresh && PATH.filter(p => p.maqta === PATH[k].maqta).every(p => pathDone(p.les))) enc('maqta', { queued: true });
-    const nx = PATH[k + 1];
+    if (jr) {
+      const total = totalStars(), k = PATH.findIndex(p => p.les === L), fresh = !pathDone(L);
+      if (total > (jbest[L.id] || 0)) { jbest[L.id] = total; store('qalami-path', jbest); }
+      $('#endMap').innerHTML = `<h3>${fresh ? '🗺️ ربحت قطعة جديدة من خريطة الجزيرة!' : '🗺️ خريطة جزيرة الحروف'}</h3><div class="pmap">${mapSvg(fresh ? k : -1)}</div><p>${mapNote()}</p>`;
+      if (fresh) say('رَبِحْتَ قِطْعَةً جَدِيدَةً مِنَ الْخَرِيطَةِ!', true);
+      if (fresh && k >= 0 && PATH.filter(p => p.maqta === PATH[k].maqta).every(p => pathDone(p.les))) enc('maqta', { queued: true });
+    }
+    const ri = ROUTE.findIndex(st => st.ref === L && st.t !== 'page');
+    let nx = null;
+    if (ri >= 0 && (fromRoute || jr)) {
+      const st = ROUTE[ri + 1];
+      if (st) nx = { go: () => startStation(ri + 1), label: (st.maqta !== ROUTE[ri].maqta ? 'المقطع التالي · ' : 'المحطّة التالية: ') + stName(st) };
+    } else nx = nextInList(L);
     if (nx) {
       const b = $('#endNext');
-      b.hidden = false; b.textContent = 'المحطّة التالية: حرف ' + nx.les.name + ' ←';
-      b.onclick = () => startJourney(nx.les);
+      b.hidden = false; b.textContent = nx.label + ' ←';
+      b.onclick = nx.go;
     }
+  }
+
+  // «continue»: the first unfinished lesson of a list, at the top of the list
+  function renderContinue(step) {
+    const sc = screens.find(x => +x.dataset.step === step);
+    const lists = { 43: [MATH, startMath], 45: [SCI, startMath], 46: [ISL_LESSONS.filter(x => x.subj === 'isl'), startRead], 47: [ISL_LESSONS.filter(x => x.subj === 'civ'), startRead], 48: [ART, startMath] };
+    let label, run;
+    if (step === 16) {
+      const i = ROUTE.findIndex((st, k) => stOpen(k) && !stDone(st));
+      if (i < 0) return;
+      label = stName(ROUTE[i]); run = () => startStation(i);
+    } else {
+      const [list, start] = lists[step], n = list.find(x => !best[x.id]);
+      if (!n) return;
+      label = n.title; run = () => start(n);
+    }
+    let b = sc.querySelector('.pcontinue');
+    if (!b) { b = document.createElement('button'); b.type = 'button'; b.className = 'pcontinue'; (sc.querySelector('.guide') || sc.querySelector('.top-bar')).after(b); }
+    b.innerHTML = `<i>▶</i><span>تابع من حيث توقّفت<small>${label}</small></span>`;
+    b.onclick = run;
+  }
+
+  /* the book's sentence: find the words with the letter (analysis), then put the words back in order (synthesis) */
+  function snInit() {
+    const st = S.ex[52];
+    if (st.built) return;
+    st.built = true;
+    const bs = bookSent(L);
+    st.words = bs.s.split(/\s+/); st.sent = bs.s;
+    loadClips(bs.u.id);
+    $('#snRef').textContent = '📗 كتابي ص ' + bs.pg.page;
+    $('#snSay').dataset.say = bs.pg.sents[0].replace(/[\[\]]/g, '');
+    st.mine = L.chars || [L.letter];
+    st.targets = st.words.map((w, i) => [...bare(w)].some(c => st.mine.includes(c)) ? i : -1).filter(i => i >= 0);
+    st.found = new Set();
+    if (st.targets.length) snFind(); else snOrder();
+  }
+  function snFind() {
+    const st = S.ex[52];
+    st.round = 1; st.wrong = 0;
+    $('#snBubble').textContent = 'اضغط على كل كلمة فيها حرف ' + L.name + '.';
+    $('#snTiles').hidden = true; fb('#snFb', '');
+    const box = $('#snSent'); box.innerHTML = '';
+    st.words.forEach((w, i) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.textContent = w;
+      b.onclick = () => {
+        if (st.round !== 1 || st.found.has(i)) return;
+        if (st.targets.includes(i)) {
+          st.found.add(i); b.innerHTML = hlWord(w, { chars: st.mine.join('') }); b.classList.add('is-ok'); good();
+          if (hasClip(w)) say(w);
+          if (st.found.size === st.targets.length) { st.round = 0; say('أحسنت', true); setTimeout(snOrder, 1500); }
+        } else {
+          st.m++; st.wrong++; b.classList.remove('is-no'); void b.offsetWidth; b.classList.add('is-no'); bad(); say('حاول مرة أخرى');
+          if (st.wrong >= 2) st.targets.filter(t => !st.found.has(t)).forEach(t => box.children[t].classList.add('whint'));
+        }
+      };
+      box.appendChild(b);
+    });
+    say('اِضْغَطْ عَلَى كُلِّ كَلِمَةٍ فِيهَا هَذَا الْحَرْفُ.'); say(NAMES[L.letter] || L.letter, true); say($('#snSay').dataset.say, true);
+  }
+  function snOrder() {
+    const st = S.ex[52];
+    if (S.step !== 52) return;
+    st.round = 2; st.wrong = 0;
+    // long sentences: the first words stay in place, the child orders the last four
+    st.next = Math.max(0, st.words.length - 4);
+    $('#snBubble').textContent = 'استمع إلى الجملة، ثم رتّب كلماتها.';
+    fb('#snFb', '');
+    const box = $('#snSent'), tiles = $('#snTiles');
+    const draw = () => {
+      box.innerHTML = st.words.map((w, i) => i < st.next ? `<span class="chip${i >= Math.max(0, st.words.length - 4) ? ' is-ok' : ''}">${hlWord(w, { chars: st.mine.join('') })}</span>` : '<span class="chip slot-e">؟</span>').join('');
+    };
+    draw();
+    tiles.hidden = false; tiles.innerHTML = '';
+    shuffle(st.words.map((w, i) => ({ w, i })).slice(st.next)).forEach(t => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.textContent = t.w;
+      b.onclick = () => {
+        if (st.round !== 2 || b.classList.contains('used')) return;
+        if (st.words[st.next] === t.w) {
+          b.classList.add('used'); st.next++; draw(); good(); [...tiles.children].forEach(x => x.classList.remove('whint'));
+          if (st.next === st.words.length) { st.round = 0; say($('#snSay').dataset.say); finish(52, '#snFb'); }
+        } else {
+          st.m++; st.wrong++; b.classList.remove('is-no'); void b.offsetWidth; b.classList.add('is-no'); bad(); say('حاول مرة أخرى');
+          if (st.wrong >= 2) { const ok = [...tiles.children].find(x => !x.classList.contains('used') && x.textContent === st.words[st.next]); if (ok) ok.classList.add('whint'); }
+        }
+      };
+      tiles.appendChild(b);
+    });
+    say('اِسْتَمِعْ إِلَى الْجُمْلَةِ ثُمَّ رَتِّبْ كَلِمَاتِهَا'); say($('#snSay').dataset.say, true);
+  }
+
+  /* the companion: the user's boy watches each lesson, thinks while waiting, cheers on success */
+  const BUDDY = { think: 'boy-think', cheer: 'boy-cheer', wink: 'boy-wink', love: 'boy-love' };
+  const idle = { last: Date.now(), nudges: 0, at: 0, step: -1 };
+  function buddyFace(face, ms, hop) {
+    const el = $('#buddy');
+    $('#buddyImg').src = `img/${BUDDY[face]}.webp`;
+    clearTimeout(buddyFace.t);
+    if (ms) buddyFace.t = setTimeout(() => { $('#buddyImg').src = `img/${BUDDY[S.step === 6 ? 'love' : 'think']}.webp`; }, ms);
+    if (hop || face === 'cheer') { el.classList.remove('hop'); void el.offsetWidth; el.classList.add('hop'); setTimeout(() => el.classList.remove('hop'), 820); }
+  }
+  function buddyOn(i) {
+    const show = inLesson && FLOW.includes(i);
+    $('#buddy').hidden = !show;
+    if (!show) return;
+    idle.last = Date.now(); idle.nudges = 0; idle.step = i;
+    if (i === 6) buddyFace('love', 0, true); else { buddyFace('wink', 1500); }
+  }
+  document.addEventListener('pointerdown', () => { idle.last = Date.now(); }, true);
+  // while the child thinks: now and then, «أنا أثق بقدراتك»
+  setInterval(() => {
+    if ($('#buddy').hidden || S.step === 6 || document.hidden) return;
+    const st = S.ex[S.step];
+    if ((st && st.done) || $('#ride').classList.contains('on')) return;
+    const now = Date.now();
+    if (now - idle.last > 16000 && now - idle.at > 24000 && idle.nudges < 3) {
+      idle.at = now; idle.nudges++;
+      buddyFace('love', 2600, true);
+      enc('trust', { face: 'boy-love' });
+    }
+  }, 1000);
+
+  /* the ride: when a stage is done, the boy flies in with a propeller cap (or the girl rides a skateboard)
+     and takes the child to the next stage */
+  const CAP = `<svg class="cap" viewBox="0 0 120 64" aria-hidden="true"><rect x="57" y="8" width="6" height="22" rx="2" fill="#555"/><g class="prop"><ellipse cx="34" cy="9" rx="26" ry="6" fill="#E8453C" stroke="#8E1F1A" stroke-width="2"/><ellipse cx="86" cy="9" rx="26" ry="6" fill="#2E8BEA" stroke="#1A4F8C" stroke-width="2"/></g><circle cx="60" cy="9" r="5" fill="#FFC83D" stroke="#B07A00" stroke-width="2"/><path d="M14 62C14 34 34 24 60 24S106 34 106 62Z" fill="#FFC83D" stroke="#B07A00" stroke-width="3"/><path d="M38 28C30 38 28 50 28 62M82 28C90 38 92 50 92 62" stroke="#E8453C" stroke-width="7" fill="none"/><path d="M60 24V62" stroke="#3DBE4F" stroke-width="7"/></svg>`;
+  const BOARD = `<svg class="skb" viewBox="0 0 200 50" aria-hidden="true"><path d="M8 14H192C198 14 198 26 192 26H8C2 26 2 14 8 14Z" fill="#8E5CE6" stroke="#4B2A8C" stroke-width="3"/><path d="M30 18H170" stroke="#FFC83D" stroke-width="3" stroke-dasharray="10 8"/><circle cx="42" cy="38" r="10" fill="#FFC83D" stroke="#18324A" stroke-width="3"/><circle cx="158" cy="38" r="10" fill="#FFC83D" stroke="#18324A" stroke-width="3"/></svg>`;
+  let rideN = 0;
+  function ride(then) {
+    const r = $('#ride'), heli = rideN++ % 2 === 0;
+    r.className = 'ride on ' + (heli ? 'heli' : 'skate');
+    r.innerHTML = `<div class="rider"><span class="trail"></span>${heli ? CAP + '<img src="img/boy-cheer.webp" alt="">' : '<img src="img/girl.webp" alt="">' + BOARD}</div>`;
+    r.hidden = false;
+    tone([392, 523, 659, 784], 0.07);
+    setTimeout(then, 1150);
+    setTimeout(() => { r.hidden = true; r.className = 'ride'; r.innerHTML = ''; }, 2550);
+  }
+  function autoNext(step) {
+    clearTimeout(autoNext.t);
+    autoNext.t = setTimeout(() => {
+      if (S.step !== step || !inLesson) return;
+      const nx = FLOW[FLOW.indexOf(step) + 1];
+      if (nx === undefined) return;
+      ride(() => { if (S.step === step) go(nx); });
+    }, 1900);
   }
 
   /* the tracer: follow the road stroke by stroke, from the green dot to the red one; dots are tapped */
@@ -6025,7 +6309,15 @@ loadClips('common');
     const starts = shuffle([...(L.ex4 || []), ...L.forms.filter(f => /أوّل/.test(f.pos))].filter(x => mine.includes(bare(x.w)[0]) && hasClip(x.w)));
     if (starts[0]) qs.push({ prompt: 'بأيّ حرف تبدأ هذه الكلمة؟', voice: 'بأيّ حرف تبدأ هذه الكلمة؟', say: starts[0].w, pic: starts[0].p, opts: letters() });
     while (qs.length < 3) qs.push({ ...qs[0], opts: letters() });
-    return qs.slice(0, 3);
+    // understanding the book's sentence: which of these words was in it?
+    const bs = bookSent(L);
+    if (bs) {
+      const inS = shuffle(bs.s.split(/\s+/).filter(w => [...bare(w)].some(c => mine.includes(c))))[0];
+      const outS = [];
+      shuffle(LESSONS.filter(l => l !== L).flatMap(l => l.memory || [])).forEach(x => { if (outS.length < 2 && ![...bare(x.w)].some(c => avoid.includes(c)) && !outS.includes(x.w)) outS.push(x.w); });
+      if (inS && outS.length === 2) qs.splice(3, 0, { prompt: 'أيّ كلمة سمعتها في الجملة؟', voice: 'أَيُّ كَلِمَةٍ سَمِعْتَهَا فِي الْجُمْلَةِ؟', say: bs.s, opts: shuffle([inS, ...outS]).map(w => ({ t: w, ok: w === inS })) });
+    }
+    return qs.slice(0, 4);
   }
   function lqInit() {
     const st = S.ex[51];
@@ -6049,7 +6341,7 @@ loadClips('common');
       b.innerHTML = q.pics ? `<span class="pic" aria-hidden="true">${o.p}</span><span class="word">${o.t}</span>` : `<span class="sym">${o.t}</span>`;
       b.onclick = () => {
         if (st.lock) return;
-        if (q.pics) say(o.t);
+        if (q.pics || hasClip(o.t)) say(o.t);
         if (o.ok) {
           st.lock = true; b.classList.remove('whint'); b.classList.add('is-ok'); good();
           say('أحسنت', true);
@@ -6142,15 +6434,19 @@ loadClips('common');
   });
   INIT[50] = renderPath;
   INIT[51] = lqInit;
+  INIT[52] = snInit;
+  [43, 45, 46, 47, 48, 16].forEach(k => { const f = INIT[k]; INIT[k] = () => { f(); renderContinue(k); }; });
   INIT[6] = (f => () => { f(); journeyEnd(); })(INIT[6]);
   INIT[14] = (f => () => { f(); $('#pUnlock').checked = unlockAll(); })(INIT[14]);
 
   $('#voiceNoteClose').onclick = () => $('#voiceNote').hidden = true;
-  $('#replayBtn').onclick = () => L.kind === 'syl' ? startSyl(L) : L.kind === 'read' ? startRead(L) : L.kind === 'dict' ? startDict(L) : L.kind === 'math' || L.kind === 'sci' || L.kind === 'art' ? startMath(L) : startLesson(L, FLOW === JOURNEY_FLOW ? JOURNEY_FLOW : undefined);
-  $('#menuBtn').onclick = () => go(L.kind === 'syl' ? 21 : L.kind === 'read' ? (L.subj ? (L.subj === 'civ' ? 47 : 46) : L.maqta ? 16 : 26) : L.kind === 'dict' ? 31 : L.kind === 'math' ? 43 : L.kind === 'sci' ? 45 : L.kind === 'art' ? 48 : FLOW === JOURNEY_FLOW ? 50 : 0);
+  $('#replayBtn').onclick = () => L.kind === 'syl' ? startSyl(L) : L.kind === 'read' ? startRead(L) : L.kind === 'dict' ? startDict(L) : L.kind === 'math' || L.kind === 'sci' || L.kind === 'art' ? startMath(L) : startLesson(L, !!FLOW.journey ? JOURNEY_FLOW : undefined);
+  $('#menuBtn').onclick = () => fromRoute ? go(50) : go(L.kind === 'syl' ? 21 : L.kind === 'read' ? (L.subj ? (L.subj === 'civ' ? 47 : 46) : L.maqta ? 16 : 26) : L.kind === 'dict' ? 31 : L.kind === 'math' ? 43 : L.kind === 'sci' ? 45 : L.kind === 'art' ? 48 : !!FLOW.journey ? 50 : 0);
   $('#endGames').onclick = () => go(7);
-  $('#hubMenu').onclick = () => go(FLOW === JOURNEY_FLOW ? 50 : 0);
-  $('#hubLesson').onclick = () => startLesson(L, FLOW === JOURNEY_FLOW ? JOURNEY_FLOW : undefined);
+  $('#hubMenu').onclick = () => go(FLOW.journey || fromRoute ? 50 : 0);
+  $('#hubLesson').onclick = () => startLesson(L, !!FLOW.journey ? JOURNEY_FLOW : undefined);
+  $('#exitBtn').onclick = () => { tone([0], 0.01); $('#menuBtn').onclick(); };
+  window.__qalami = { get L() { return L; }, get S() { return S; }, get FLOW() { return FLOW; } };
   $('#homeBtn').onclick = () => { if (S.step === 6) enc((load('qalami-visit').doneN || 0) >= 3 ? 'tomorrow' : 'bye'); go(12); };
   $('#toParents').onclick = () => parentGate(() => go(14));
   $('#toQuiz').onclick = () => { curYear = 1; go(15); };
