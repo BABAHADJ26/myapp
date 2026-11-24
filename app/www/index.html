@@ -686,6 +686,14 @@ img.gch,.scene-cast .cast img,.mascot img,.pbiko,.end-hero{user-select:none;-web
 @keyframes wpopchar{0%{transform:translateY(110%)}18%,78%{transform:translateY(0)}30%{transform:translateY(-14px) rotate(-4deg)}42%{transform:translateY(0) rotate(3deg)}100%{transform:translateY(110%)}}
 @media(max-width:700px){.wh-hero img.gch{width:150px}.guide img.gch{width:80px}}
 @media(prefers-reduced-motion:reduce){.wh-hero img.gch,.guide img.gch,.end-hero,.wpop-char{animation:none!important}}
+
+/* ---------- encouragement bubble ---------- */
+.wcheer{position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:24;display:flex;align-items:center;gap:8px;max-width:min(92vw,560px);background:#fff;border:4px solid #FFC83D;border-radius:999px;padding:4px 18px 4px 6px;box-shadow:0 6px 0 rgba(0,0,0,.18);font-weight:800;font-size:clamp(1rem,3.6vw,1.3rem);line-height:1.3;color:#5A3300;pointer-events:none}
+.wcheer img{width:46px;height:46px;object-fit:contain;flex:none}
+.wcheer.on{animation:wcheer 2.6s ease-in-out forwards}
+@keyframes wcheer{0%{opacity:0;transform:translate(-50%,-30px) scale(.8)}12%,82%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-20px)}}
+.wh-hero .wbubble{animation:none}
+@media(prefers-reduced-motion:reduce){.wcheer.on{animation:none}}
 </style>
 
 <div class="wbg" aria-hidden="true"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
@@ -805,6 +813,7 @@ img.gch,.scene-cast .cast img,.mascot img,.pbiko,.end-hero{user-select:none;-web
     <path d="M86 52l14-10 14 10" fill="#FF5BA7" stroke="#2B1A0E" stroke-width="2.5" stroke-linejoin="round"/>
   </symbol></defs></svg>
 <div class="wconf" id="wconf" aria-hidden="true"></div>
+<div class="wcheer" id="wcheer" hidden aria-live="polite"></div>
 <div class="wdlg" id="wdlg" hidden><div id="wdlgBox"></div></div>
 <div class="app" dir="rtl" lang="ar">
   <svg class="scene-rainbow" viewBox="0 0 1000 500" aria-hidden="true"><g fill="none" stroke-width="34" opacity=".85"><circle cx="500" cy="520" r="470" stroke="#FF6B6B"/><circle cx="500" cy="520" r="436" stroke="#FFA94D"/><circle cx="500" cy="520" r="402" stroke="#FFE066"/><circle cx="500" cy="520" r="368" stroke="#69DB7C"/><circle cx="500" cy="520" r="334" stroke="#4DABF7"/><circle cx="500" cy="520" r="300" stroke="#9775FA"/></g></svg>
@@ -3493,7 +3502,17 @@ loadClips('common');
     updateStarsNow();
     if (i === 0) { stopVoice(); renderMenu(); }
     const coach = screens.find(sc => +sc.dataset.step === i).querySelector('.coach .speak');
-    if (coach) say(coach.dataset.say);
+    let said = false;
+    const fi = inLesson ? FLOW.indexOf(i) : -1;
+    if (fi === 0 && !S.greeted) {
+      S.greeted = true; S.lastF = 0; rightStreak = 0; wrongStreak = 0;
+      said = enc((best[L.id] || (typeof jbest !== 'undefined' && jbest[L.id])) ? 'back' : L.kind === 'math' ? ['start', 'count'] : 'start');
+    } else if (fi > 0 && i !== 6 && fi > (S.lastF || 0)) {
+      S.lastF = fi;
+      const key = [8, 9, 10, 11].includes(i) ? 'game' : fi === FLOW.length - 2 ? 'last' : fi === Math.floor((FLOW.length - 1) / 2) ? 'half' : L.kind === 'math' && Math.random() < 0.4 ? 'count' : fi % 2 ? 'next' : 'almost';
+      said = enc(key);
+    }
+    if (coach) say(coach.dataset.say, said);
     if (INIT[i]) INIT[i]();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -3743,7 +3762,12 @@ loadClips('common');
       return `<tr><td>${EX_NAMES[i]}</td><td><div class="stars">${[0, 1, 2].map(k => STAR(k < n)).join('')}</div></td><td class="n">${e.m}</td></tr>`;
     }).join('');
     fanfare();
-    say(title); say(L.learned, true);
+    const ek = total >= max ? 'full' : total >= max * 0.6 ? 'done' : total >= max * 0.35 ? 'mid' : 'low', et = encPick(ek);
+    $('#endTitle').textContent = plainAr(et);
+    say(isRec(et) ? et : title); say(L.learned, true);
+    const vis = load('qalami-visit'), today = new Date().toDateString();
+    if (vis.doneDay !== today) { vis.doneDay = today; vis.doneN = 0; }
+    vis.doneN = (vis.doneN || 0) + 1; store('qalami-visit', vis);
     const reps = load('qalami-report');
     reps[L.id] = { stars: total, ex: Object.fromEntries(Object.entries(S.ex).map(([k, e]) => [k, { stars: e.stars || 0, m: e.m }])) };
     store('qalami-report', reps);
@@ -3790,6 +3814,7 @@ loadClips('common');
   }
 
   function showDone(key, m, sel, mistakes) {
+    if (key === 'fish' || key === 'balloon') enc('allCaught', { queued: true });
     const n = starsFor(m), id = L.id + ':' + key, step = GAMES[key].step;
     if (n > (gbest[id] || 0)) {
       gbest[id] = n;
@@ -3824,6 +3849,7 @@ loadClips('common');
     $$('.target-letter').forEach(e => e.textContent = L.letter);
     $$('.target').forEach(el => { if (el.firstChild && el.firstChild.nodeType === 3) el.firstChild.textContent = L.kind === 'math' ? 'العدد ' : 'الحرف '; });
     if (L.kind === 'math') numSay(+L.letter).forEach(x => say(x, true)); else if (NAMES[L.letter]) say(NAMES[L.letter], true);
+    if (!inLesson) enc('play', { queued: true });
     const n = mode === 'fish' ? 5 : 7;
     for (let i = 0; i < n; i++) {
       const it = { lane: i };
@@ -3899,6 +3925,7 @@ loadClips('common');
       if (eng.mode === 'fish') netAt(it);
       good();
       eng.caught++;
+      if (eng.caught < eng.goal && eng.caught % 2 === 0) enc('catch', { show: eng.caught % 4 === 0 });
       updCounter();
       if (eng.caught >= eng.goal) {
         eng.over = true;
@@ -3921,6 +3948,7 @@ loadClips('common');
   /* memory: match each picture with its word */
   const mem = {};
   function memInit() {
+    if (!inLesson) enc('play', { queued: true });
     const words = shuffle([...L.memory]).slice(0, 4);
     mem.cards = shuffle(words.flatMap((w, id) => [{ id, kind: 'pic', w }, { id, kind: 'word', w }]));
     mem.open = []; mem.matched = 0; mem.m = 0; mem.lock = false;
@@ -3965,6 +3993,7 @@ loadClips('common');
   /* sorting: put each picture in the basket of the letter heard in it */
   const srt = {};
   function sortInit() {
+    if (!inLesson) enc('play', { queued: true });
     const O = LESSONS.find(x => x.id === L.pair) || LESSONS.find(x => x !== L);
     const has = (w, les) => les.chars.some(c => w.includes(c));
     const pick = (les, other) => shuffle(les.memory.filter(x => has(x.w, les) && !has(x.w, other))).slice(0, 4).map(x => ({ ...x, les }));
@@ -5569,6 +5598,15 @@ loadClips('common');
   const childName = () => { try { return localStorage.getItem('qalami-name') || 'بطلنا'; } catch (e) { return 'بطلنا'; } };
   function renderWorld() {
     curYear = 1;
+    if (!renderWorld.greeted) {
+      renderWorld.greeted = true;
+      const vis = load('qalami-visit'), today = new Date().toDateString(), stars = allStars();
+      const first = new Date().getHours() < 12 ? encPick('morning') : encPick('evening');
+      const then = vis.day && vis.day !== today && stars > (vis.stars || 0) ? encPick(stars - (vis.weekStars || 0) > 40 ? 'week' : 'better') : encPick('newToday');
+      if (vis.day !== today) { if (!vis.weekDay || Date.now() - vis.weekDay > 7 * 864e5) { vis.weekDay = Date.now(); vis.weekStars = stars; } vis.day = today; vis.stars = stars; store('qalami-visit', vis); }
+      $('#whHello').textContent = plainAr(first + ' ' + then);
+      if (isRec(first)) sayRaw(first); if (isRec(then)) sayRaw(then, true);
+    }
     $('#whName').textContent = childName(); $('#whStars').textContent = allStars();
     $('#wisles').innerHTML = ISLANDS.map((it, i) => {
       const c = it.count && it.count(), digits = /^[0-9 ]+$/.test(it.ic);
@@ -5598,9 +5636,9 @@ loadClips('common');
     $$('[data-pg]').forEach(x => x.onclick = () => { $('#wdlg').hidden = true; if (+x.dataset.pg === ok) then(); });
   }
   // encouragement: many phrases instead of one; a phrase is spoken only once its recording exists
-  const PRAISE = ['أَحْسَنْتَ!', 'رَائِعٌ!', 'مُمْتَازٌ!', 'بَرَافُو عَلَيْكَ!', 'يَا سَلَامُ!', 'أَنْتَ نَجْمٌ!', 'أَنْتَ بَطَلٌ!', 'مَا شَاءَ اللَّهُ عَلَيْكَ!', 'جَوَابٌ صَحِيحٌ!', 'هَكَذَا تَمَامًا!', 'عَمَلٌ جَمِيلٌ!', 'رَائِعٌ جِدًّا، أَنَا فَخُورٌ بِكَ!', 'عَرَفْتَهَا بِنَفْسِكَ!', 'أَصَبْتَ الْهَدَفَ!', 'أَحْسَنْتَ، وَاصِلْ هَكَذَا!', 'تَرْكِيزُكَ رَائِعٌ!', 'أَنْتَ تَتَعَلَّمُ بِسُرْعَةٍ!'];
-  const TRY = ['تَقْرِيبًا! حَاوِلْ مَرَّةً أُخْرَى.', 'لَا بَأْسَ، كُلُّنَا نَتَعَلَّمُ.', 'فَكِّرْ قَلِيلًا، أَنْتَ قَادِرٌ!', 'أَثِقُ فِي قُدُرَاتِكَ، جَرِّبْ مِنْ جَدِيدٍ.', 'الْخَطَأُ يُعَلِّمُنَا، هَيَّا مَرَّةً أُخْرَى!', 'قَرِيبٌ جِدًّا! انْظُرْ جَيِّدًا.', 'لَا تَسْتَسْلِمْ، أَنْتَ تَسْتَطِيعُ!'];
-  const AFTER_TRY = ['رَائِعٌ! لَمْ تَسْتَسْلِمْ وَنَجَحْتَ!', 'أَرَأَيْتَ؟ بِالْمُحَاوَلَةِ تَنْجَحُ!', 'أَحْسَنْتَ، تَعَلَّمْتَ مِنْ خَطَئِكَ!'];
+  // the 90 encouragement lines, by situation (see voice-scripts/voice-script-encouragement.txt)
+  const ENC = {"praise": ["أَحْسَنْتَ!", "رَائِعٌ!", "مُمْتَازٌ!", "بَرَافُو عَلَيْكَ!", "يَا سَلَامُ!", "أَنْتَ نَجْمٌ!", "أَنْتَ بَطَلٌ!", "مَا شَاءَ اللَّهُ عَلَيْكَ!", "جَوَابٌ صَحِيحٌ!", "هَكَذَا تَمَامًا!", "عَمَلٌ جَمِيلٌ!", "وَاوْ! أَنْتَ سَرِيعٌ!", "رَائِعٌ جِدًّا، أَنَا فَخُورٌ بِكَ!", "عَرَفْتَهَا بِنَفْسِكَ!", "أَصَبْتَ الْهَدَفَ!", "هَذَا هُوَ الْجَوَابُ!", "عَبْقَرِيٌّ صَغِيرٌ!", "أَحْسَنْتَ، وَاصِلْ هَكَذَا!", "تَرْكِيزُكَ رَائِعٌ!", "أَنْتَ تَتَعَلَّمُ بِسُرْعَةٍ!"], "streak": ["ثَلَاثُ إِجَابَاتٍ صَحِيحَةٍ! لَا أَحَدَ يُوقِفُكَ!", "أَنْتَ فِي أَحْسَنِ حَالٍ الْيَوْمَ!", "سِلْسِلَةٌ رَائِعَةٌ، اسْتَمِرَّ!", "كُلُّهَا صَحِيحَةٌ! مَا أَرْوَعَكَ!"], "oops": ["تَقْرِيبًا! حَاوِلْ مَرَّةً أُخْرَى.", "لَا بَأْسَ، كُلُّنَا نَتَعَلَّمُ.", "فَكِّرْ قَلِيلًا، أَنْتَ قَادِرٌ!", "أَثِقُ فِي قُدُرَاتِكَ، جَرِّبْ مِنْ جَدِيدٍ.", "الْخَطَأُ يُعَلِّمُنَا، هَيَّا مَرَّةً أُخْرَى!", "قَرِيبٌ جِدًّا! انْظُرْ جَيِّدًا.", "لَا تَسْتَسْلِمْ، أَنْتَ تَسْتَطِيعُ!", "خُذْ وَقْتَكَ، وَفَكِّرْ بِهُدُوءٍ."], "hint": ["انْظُرْ هُنَا!", "سَأُسَاعِدُكَ قَلِيلًا، انْظُرْ إِلَى مَا يَلْمَعُ.", "هَيَّا نَحُلُّهَا مَعًا!"], "afterTry": ["رَائِعٌ! لَمْ تَسْتَسْلِمْ وَنَجَحْتَ!", "أَرَأَيْتَ؟ بِالْمُحَاوَلَةِ تَنْجَحُ!", "أَحْسَنْتَ، تَعَلَّمْتَ مِنْ خَطَئِكَ!", "هَذَا هُوَ الْإِصْرَارُ!"], "start": ["مَرْحَبًا يَا صَدِيقِي! هَيَّا نَتَعَلَّمُ!", "أَنَا مُتَحَمِّسٌ! هَلْ أَنْتَ جَاهِزٌ؟", "دَرْسٌ جَدِيدٌ وَمُغَامَرَةٌ جَدِيدَةٌ!", "هَيَّا نَلْعَبُ وَنَتَعَلَّمُ مَعًا!"], "back": ["اشْتَقْتُ إِلَيْكَ! هَيَّا نُكْمِلُ.", "أَهْلًا بِكَ مِنْ جَدِيدٍ!"], "next": ["هَيَّا إِلَى النَّشَاطِ التَّالِي!"], "almost": ["أَحْسَنْتَ! بَقِيَ الْقَلِيلُ."], "half": ["أَنْتَ فِي مُنْتَصَفِ الطَّرِيقِ، وَاصِلْ!"], "last": ["نَشَاطٌ أَخِيرٌ، هَيَّا!"], "game": ["وَالْآنَ، لُعْبَةٌ مُمْتِعَةٌ!"], "done": ["أَنْهَيْتَ الدَّرْسَ! أَنَا فَخُورٌ بِكَ جِدًّا!", "يَا لَكَ مِنْ بَطَلٍ! أَكْمَلْتَ كُلَّ شَيْءٍ!", "تَعَلَّمْتَ الْيَوْمَ شَيْئًا جَدِيدًا!", "عَمَلٌ رَائِعٌ! أَنْتَ تَكْبُرُ وَتَتَعَلَّمُ.", "أَحْسَنْتَ! أَثِقُ أَنَّكَ سَتَتَعَلَّمُ أَكْثَرَ غَدًا.", "كُلُّ النُّجُومِ لَكَ!", "جَهْدُكَ الْيَوْمَ رَائِعٌ!"], "full": ["ثَلَاثُ نُجُومٍ! نَتِيجَةٌ كَامِلَةٌ!", "كُلُّ النُّجُومِ لَكَ!"], "mid": ["نَتِيجَةٌ جَيِّدَةٌ! يُمْكِنُكَ أَنْ تَجْمَعَ نُجُومًا أَكْثَرَ."], "low": ["أَحْسَنْتَ عَلَى الْمُحَاوَلَةِ! هَلْ نُعِيدُ الدَّرْسَ مَعًا؟"], "sticker": ["رَبِحْتَ مُلْصَقًا جَدِيدًا!", "انْظُرْ إِلَى مُلْصَقِكَ الْجَدِيدِ!", "مُفَاجَأَةٌ! مُلْصَقٌ جَدِيدٌ فِي أَلْبُومِكَ!", "أَلْبُومُكَ يَكْبُرُ!"], "maqta": ["جَمَعْتَ كُلَّ مُلْصَقَاتِ هَذَا الْمَقْطَعِ! رَائِعٌ!"], "play": ["هَيَّا نَلْعَبُ!"], "hurry": ["أَسْرِعْ!"], "catch": ["الْتَقِطْهُ!", "أَصَبْتَهُ!"], "allCaught": ["رَائِعٌ، جَمَعْتَهَا كُلَّهَا!"], "timeUp": ["انْتَهَى الْوَقْتُ! لَعِبْتَ جَيِّدًا."], "arrow": ["اتْبَعِ السَّهْمَ بِإِصْبَعِكَ."], "green": ["ابْدَأْ مِنَ النُّقْطَةِ الْخَضْرَاءِ."], "line": ["خَطٌّ جَمِيلٌ!"], "writing": ["كِتَابَتُكَ جَمِيلَةٌ!"], "calm": ["بِهُدُوءٍ، عَلَى الْخَطِّ."], "count": ["هَيَّا نَعُدُّ مَعًا!"], "countWell": ["عُدَّ جَيِّدًا."], "fast": ["حَسَبْتَهَا بِسُرْعَةٍ!"], "mathPro": ["أَنْتَ بَارِعٌ فِي الْحِسَابِ!"], "reading": ["قِرَاءَتُكَ رَائِعَةٌ!"], "listen": ["اسْتَمِعْ جَيِّدًا."], "understood": ["فَهِمْتَ النَّصَّ جَيِّدًا!"], "morning": ["صَبَاحُ الْخَيْرِ يَا بَطَلُ!"], "evening": ["مَسَاءُ الْخَيْرِ يَا بَطَلُ!"], "newToday": ["هَلْ نَتَعَلَّمُ شَيْئًا جَدِيدًا الْيَوْمَ؟"], "week": ["تَعَلَّمْتَ كَثِيرًا هَذَا الْأُسْبُوعَ!"], "better": ["أَنْتَ تَتَحَسَّنُ كُلَّ يَوْمٍ!"], "bye": ["إِلَى اللِّقَاءِ يَا صَدِيقِي!"], "tomorrow": ["أَرَاكَ غَدًا، لَا تَنْسَ!"]};
+  const PRAISE = ENC.praise, TRY = ENC.oops, AFTER_TRY = ENC.afterTry;
   const plainAr = t => t.replace(/[ً-ْ]/g, '');
   const voiced = list => list.filter(t => CLIP_FILE[clipKey(t)]);
   let wrongStreak = 0;
@@ -5615,17 +5653,50 @@ loadClips('common');
     castReact('whappy'); popChar();
   }
   const sayRaw = say;
+  // pick a line (not the same as last time), show it, and speak it if its recording exists
+  const encLast = {};
+  const isRec = t => !!CLIP_FILE[clipKey(t)];
+  function encPick(...keys) {
+    const pool = keys.flatMap(k => ENC[k]), rec = pool.filter(isRec), from = rec.length ? rec : pool, k = keys.join();
+    let t, n = 0;
+    do { t = from[Math.floor(Math.random() * from.length)]; } while (from.length > 1 && t === encLast[k] && ++n < 9);
+    encLast[k] = t; return t;
+  }
+  function cheer(text, face) {
+    const box = $('#wcheer');
+    box.innerHTML = `<img src="img/${face || 'lumi-happy'}.webp" alt=""><span>${plainAr(text)}</span>`;
+    box.hidden = false; box.classList.remove('on'); void box.offsetWidth; box.classList.add('on');
+    clearTimeout(cheer.t); cheer.t = setTimeout(() => { box.hidden = true; }, 2650);
+  }
+  // show (unless show:false) and speak if recorded, else the fallback line if any; returns true if something was spoken
+  function enc(keys, o = {}) {
+    const t = encPick(...[].concat(keys));
+    if (o.show !== false) cheer(t, o.face);
+    if (isRec(t)) { sayRaw(t, o.queued); return true; }
+    if (o.fallback) { sayRaw(o.fallback, o.queued); return true; }
+    return false;
+  }
+  let rightStreak = 0;
+  const subjKind = () => inLesson && L ? (L.kind === 'math' ? 'math' : L.kind === 'read' || L.kind === 'dict' ? 'read' : '') : '';
   say = function (text, queued, done) {
     if (text === 'أحسنت') {
-      const pool = wrongStreak ? AFTER_TRY : PRAISE, t = pool[Math.floor(Math.random() * pool.length)];
+      rightStreak++;
+      const k = subjKind();
+      const keys = wrongStreak ? ['afterTry'] : rightStreak >= 3 && rightStreak % 3 === 0 ? ['streak'] : k === 'math' && Math.random() < 0.35 ? ['fast', 'mathPro'] : k === 'read' && Math.random() < 0.35 ? ['reading', 'understood'] : ['praise'];
+      const t = encPick(...keys);
       celebrate(t); wrongStreak = 0;
-      const v = voiced([t]); return sayRaw(v.length ? t : 'أحسنت', queued, done);
+      return sayRaw(isRec(t) ? t : 'أحسنت', queued, done);
     }
     if (text === 'حاول مرة أخرى') {
-      wrongStreak++;
+      wrongStreak++; rightStreak = 0;
       const sc = curScreen(); if (sc) wreact(sc.querySelector('.coach .mascot, .gch'), 'wthink');
       castReact('wthink');
-      const v = voiced(TRY); return sayRaw(v.length ? v[Math.floor(Math.random() * v.length)] : text, queued, done);
+      const k = subjKind();
+      // the second mistake brings the hint (the activity makes the answer shine)
+      const keys = wrongStreak === 2 ? ['hint'] : S.step === 3 ? ['oops', 'calm'] : k === 'math' ? ['oops', 'countWell'] : k === 'read' ? ['oops', 'listen'] : ['oops'];
+      const t = encPick(...keys);
+      cheer(t, 'biko');
+      return sayRaw(isRec(t) ? t : text, queued, done);
     }
     return sayRaw(text, queued, done);
   };
@@ -5777,6 +5848,7 @@ loadClips('common');
     if (total > (jbest[L.id] || 0)) { jbest[L.id] = total; store('qalami-path', jbest); }
     $('#endMap').innerHTML = `<h3>${fresh ? '🗺️ ربحت قطعة جديدة من خريطة الجزيرة!' : '🗺️ خريطة جزيرة الحروف'}</h3><div class="pmap">${mapSvg(fresh ? k : -1)}</div><p>${mapNote()}</p>`;
     if (fresh) say('رَبِحْتَ قِطْعَةً جَدِيدَةً مِنَ الْخَرِيطَةِ!', true);
+    if (fresh && PATH.filter(p => p.maqta === PATH[k].maqta).every(p => pathDone(p.les))) enc('maqta', { queued: true });
     const nx = PATH[k + 1];
     if (nx) {
       const b = $('#endNext');
@@ -5842,6 +5914,7 @@ loadClips('common');
     ptr.demoPath.style.strokeWidth = size * 0.09;
     ptr.pen.setAttribute('width', size * 0.16); ptr.pen.setAttribute('height', size * 0.22);
     trMarks();
+    enc('arrow', { show: false, queued: true });
   }
   function trMarks() {
     const g = ptr.marks, st = ptr.strokes[ptr.k], z = ptr.size;
@@ -5869,7 +5942,7 @@ loadClips('common');
     if (st.dot) st.ink.setAttribute('r', ptr.size * 0.05); else { st.i = st.pts.length - 1; trInk(st); }
     ptr.down = false; ptr.slips = 0; ptr.k++;
     good();
-    if (ptr.k < ptr.strokes.length) { trMarks(); fb('#ex2Fb', ''); return; }
+    if (ptr.k < ptr.strokes.length) { trMarks(); fb('#ex2Fb', ''); enc('line', { show: false }); return; }
     trMarks();
     trWin();
   }
@@ -5906,7 +5979,7 @@ loadClips('common');
     const p = trPos(e);
     if (st.dot) { if (dist(p, st.dot) < ptr.tol * 1.6) trStrokeDone(); else { fb('#ex2Fb', 'المس النقطة الخضراء'); } return; }
     if (dist(p, st.pts[st.i]) < ptr.tol * 1.5) { ptr.down = true; ptr.marks.classList.add('drawing'); $('#trSvg').setPointerCapture(e.pointerId); fb('#ex2Fb', ''); }
-    else { fb('#ex2Fb', 'ابدأ من النقطة الخضراء ✋'); say('اِبْدَأْ مِنَ النُّقْطَةِ الْخَضْرَاءِ.'); }
+    else { fb('#ex2Fb', 'ابدأ من النقطة الخضراء ✋'); enc('green', { fallback: 'اِبْدَأْ مِنَ النُّقْطَةِ الْخَضْرَاءِ.' }); }
   });
   $('#trSvg').addEventListener('pointermove', e => {
     if (!ptr.down) return;
@@ -6022,7 +6095,7 @@ loadClips('common');
     const svg = $('#trSvg');
     ptr.strokes.forEach(st => { if (!st.dot) st.ink.style.stroke = 'url(#trGloss)'; });
     svg.classList.remove('tr-enter'); void svg.getBoundingClientRect(); svg.classList.add('tr-win');
-    celebrate(PRAISE[Math.floor(Math.random() * PRAISE.length)]);
+    celebrate(encPick('writing', 'praise'));
     fanfare();
     say(L.trace.doneSay);
     finish(3, '#ex2Fb');
@@ -6043,6 +6116,7 @@ loadClips('common');
     const open = () => {
       if (opened) return; opened = true;
       g.classList.add('open'); fanfare(); castReact('whappy');
+      enc('sticker', { queued: true });
       const sk = load('qalami-stickers'); sk.list = (sk.list || []).concat(pick); store('qalami-stickers', sk);
       setTimeout(() => g.classList.add('gone'), 2800);
       setTimeout(() => g.remove(), 3400);
@@ -6077,7 +6151,7 @@ loadClips('common');
   $('#endGames').onclick = () => go(7);
   $('#hubMenu').onclick = () => go(FLOW === JOURNEY_FLOW ? 50 : 0);
   $('#hubLesson').onclick = () => startLesson(L, FLOW === JOURNEY_FLOW ? JOURNEY_FLOW : undefined);
-  $('#homeBtn').onclick = () => go(12);
+  $('#homeBtn').onclick = () => { if (S.step === 6) enc((load('qalami-visit').doneN || 0) >= 3 ? 'tomorrow' : 'bye'); go(12); };
   $('#toParents').onclick = () => parentGate(() => go(14));
   $('#toQuiz').onclick = () => { curYear = 1; go(15); };
   $$('.speak').forEach(b => { if (!b.innerHTML) b.innerHTML = SPEAKER; });
